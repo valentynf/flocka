@@ -11,14 +11,38 @@
 .list-header {
   display: flex;
   align-items: center;
+  gap: 4px;
 }
 
-/* .collapsible-list button {
+.list-header p {
+  margin: 8px 0px;
+}
 
-} */
+.expand-list {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+.collapse-list {
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
 
 .collapsible-list ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.expand-button {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
 }

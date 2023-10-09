@@ -1,11 +1,18 @@
-type CollapsibleListItemPropsType = {
-  name: string;
-};
+import PrivateChannelIcon from '../../icons/PrivateChannelIcon';
+import PublicChannelIcon from '../../icons/PubilcChannelIcon';
+import styles from './CollapsibleListItem.module.css';
+import { CollapsibleListItemPropsType } from '../../types/appTypes';
 
-//update item to have an icon and name for now - icon is either a # or a lock
-
-function CollapsibleListItem({ name }: CollapsibleListItemPropsType) {
-  return <li>{name}</li>;
+function CollapsibleListItem({ data }: CollapsibleListItemPropsType) {
+  const { name, type } = data;
+  const icon =
+    type === 'channel-public' ? <PublicChannelIcon /> : <PrivateChannelIcon />;
+  return (
+    <div className={styles['list-item']}>
+      {icon}
+      <p>{name}</p>
+    </div>
+  );
 }
 
 export default CollapsibleListItem;

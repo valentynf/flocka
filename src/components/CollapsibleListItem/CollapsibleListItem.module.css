@@ -1,0 +1,10 @@
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 4px;
+}
+
+.list-item p {
+  margin: 5px 0px;
+}
