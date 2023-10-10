@@ -1,0 +1,21 @@
+.avatar-container {
+  position: relative;
+  width: 23px;
+  height: 20px;
+  overflow: hidden;
+}
+
+.avatar-image {
+  width: 18px;
+  height: 18px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.status-icon {
+  position: absolute;
+  top: 5px;
+  right: -1px;
+  width: 10px;
+  height: 10px;
+}

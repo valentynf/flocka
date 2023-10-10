@@ -1,7 +1,7 @@
-list-item-dm {
+.list-item-dm {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 2px;
   padding-left: 4px;
 }
 
