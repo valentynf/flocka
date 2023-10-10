@@ -1,11 +1,14 @@
 import styles from './CollapsibleList.module.css';
 import { useState } from 'react';
 
-import { CollapsibleListPropType } from '../../types/appTypes';
-import CollapsibleListItem from '../CollapsibleListItem/CollapsibleListItem';
 import ToggleShowChannelsIcon from '../../icons/ToggleShowChannelsIcon';
 
-function CollapsibleList({ data }: CollapsibleListPropType) {
+export type CollapsibleListPropsType = {
+  name: string;
+  children: React.ReactNode[];
+};
+
+function CollapsibleList({ name, children }: CollapsibleListPropsType) {
   const [isExpanded, setisExpanded] = useState(false);
   const toggleExpanded = () => setisExpanded((cur) => !cur);
   return (
@@ -19,16 +22,9 @@ function CollapsibleList({ data }: CollapsibleListPropType) {
         >
           <ToggleShowChannelsIcon />
         </button>
-        <p>{data.name}</p>
+        <p>{name}</p>
       </div>
-      {isExpanded && (
-        <ul>
-          {data.children.map((el, i) => (
-            //temporary key solution with name and i - very bad
-            <CollapsibleListItem key={`${i}-${el}`} data={el} />
-          ))}
-        </ul>
-      )}
+      {isExpanded && <ul>{children}</ul>}
     </div>
   );
 }

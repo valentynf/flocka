@@ -1,5 +1,6 @@
 import CollapsibleList from './components/CollapsibleList/CollapsibleList';
-import { CollapsibleListDataType } from './types/appTypes';
+import CollapsibleListItem from './components/CollapsibleListItem/CollapsibleListItem';
+import { CollapsibleListItemDataType } from './types/appTypes';
 
 const testData = {
   name: 'Channels',
@@ -18,7 +19,16 @@ const testData = {
 };
 
 function App() {
-  return <CollapsibleList data={testData as CollapsibleListDataType} />;
+  return (
+    <CollapsibleList name={testData.name}>
+      {testData.children.map((el, i) => (
+        <CollapsibleListItem
+          key={`${i}-${el}`}
+          data={el as CollapsibleListItemDataType}
+        />
+      ))}
+    </CollapsibleList>
+  );
 }
 
 export default App;
