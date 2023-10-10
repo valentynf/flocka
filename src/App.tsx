@@ -1,6 +1,10 @@
 import CollapsibleList from './components/CollapsibleList/CollapsibleList';
 import CollapsibleListChannelItem from './components/CollapsibleListChannelItem/CollapsibleListIChanneltem';
-import { CollapsibleListChannelItemDataType } from './types/appTypes';
+import CollapsibleListDMessageItem from './components/CollapsibleListDMessageItem/CollapsibleListDMessageItem';
+import {
+  CollapsibleListChannelItemDataType,
+  CollapsibleListDMessageItemDataType,
+} from './types/appTypes';
 
 const testData = {
   name: 'Channels',
@@ -15,18 +19,41 @@ const testData = {
     { name: 'company-announcements', type: 'channel-public' },
     { name: 'tech-news', type: 'channel-public' },
     { name: 'random-chat', type: 'channel-public' },
+    { name: 'Shrek', status: 'online', type: 'direct-message' },
+    { name: 'Fiona', status: 'offline', type: 'direct-message' },
+    { name: 'Donkey', status: 'online', type: 'direct-message' },
+    { name: 'Puss in Boots', status: 'online', type: 'direct-message' },
   ],
 };
 
 function App() {
   return (
     <CollapsibleList name={testData.name}>
-      {testData.children.map((el, i) => (
-        <CollapsibleListChannelItem
-          key={`${i}-${el}`}
-          data={el as CollapsibleListChannelItemDataType}
-        />
-      ))}
+      {testData.children.map((el, i) => {
+        console.log(el.type);
+        if (el.type === 'channel-public' || el.type === 'channel-private') {
+          return (
+            <CollapsibleListChannelItem
+              //still very poor keys generation, change this
+              key={`${i}-${el.name}`}
+              data={el as CollapsibleListChannelItemDataType}
+            />
+          );
+        }
+        if (el.type === 'direct-message') {
+          console.log('direct-mesage');
+          return (
+            <CollapsibleListDMessageItem
+              data={
+                {
+                  name: el.name,
+                  status: el.status,
+                } as CollapsibleListDMessageItemDataType
+              }
+            />
+          );
+        }
+      })}
     </CollapsibleList>
   );
 }
