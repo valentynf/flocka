@@ -30,7 +30,6 @@ function App() {
   return (
     <CollapsibleList name={testData.name}>
       {testData.children.map((el, i) => {
-        console.log(el.type);
         if (el.type === 'channel-public' || el.type === 'channel-private') {
           return (
             <CollapsibleListChannelItem
@@ -41,9 +40,10 @@ function App() {
           );
         }
         if (el.type === 'direct-message') {
-          console.log('direct-mesage');
           return (
             <CollapsibleListDMessageItem
+              //still very poor keys generation, change this
+              key={`${i}-${el.name}`}
               data={
                 {
                   name: el.name,

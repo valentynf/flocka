@@ -10,7 +10,6 @@ function CollapsibleListDMessageItem({
   data,
 }: CollapsibleListDMessageItemPropsType) {
   const { name, status } = data;
-  console.log(name, status);
   return (
     <li className={styles['list-item-dm']}>
       <AvatarWithStatus status={status} />

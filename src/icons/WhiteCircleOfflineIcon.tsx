@@ -11,7 +11,7 @@ function WhiteCircleOfflineButton() {
         cy="8"
         r="6"
         stroke="#161616"
-        stroke-width="3"
+        strokeWidth="3"
         fill="none"
       />
 
@@ -20,7 +20,7 @@ function WhiteCircleOfflineButton() {
         cy="8"
         r="4"
         stroke="#c4c4c7"
-        stroke-width="2"
+        strokeWidth="2"
         fill="#161616"
       />
     </svg>
