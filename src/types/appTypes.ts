@@ -1,13 +1,4 @@
-// collapsibleList types
-
-export type CollapsibleListDataType = {
-  name: string;
-  children: CollapsibleListItemDataType[];
-};
-
-// colapsibleListItem types
-
-export type CollapsibleListItemDataType = {
+export type CollapsibleListChannelItemDataType = {
   name: string;
   type: 'channel-public' | 'channel-private';
 };
