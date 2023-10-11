@@ -65,15 +65,6 @@ function HomeSideBar() {
   return (
     <div className={styles['home-side-bar']}>
       <HomeSideBarQuickAccess />
-      <CollapsibleList name={channelsData.name}>
-        {channelsData.children.map((el, i) => (
-          <CollapsibleListChannelItem
-            //still very poor keys generation, change this
-            key={`${i}-${el.name}`}
-            data={el as CollapsibleListChannelItemDataType}
-          />
-        ))}
-      </CollapsibleList>
       <CollapsibleList name={starredData.name}>
         {starredData.children.map((el, i) => {
           if (el.type === 'channel-public' || el.type === 'channel-private') {
@@ -100,6 +91,15 @@ function HomeSideBar() {
             );
           }
         })}
+      </CollapsibleList>
+      <CollapsibleList name={channelsData.name}>
+        {channelsData.children.map((el, i) => (
+          <CollapsibleListChannelItem
+            //still very poor keys generation, change this
+            key={`${i}-${el.name}`}
+            data={el as CollapsibleListChannelItemDataType}
+          />
+        ))}
       </CollapsibleList>
       <CollapsibleList name={directMessagesData.name}>
         {directMessagesData.children.map((el, i) => (
