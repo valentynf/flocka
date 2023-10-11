@@ -1,6 +1,7 @@
 import CollapsibleList from './components/CollapsibleList/CollapsibleList';
 import CollapsibleListChannelItem from './components/CollapsibleListChannelItem/CollapsibleListIChanneltem';
 import CollapsibleListDMessageItem from './components/CollapsibleListDMessageItem/CollapsibleListDMessageItem';
+import HomeSideBarQuickAccess from './components/HomeSidebarQuickAccess/HomeSideBarQuickAccess';
 import {
   CollapsibleListChannelItemDataType,
   CollapsibleListDMessageItemDataType,
@@ -28,33 +29,36 @@ const testData = {
 
 function App() {
   return (
-    <CollapsibleList name={testData.name}>
-      {testData.children.map((el, i) => {
-        if (el.type === 'channel-public' || el.type === 'channel-private') {
-          return (
-            <CollapsibleListChannelItem
-              //still very poor keys generation, change this
-              key={`${i}-${el.name}`}
-              data={el as CollapsibleListChannelItemDataType}
-            />
-          );
-        }
-        if (el.type === 'direct-message') {
-          return (
-            <CollapsibleListDMessageItem
-              //still very poor keys generation, change this
-              key={`${i}-${el.name}`}
-              data={
-                {
-                  name: el.name,
-                  status: el.status,
-                } as CollapsibleListDMessageItemDataType
-              }
-            />
-          );
-        }
-      })}
-    </CollapsibleList>
+    <>
+      <HomeSideBarQuickAccess />
+      <CollapsibleList name={testData.name}>
+        {testData.children.map((el, i) => {
+          if (el.type === 'channel-public' || el.type === 'channel-private') {
+            return (
+              <CollapsibleListChannelItem
+                //still very poor keys generation, change this
+                key={`${i}-${el.name}`}
+                data={el as CollapsibleListChannelItemDataType}
+              />
+            );
+          }
+          if (el.type === 'direct-message') {
+            return (
+              <CollapsibleListDMessageItem
+                //still very poor keys generation, change this
+                key={`${i}-${el.name}`}
+                data={
+                  {
+                    name: el.name,
+                    status: el.status,
+                  } as CollapsibleListDMessageItemDataType
+                }
+              />
+            );
+          }
+        })}
+      </CollapsibleList>
+    </>
   );
 }
 
