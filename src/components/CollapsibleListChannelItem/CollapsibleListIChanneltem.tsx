@@ -1,5 +1,5 @@
-import PrivateChannelIcon from '../../icons/PrivateChannelIcon';
-import PublicChannelIcon from '../../icons/PubilcChannelIcon';
+import PrivateChannelIcon from '../../icons/CollapsibleListIcons/PrivateChannelIcon';
+import PublicChannelIcon from '../../icons/CollapsibleListIcons/PubilcChannelIcon';
 import { CollapsibleListChannelItemDataType } from '../../types/appTypes';
 import styles from './CollapsibleListChannelItem.module.css';
 
