@@ -1,32 +1,30 @@
-import { useState } from 'react';
 import styles from './CollapsibleList.module.css';
-import CollapsibleListItem from '../CollapsibleListItem/CollapsibleListItem';
+import { useState } from 'react';
 
-type CollapsibleListPropType = {
-  data: CollapsibleListDataType;
-};
+import ToggleShowChannelsIcon from '../../icons/CollapsibleList/ToggleShowChannelsIcon';
 
-type CollapsibleListDataType = {
+export type CollapsibleListPropsType = {
   name: string;
-  children: string[];
+  children: React.ReactNode[];
 };
 
-function CollapsibleList({ data }: CollapsibleListPropType) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+function CollapsibleList({ name, children }: CollapsibleListPropsType) {
+  const [isExpanded, setisExpanded] = useState(false);
+  const toggleExpanded = () => setisExpanded((cur) => !cur);
   return (
     <div className={styles['collapsible-list']}>
       <div className={styles['list-header']}>
-        <button onClick={() => setIsCollapsed((cur) => !cur)}>▼</button>
-        <p>{data.name}</p>
+        <button
+          className={`${styles['expand-button']} ${
+            isExpanded ? styles['expand-list'] : styles['collapse-list']
+          }`}
+          onClick={toggleExpanded}
+        >
+          <ToggleShowChannelsIcon />
+        </button>
+        <p>{name}</p>
       </div>
-      {isCollapsed && (
-        <ul>
-          {data.children.map((el, i) => (
-            //temporary key solution with name and i - very bad
-            <CollapsibleListItem key={`${i}-${el}`} name={el} />
-          ))}
-        </ul>
-      )}
+      {isExpanded && <ul>{children}</ul>}
     </div>
   );
 }

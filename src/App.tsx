@@ -1,23 +1,11 @@
-import CollapsibleList from './components/CollapsibleList/CollapsibleList';
-
-const testData = {
-  name: 'Channels',
-  children: [
-    '#general',
-    '#engineering',
-    '#productdevelopment',
-    '#designteam',
-    '#marketing',
-    '#sales',
-    '#support',
-    '#companyannouncements',
-    '#technews',
-    '#randomchat',
-  ],
-};
+import HomeSideBar from './components/HomeSideBar/HomeSideBar';
 
 function App() {
-  return <CollapsibleList data={testData} />;
+  return (
+    <>
+      <HomeSideBar />
+    </>
+  );
 }
 
 export default App;

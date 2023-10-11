@@ -1,0 +1,10 @@
+.list-item-dm {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding-left: 4px;
+}
+
+.list-item-dm-name {
+  margin: 5px 0px;
+}

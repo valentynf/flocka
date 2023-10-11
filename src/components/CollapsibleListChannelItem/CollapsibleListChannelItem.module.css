@@ -1,0 +1,10 @@
+.list-item-channel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 5px;
+}
+
+.list-item-channel-name {
+  margin: 5px 0px;
+}
