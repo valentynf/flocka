@@ -1,12 +1,14 @@
 import HomeSideBar from '../HomeSidebar/HomeSideBar';
 import styles from './HomeView.module.css';
 
+import { SplitPane } from 'react-collapse-pane';
+
 function HomeView() {
   return (
-    <div className={styles['home-view']}>
+    <SplitPane split="vertical" collapse={false}>
       <HomeSideBar />
       <div className={styles['home-main']}></div>
-    </div>
+    </SplitPane>
   );
 }
 
