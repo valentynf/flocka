@@ -11,20 +11,20 @@ function SidebarSortIcon() {
       <path
         d="M4 7h16"
         stroke="#c4c4c7"
-        stroke-linecap="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeWidth="2"
       ></path>
       <path
         d="M7 12h10"
         stroke="#c4c4c7"
-        stroke-linecap="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeWidth="2"
       ></path>
       <path
         d="M9 17h6"
         stroke="#c4c4c7"
-        stroke-linecap="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeWidth="2"
       ></path>
     </svg>
   );
