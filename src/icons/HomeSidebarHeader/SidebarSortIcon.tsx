@@ -6,6 +6,7 @@ function SidebarSortIcon() {
       height="16"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
+      transform="scale(1.1, 1.1)"
     >
       <path
         d="M4 7h16"
