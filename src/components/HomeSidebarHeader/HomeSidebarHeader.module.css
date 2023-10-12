@@ -2,24 +2,25 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #313132;
-  border-radius: 4px 0 0 0;
-  padding: 8px;
-  margin-left: 9px;
+  padding-bottom: 8px;
   min-width: 180px;
+  border-bottom: 1px solid #313132;
 }
 
 .header-text {
-  margin: 5px 0 5px 5px;
   font-weight: bold;
   font-family: 'Lato', sens-serif;
   font-weight: 700;
   font-size: 18px;
+  margin-top: 0px;
+  margin-left: 8px;
+  margin-bottom: 4px;
+  padding-left: 4px;
   color: #c4c4c7;
 }
 
 .header-icons {
   display: flex;
-  gap: 16px;
-  margin: 8px;
+  gap: 14px;
+  margin-right: 22px;
 }
