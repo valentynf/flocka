@@ -1,9 +1,9 @@
-import HomeSideBar from './components/HomeSideBar/HomeSideBar';
+import HomeView from './components/HomeView/HomeView';
 
 function App() {
   return (
     <>
-      <HomeSideBar />
+      <HomeView />
     </>
   );
 }
