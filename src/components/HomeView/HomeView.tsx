@@ -7,7 +7,12 @@ function HomeView() {
   return (
     <div className={styles['home-view-container']}>
       <div className={styles['home-view']}>
-        <SplitPane split="vertical" collapse={false} minSizes={[240, 400]}>
+        <SplitPane
+          split="vertical"
+          initialSizes={[300, 700]}
+          collapse={false}
+          minSizes={[240, 400]}
+        >
           <div className={styles['home-sidebar']}>
             <HomeSideBar />
           </div>
