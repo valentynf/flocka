@@ -5,6 +5,7 @@ import {
 import CollapsibleList from '../CollapsibleList/CollapsibleList';
 import CollapsibleListChannelItem from '../CollapsibleListChannelItem/CollapsibleListIChanneltem';
 import CollapsibleListDMessageItem from '../CollapsibleListDMessageItem/CollapsibleListDMessageItem';
+import HomeSidebarHeader from '../HomeSidebarHeader/HomeSidebarHeader';
 import HomeSideBarQuickAccess from '../HomeSidebarQuickAccess/HomeSideBarQuickAccess';
 import styles from './HomeSideBar.module.css';
 
@@ -64,6 +65,7 @@ const directMessagesData = {
 function HomeSideBar() {
   return (
     <div className={styles['home-side-bar']}>
+      <HomeSidebarHeader />
       <HomeSideBarQuickAccess />
       <CollapsibleList name={starredData.name}>
         {starredData.children.map((el, i) => {
