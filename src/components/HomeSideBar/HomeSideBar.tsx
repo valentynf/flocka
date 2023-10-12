@@ -64,59 +64,61 @@ const directMessagesData = {
 
 function HomeSideBar() {
   return (
-    <div className={styles['home-side-bar']}>
+    <div className={styles['home-sidebar']}>
       <HomeSidebarHeader />
-      <HomeSideBarQuickAccess />
-      <CollapsibleList name={starredData.name}>
-        {starredData.children.map((el, i) => {
-          if (el.type === 'channel-public' || el.type === 'channel-private') {
-            return (
-              <CollapsibleListChannelItem
-                //still very poor keys generation, change this
-                key={`${i}-${el.name}`}
-                data={el as CollapsibleListChannelItemDataType}
-              />
-            );
-          }
-          if (el.type === 'direct-message') {
-            return (
-              <CollapsibleListDMessageItem
-                //still very poor keys generation, change this
-                key={`${i}-${el.name}`}
-                data={
-                  {
-                    name: el.name,
-                    status: el.status,
-                  } as CollapsibleListDMessageItemDataType
-                }
-              />
-            );
-          }
-        })}
-      </CollapsibleList>
-      <CollapsibleList name={channelsData.name}>
-        {channelsData.children.map((el, i) => (
-          <CollapsibleListChannelItem
-            //still very poor keys generation, change this
-            key={`${i}-${el.name}`}
-            data={el as CollapsibleListChannelItemDataType}
-          />
-        ))}
-      </CollapsibleList>
-      <CollapsibleList name={directMessagesData.name}>
-        {directMessagesData.children.map((el, i) => (
-          <CollapsibleListDMessageItem
-            //still very poor keys generation, change this
-            key={`${i}-${el.name}`}
-            data={
-              {
-                name: el.name,
-                status: el.status,
-              } as CollapsibleListDMessageItemDataType
+      <div className={styles['home-sidebar-content']}>
+        <HomeSideBarQuickAccess />
+        <CollapsibleList name={starredData.name}>
+          {starredData.children.map((el, i) => {
+            if (el.type === 'channel-public' || el.type === 'channel-private') {
+              return (
+                <CollapsibleListChannelItem
+                  //still very poor keys generation, change this
+                  key={`${i}-${el.name}`}
+                  data={el as CollapsibleListChannelItemDataType}
+                />
+              );
             }
-          />
-        ))}
-      </CollapsibleList>
+            if (el.type === 'direct-message') {
+              return (
+                <CollapsibleListDMessageItem
+                  //still very poor keys generation, change this
+                  key={`${i}-${el.name}`}
+                  data={
+                    {
+                      name: el.name,
+                      status: el.status,
+                    } as CollapsibleListDMessageItemDataType
+                  }
+                />
+              );
+            }
+          })}
+        </CollapsibleList>
+        <CollapsibleList name={channelsData.name}>
+          {channelsData.children.map((el, i) => (
+            <CollapsibleListChannelItem
+              //still very poor keys generation, change this
+              key={`${i}-${el.name}`}
+              data={el as CollapsibleListChannelItemDataType}
+            />
+          ))}
+        </CollapsibleList>
+        <CollapsibleList name={directMessagesData.name}>
+          {directMessagesData.children.map((el, i) => (
+            <CollapsibleListDMessageItem
+              //still very poor keys generation, change this
+              key={`${i}-${el.name}`}
+              data={
+                {
+                  name: el.name,
+                  status: el.status,
+                } as CollapsibleListDMessageItemDataType
+              }
+            />
+          ))}
+        </CollapsibleList>
+      </div>
     </div>
   );
 }

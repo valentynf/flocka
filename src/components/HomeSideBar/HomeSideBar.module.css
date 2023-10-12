@@ -1,6 +1,10 @@
-.home-side-bar {
+.home-sidebar {
   margin: 10px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
+}
+
+.home-sidebar-content {
+  margin-left: 4px;
 }

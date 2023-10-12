@@ -5,10 +5,17 @@ import { SplitPane } from 'react-collapse-pane';
 
 function HomeView() {
   return (
-    <SplitPane split="vertical" collapse={false}>
-      <HomeSideBar />
-      <div className={styles['home-main']}></div>
-    </SplitPane>
+    <div className={styles['home-view-container']}>
+      <div className={styles['home-view']}>
+        <SplitPane split="vertical" collapse={false} minSizes={[240, 400]}>
+          <div className={styles['home-sidebar']}>
+            <HomeSideBar />
+          </div>
+
+          <div className={styles['home-main']}></div>
+        </SplitPane>
+      </div>
+    </div>
   );
 }
 

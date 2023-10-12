@@ -1,6 +1,7 @@
 .home-view {
-  display: flex;
-  width: 100%;
+  border: 1px solid #3d3d3e;
+  border-radius: 4px 4px 4px 4px;
+  height: 100vh;
 }
 
 .home-main {
