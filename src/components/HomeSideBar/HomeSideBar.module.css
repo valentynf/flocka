@@ -8,4 +8,6 @@
 
 .home-sidebar-content {
   margin-left: 10px;
+  max-height: calc(100vh - 10px); /* important for scrolling do not remove*/
+  overflow-y: auto;
 }
