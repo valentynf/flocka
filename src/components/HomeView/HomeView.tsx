@@ -1,4 +1,4 @@
-import HomeSideBar from '../HomeSidebar/HomeSideBar';
+import HomeSidebar from './HomeSidebar/HomeSidebar';
 import styles from './HomeView.module.css';
 
 import { SplitPane } from 'react-collapse-pane';
@@ -14,7 +14,7 @@ function HomeView() {
           minSizes={[240, 400]}
         >
           <div className={styles['home-sidebar']}>
-            <HomeSideBar />
+            <HomeSidebar />
           </div>
 
           <div className={styles['home-main']}></div>

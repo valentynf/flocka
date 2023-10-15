@@ -1,12 +1,12 @@
 import {
-  CollapsibleListChannelItemDataType,
-  CollapsibleListDMessageItemDataType,
-} from '../../types/appTypes';
-import CollapsibleList from '../CollapsibleList/CollapsibleList';
-import CollapsibleListChannelItem from '../CollapsibleListChannelItem/CollapsibleListIChanneltem';
-import CollapsibleListDMessageItem from '../CollapsibleListDMessageItem/CollapsibleListDMessageItem';
-import HomeSidebarHeader from '../HomeSidebarHeader/HomeSidebarHeader';
-import HomeSideBarQuickAccess from '../HomeSidebarQuickAccess/HomeSideBarQuickAccess';
+  ChannelItemDataType,
+  DirectMessageItemDataType,
+} from '../../../types/appTypes';
+import CollapsibleList from './CollapsibleList/CollapsibleList';
+import ChannelItem from './CollapsibleList/ChannelItem/Channeltem';
+import DirectMessageItem from './CollapsibleList/DirectMessageItem/DirectMessageItem';
+import SidebarHeader from './SidebarHeader/SidebarHeader';
+import QuickAccess from './QuickAccess/QuickAccess';
 import styles from './HomeSideBar.module.css';
 
 const channelsData = {
@@ -68,54 +68,54 @@ function HomeSideBar() {
   ) {
     if (item.type === 'direct-message') {
       return (
-        <CollapsibleListDMessageItem
+        <DirectMessageItem
           //still very poor keys generation, change this
           key={`${item.name}`}
           data={
             {
               name: item.name,
               status: item.status,
-            } as CollapsibleListDMessageItemDataType
+            } as DirectMessageItemDataType
           }
         />
       );
     }
     return (
-      <CollapsibleListChannelItem
+      <ChannelItem
         //still very poor keys generation, change key generation
         key={`${item.name}`}
-        data={item as CollapsibleListChannelItemDataType}
+        data={item as ChannelItemDataType}
       />
     );
   }
 
   return (
     <div className={styles['home-sidebar']}>
-      <HomeSidebarHeader />
+      <SidebarHeader />
       <div className={styles['home-sidebar-content']}>
-        <HomeSideBarQuickAccess />
+        <QuickAccess />
         <CollapsibleList name={starredData.name}>
           {starredData.children.map(renderStarredContent)}
         </CollapsibleList>
         <CollapsibleList name={channelsData.name}>
           {channelsData.children.map((el, i) => (
-            <CollapsibleListChannelItem
+            <ChannelItem
               //still very poor keys generation, change this
               key={`${i}-${el.name}`}
-              data={el as CollapsibleListChannelItemDataType}
+              data={el as ChannelItemDataType}
             />
           ))}
         </CollapsibleList>
         <CollapsibleList name={directMessagesData.name}>
           {directMessagesData.children.map((el, i) => (
-            <CollapsibleListDMessageItem
+            <DirectMessageItem
               //still very poor keys generation, change this
               key={`${i}-${el.name}`}
               data={
                 {
                   name: el.name,
                   status: el.status,
-                } as CollapsibleListDMessageItemDataType
+                } as DirectMessageItemDataType
               }
             />
           ))}

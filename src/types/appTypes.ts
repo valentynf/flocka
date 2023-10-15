@@ -1,12 +1,9 @@
-export type CollapsibleListChannelItemDataType = {
+export type ChannelItemDataType = {
   name: string;
   type: 'channel-public' | 'channel-private';
 };
 
-export type CollapsibleListDMessageItemDataType = {
+export type DirectMessageItemDataType = {
   name: string;
   status: 'online' | 'offline';
 };
-
-// new type for every type of channel/dm
-// type channel, dm,

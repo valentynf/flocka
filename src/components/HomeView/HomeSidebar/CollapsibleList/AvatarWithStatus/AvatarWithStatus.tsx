@@ -1,5 +1,5 @@
-import GreenCircleOnlineIcon from './AvatarWithStatusIcons/GreenCircleOnlineIcon';
-import WhiteCircleOfflineButton from './AvatarWithStatusIcons/WhiteCircleOfflineIcon';
+import GreenCircleOnlineIcon from '../../../../../icons/HomeView/HomeSidebar/CollapsibleList/AvatarWithStatus/GreenCircleOnlineIcon';
+import WhiteCircleOfflineButton from '../../../../../icons/HomeView/HomeSidebar/CollapsibleList/AvatarWithStatus/WhiteCircleOfflineIcon';
 import styles from './AvatarWithStatus.module.css';
 
 type AvatarWithStatusPropsType = {

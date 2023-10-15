@@ -1,9 +1,9 @@
-import DraftSentIcon from '../../icons/HomeSidebarQuickAccess/DraftSentIcon';
-import ThreadsIcon from '../../icons/HomeSidebarQuickAccess/ThreadsIcon';
-import UnreadMessagesIcon from '../../icons/HomeSidebarQuickAccess/UnreadMessagesIcon';
-import styles from './HomeSidebarQuickAccess.module.css';
+import DraftSentIcon from '../../../../icons/HomeView/HomeSidebar/QuickAccess/DraftSentIcon';
+import ThreadsIcon from '../../../../icons/HomeView/HomeSidebar/QuickAccess/ThreadsIcon';
+import UnreadMessagesIcon from '../../../../icons/HomeView/HomeSidebar/QuickAccess/UnreadMessagesIcon';
+import styles from './QuickAccess.module.css';
 
-function HomeSideBarQuickAccess() {
+function QuickAccess() {
   return (
     <ul className={styles['quick-actions-list']}>
       <li className={styles['quick-action-item']}>
@@ -22,4 +22,4 @@ function HomeSideBarQuickAccess() {
   );
 }
 
-export default HomeSideBarQuickAccess;
+export default QuickAccess;
