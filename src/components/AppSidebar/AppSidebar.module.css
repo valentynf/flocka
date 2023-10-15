@@ -68,6 +68,7 @@ svg {
 
 .folder:hover svg {
   transform: scale(1.1);
+  fill: #c4c4c7;
 }
 
 .name {

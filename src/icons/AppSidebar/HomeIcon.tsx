@@ -2,7 +2,7 @@ function HomeIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
-      fill="#c4c4c7"
+      fill="none"
       stroke="#c4c4c7"
       xmlns="http://www.w3.org/2000/svg"
     >

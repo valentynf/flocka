@@ -9,9 +9,9 @@ function PlusIcon() {
       <path
         d="M4 12H20M12 4V20"
         stroke="#c4c4c7"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
