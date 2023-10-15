@@ -63,37 +63,39 @@ const directMessagesData = {
 };
 
 function HomeSideBar() {
+  function renderStarredContent(
+    item: (typeof starredData)['children'][number]
+  ) {
+    if (item.type === 'direct-message') {
+      return (
+        <CollapsibleListDMessageItem
+          //still very poor keys generation, change this
+          key={`${item.name}`}
+          data={
+            {
+              name: item.name,
+              status: item.status,
+            } as CollapsibleListDMessageItemDataType
+          }
+        />
+      );
+    }
+    return (
+      <CollapsibleListChannelItem
+        //still very poor keys generation, change this
+        key={`${item.name}`}
+        data={item as CollapsibleListChannelItemDataType}
+      />
+    );
+  }
+
   return (
     <div className={styles['home-sidebar']}>
       <HomeSidebarHeader />
       <div className={styles['home-sidebar-content']}>
         <HomeSideBarQuickAccess />
         <CollapsibleList name={starredData.name}>
-          {starredData.children.map((el, i) => {
-            if (el.type === 'channel-public' || el.type === 'channel-private') {
-              return (
-                <CollapsibleListChannelItem
-                  //still very poor keys generation, change this
-                  key={`${i}-${el.name}`}
-                  data={el as CollapsibleListChannelItemDataType}
-                />
-              );
-            }
-            if (el.type === 'direct-message') {
-              return (
-                <CollapsibleListDMessageItem
-                  //still very poor keys generation, change this
-                  key={`${i}-${el.name}`}
-                  data={
-                    {
-                      name: el.name,
-                      status: el.status,
-                    } as CollapsibleListDMessageItemDataType
-                  }
-                />
-              );
-            }
-          })}
+          {starredData.children.map(renderStarredContent)}
         </CollapsibleList>
         <CollapsibleList name={channelsData.name}>
           {channelsData.children.map((el, i) => (
