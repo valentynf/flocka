@@ -82,7 +82,7 @@ function HomeSideBar() {
     }
     return (
       <CollapsibleListChannelItem
-        //still very poor keys generation, change this
+        //still very poor keys generation, change
         key={`${item.name}`}
         data={item as CollapsibleListChannelItemDataType}
       />
