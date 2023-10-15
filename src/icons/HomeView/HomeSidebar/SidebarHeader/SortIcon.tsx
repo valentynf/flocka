@@ -1,4 +1,4 @@
-function SidebarSortIcon() {
+function SortIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -30,4 +30,4 @@ function SidebarSortIcon() {
   );
 }
 
-export default SidebarSortIcon;
+export default SortIcon;
