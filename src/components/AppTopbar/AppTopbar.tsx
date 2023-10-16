@@ -20,6 +20,7 @@ function AppTopBar() {
         </div>
         <div className={styles['search-bar']}>
           <MagGlassIcon />
+          <p className={styles['search-placeholder']}>Search Dunder Mifflin</p>
         </div>
       </div>
       <div className={styles['help']}>
