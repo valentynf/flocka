@@ -1,5 +1,5 @@
-import SidebarNewMessageIcon from '../../../../icons/HomeView/HomeSidebar/SidebarHeader/SidebarNewMessageIcon';
-import SidebarSortIcon from '../../../../icons/HomeView/HomeSidebar/SidebarHeader/SidebarSortIcon';
+import NewMessageIcon from '../../../../icons/HomeView/HomeSidebar/SidebarHeader/NewMessageIcon';
+import SortIcon from '../../../../icons/HomeView/HomeSidebar/SidebarHeader/SortIcon';
 import styles from './SidebarHeader.module.css';
 
 function SidebarHeader() {
@@ -7,8 +7,8 @@ function SidebarHeader() {
     <div className={styles['header-container']}>
       <p className={styles['header-text']}>Dunder Mifflin</p>
       <div className={styles['header-icons']}>
-        <SidebarSortIcon />
-        <SidebarNewMessageIcon />
+        <SortIcon />
+        <NewMessageIcon />
       </div>
     </div>
   );

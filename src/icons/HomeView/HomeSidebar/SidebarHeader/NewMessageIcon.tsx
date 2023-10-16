@@ -1,4 +1,4 @@
-function SidebarNewMessageIcon() {
+function NewMessageIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -19,4 +19,4 @@ function SidebarNewMessageIcon() {
   );
 }
 
-export default SidebarNewMessageIcon;
+export default NewMessageIcon;

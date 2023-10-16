@@ -1,6 +1,9 @@
-/* temporary measure  */
 @import './fonts.css';
 
 :root {
   background-color: #232325;
+}
+
+body {
+  margin: 0;
 }

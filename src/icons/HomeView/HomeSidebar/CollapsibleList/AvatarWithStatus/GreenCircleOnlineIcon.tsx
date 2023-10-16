@@ -1,4 +1,10 @@
-function GreenCircleOnlineIcon() {
+type GreenCircleOnlineIconPropsType = {
+  backgroundColor: string;
+};
+
+function GreenCircleOnlineIcon({
+  backgroundColor,
+}: GreenCircleOnlineIconPropsType) {
   return (
     <svg
       fill="#349169"
@@ -7,7 +13,7 @@ function GreenCircleOnlineIcon() {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 16 16"
     >
-      <circle cx="8" cy="8" r="6" stroke="#161616" strokeWidth="3" />
+      <circle cx="8" cy="8" r="6" stroke={backgroundColor} strokeWidth="3" />
     </svg>
   );
 }

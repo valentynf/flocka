@@ -1,0 +1,21 @@
+.user-image {
+  position: relative;
+  width: 36px;
+  height: 36px;
+}
+
+.avatar-image {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-top: 12px;
+}
+
+.status-icon {
+  position: absolute;
+  top: 34px;
+  right: -3px;
+  width: 12px;
+  height: 12px;
+}

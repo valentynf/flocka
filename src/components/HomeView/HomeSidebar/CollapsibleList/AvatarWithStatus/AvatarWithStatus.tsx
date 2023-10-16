@@ -4,9 +4,13 @@ import styles from './AvatarWithStatus.module.css';
 
 type AvatarWithStatusPropsType = {
   status: 'online' | 'offline';
+  backgroundColor: string;
 };
 
-function AvatarWithStatus({ status }: AvatarWithStatusPropsType) {
+function AvatarWithStatus({
+  status,
+  backgroundColor,
+}: AvatarWithStatusPropsType) {
   return (
     <div className={styles['avatar-container']}>
       <img
@@ -14,8 +18,12 @@ function AvatarWithStatus({ status }: AvatarWithStatusPropsType) {
         className={styles['avatar-image']}
       />
       <div className={styles['status-icon']}>
-        {status === 'online' && <GreenCircleOnlineIcon />}
-        {status === 'offline' && <WhiteCircleOfflineButton />}
+        {status === 'online' && (
+          <GreenCircleOnlineIcon backgroundColor={backgroundColor} />
+        )}
+        {status === 'offline' && (
+          <WhiteCircleOfflineButton backgroundColor={backgroundColor} />
+        )}
       </div>
     </div>
   );
