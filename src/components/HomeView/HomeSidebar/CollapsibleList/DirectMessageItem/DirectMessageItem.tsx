@@ -10,7 +10,7 @@ function DirectMessageItem({ data }: DirectMessageItemPropsType) {
   const { name, status } = data;
   return (
     <li className={styles['list-item-dm']}>
-      <AvatarWithStatus status={status} />
+      <AvatarWithStatus backgroundColor="#161616" status={status} />
       <p className={styles['list-item-dm-name']}>{name}</p>
     </li>
   );

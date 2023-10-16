@@ -5,12 +5,15 @@ import HomeIcon from '../../icons/AppSidebar/HomeIcon';
 import PlusIcon from '../../icons/AppSidebar/PlusIcon';
 import RibbonIcon from '../../icons/AppSidebar/RibbonIcon';
 import styles from './AppSidebar.module.css';
+import UserImageWithStatus from './UserImageWithStatus/UserImageWithStatus';
 
 function AppSidebar() {
   return (
     <div className={styles['sidebar']}>
       <div className={styles['top-section']}>
-        <div className={styles.ico}>Icon 2</div>
+        <div className={styles['logo-image']}>
+          <img src="/src/assets/images/logo.png" />
+        </div>
         <div className={styles['folder']}>
           <div className={styles['icon']}>
             <HomeIcon />
@@ -48,11 +51,8 @@ function AppSidebar() {
             <PlusIcon />
           </div>
         </div>
-        <div className={styles['folder']}>
-          <div className={styles['icon']}>
-            <HomeIcon />
-          </div>
-          <p className={styles['name']}>Home</p>
+        <div className={styles['user-image']}>
+          <UserImageWithStatus status={'online'} />
         </div>
       </div>
     </div>

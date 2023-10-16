@@ -1,4 +1,10 @@
-function WhiteCircleOfflineButton() {
+type WhiteCircleOfflineButtonPropTypes = {
+  backgroundColor: string;
+};
+
+function WhiteCircleOfflineButton({
+  backgroundColor,
+}: WhiteCircleOfflineButtonPropTypes) {
   return (
     <svg
       height="10px"
@@ -10,7 +16,7 @@ function WhiteCircleOfflineButton() {
         cx="8"
         cy="8"
         r="6"
-        stroke="#161616"
+        stroke={`${backgroundColor}`}
         strokeWidth="3"
         fill="none"
       />
@@ -21,7 +27,7 @@ function WhiteCircleOfflineButton() {
         r="4"
         stroke="#c4c4c7"
         strokeWidth="2"
-        fill="#161616"
+        fill={`${backgroundColor}`}
       />
     </svg>
   );

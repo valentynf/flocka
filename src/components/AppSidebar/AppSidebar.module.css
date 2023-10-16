@@ -27,6 +27,7 @@ svg {
   flex-direction: column;
   justify-content: center;
   margin-bottom: 24px;
+  gap: 5px;
 }
 
 .icon {
@@ -48,7 +49,7 @@ svg {
   transition: transform 0.2s;
 }
 
-.icon-create-new:hover {
+.icon-create-new:hover svg {
   transform: scale(1.1);
 }
 
@@ -68,7 +69,6 @@ svg {
 
 .folder:hover svg {
   transform: scale(1.1);
-  fill: #c4c4c7;
 }
 
 .name {
@@ -76,4 +76,28 @@ svg {
   text-align: center;
   font-size: 11px;
   font-family: 'Lato', sans-serif;
+}
+
+.logo-image {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-image img {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #313132;
+  border-radius: 25%;
+}
+
+.logo-image:hover {
+  cursor: pointer;
+}
+
+.user-image:hover {
+  cursor: pointer;
 }
