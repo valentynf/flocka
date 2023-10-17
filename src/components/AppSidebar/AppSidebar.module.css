@@ -4,7 +4,7 @@ svg {
 
 .sidebar {
   width: 75px;
-  height: 100vh;
+  height: 100%;
   background-color: #333;
   color: #e0e0e0;
   display: flex;

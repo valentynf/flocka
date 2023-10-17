@@ -1,3 +1,14 @@
+.main-view {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Use min-height instead of height */
+}
+
+.main-topbar {
+  height: 40px; /* Fixed height for the top bar */
+}
+
 .main-container {
   display: flex;
+  flex: 1; /* Use flex to fill the remaining space, and this will make your site not scrollable */
 }
