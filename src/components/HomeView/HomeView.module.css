@@ -1,18 +1,19 @@
 .home-view-container {
-  background-color: #232325;
+  background-color: #161616;
   border-radius: 4px 4px 4px 4px;
+  margin-bottom: 2px;
 }
 
 .home-view {
   display: flex;
   border: 1px solid #3d3d3e;
   border-radius: 4px 4px 4px 4px;
-  min-height: calc(100vh - 42px);
+  min-height: calc(100vh - 45px);
   min-width: calc(100vw - 80px);
 }
 
 .home-main {
   flex: 1;
-  background-color: #232325;
+  background-color: #191c20;
   border-left: 1px solid #3d3d3e;
 }
