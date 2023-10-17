@@ -1,0 +1,14 @@
+.home-sidebar {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+  height: calc(100vh - 54px);
+}
+
+.home-sidebar-content {
+  margin-left: 20px;
+  max-height: calc(100vh - 40px); /* important for scrolling do not remove*/
+  overflow-y: auto;
+}

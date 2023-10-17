@@ -1,0 +1,14 @@
+.main-view {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-topbar {
+  height: 40px;
+}
+
+.main-container {
+  display: flex;
+  flex: 1;
+}

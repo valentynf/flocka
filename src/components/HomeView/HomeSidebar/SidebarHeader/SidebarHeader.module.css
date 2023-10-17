@@ -1,0 +1,26 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  min-width: 180px;
+  border-bottom: 1px solid #313132;
+}
+
+.header-text {
+  font-weight: bold;
+  font-family: 'Lato', sens-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 0px;
+  margin-left: 12px;
+  margin-bottom: 4px;
+  padding-left: 4px;
+  color: #c4c4c7;
+}
+
+.header-icons {
+  display: flex;
+  gap: 14px;
+  margin-right: 22px;
+}
