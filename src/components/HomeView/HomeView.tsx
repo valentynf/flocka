@@ -1,5 +1,6 @@
 import HomeSidebar from './HomeSidebar/HomeSidebar';
 import styles from './HomeView.module.css';
+import MessagesView from './MessagesView/MessagesView';
 
 function HomeView() {
   return (
@@ -9,7 +10,9 @@ function HomeView() {
           <HomeSidebar />
         </div>
 
-        <div className={styles['home-main']}></div>
+        <div className={styles['home-main']}>
+          <MessagesView />
+        </div>
       </div>
     </div>
   );

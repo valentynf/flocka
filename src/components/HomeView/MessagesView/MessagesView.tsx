@@ -1,4 +1,4 @@
-import MessagesHeader from './MessagesTopbar/MessagesHeader';
+import MessagesHeader from './MessagesHeader/MessagesHeader';
 import styles from './MessagesView.module.css';
 
 function MessagesView() {

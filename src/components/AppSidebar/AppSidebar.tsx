@@ -5,7 +5,7 @@ import HomeIcon from '../../icons/AppSidebar/HomeIcon';
 import PlusIcon from '../../icons/AppSidebar/PlusIcon';
 import RibbonIcon from '../../icons/AppSidebar/RibbonIcon';
 import styles from './AppSidebar.module.css';
-import UserImageWithStatus from './UserImageWithStatus/UserImageWithStatus';
+import UserImageWithStatusBig from './UserImageWithStatusBig/UserImageWithStatusBig';
 
 function AppSidebar() {
   return (
@@ -52,7 +52,7 @@ function AppSidebar() {
           </div>
         </div>
         <div className={styles['user-image']}>
-          <UserImageWithStatus status={'online'} />
+          <UserImageWithStatusBig status={'offline'} />
         </div>
       </div>
     </div>
