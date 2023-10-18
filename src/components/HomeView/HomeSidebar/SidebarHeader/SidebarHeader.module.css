@@ -2,9 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 9px;
+  padding-bottom: 8px;
   min-width: 180px;
-  height: 35px;
+  min-height: 36px;
   border-bottom: 1px solid #313132;
 }
 
