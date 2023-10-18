@@ -15,7 +15,7 @@ function QuickAccess() {
         <p className={styles['quick-action-name']}>Threads</p>
       </li>
       <li className={styles['quick-action-item']}>
-        <DraftSentIcon />
+        <DraftSentIcon fill="none" strokeColor="#c4c4c7" />
         <p className={styles['quick-action-name']}>Drafts & sent</p>
       </li>
     </ul>
