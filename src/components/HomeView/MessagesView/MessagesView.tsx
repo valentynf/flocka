@@ -1,4 +1,6 @@
+import MessageInput from './MessageInput/MessageInput';
 import MessagesHeader from './MessagesHeader/MessagesHeader';
+import MessagesList from './MessagesList/MessagesList';
 import styles from './MessagesView.module.css';
 
 function MessagesView() {
@@ -7,8 +9,12 @@ function MessagesView() {
       <div className={styles['header']}>
         <MessagesHeader />
       </div>
-      <div className={styles['messages-list']}></div>
-      <div className={styles['message-input']}></div>
+      <div className={styles['messages-list']}>
+        <MessagesList />
+      </div>
+      <div className={styles['message-input']}>
+        <MessageInput />
+      </div>
     </div>
   );
 }
