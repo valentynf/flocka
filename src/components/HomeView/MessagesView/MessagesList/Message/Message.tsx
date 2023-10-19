@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Message.module.css';
 import { MessageDataType } from '../../../../../types/appTypes';
 
