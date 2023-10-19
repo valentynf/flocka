@@ -117,7 +117,6 @@ function MessagesList() {
     <div className={styles['messages-list']}>
       <div className={styles['reverse-scroll']}>
         {messagesData
-          .reverse()
           .map((el, i) => <Message data={el} key={i} />)
           //adding pathetic workaround with reverse for the resize bug
           .reverse()}
