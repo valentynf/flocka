@@ -1,20 +1,13 @@
 import React from 'react';
 import styles from './Message.module.css';
+import { MessageDataType } from '../../../../../types/appTypes';
 
-const testMes = `Hello, Jim. 
-I'm just stopping by to remind you about our upcoming sales meeting. 
-It's important that you attend. 
-Sincerely, Dwight Schrute`;
+type MessagePropsType = {
+  data: MessageDataType;
+};
 
-//temporary multiline text solution for testig
-const formattedText = testMes.split('\n').map((line, index) => (
-  <React.Fragment key={index}>
-    {line}
-    <br />
-  </React.Fragment>
-));
-
-function Message() {
+function Message({ data }: MessagePropsType) {
+  const { username, timestamp, message } = data;
   return (
     <div className={styles['message-container']}>
       <div className={styles['img-container']}>
@@ -25,11 +18,11 @@ function Message() {
       </div>
       <div className={styles['message']}>
         <div className={styles['header']}>
-          <span className={styles['username']}>Dwight Schrute</span>
-          <span className={styles['timestamp']}>13:40</span>
+          <span className={styles['username']}>{username}</span>
+          <span className={styles['timestamp']}>{timestamp}</span>
         </div>
         <div className={styles['content']}>
-          <p className={styles['text']}>{formattedText}</p>
+          <p className={styles['text']}>{message}</p>
         </div>
       </div>
     </div>
