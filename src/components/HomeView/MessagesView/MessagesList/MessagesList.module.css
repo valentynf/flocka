@@ -1,4 +1,5 @@
 .messages-list {
   height: 100%;
   background-color: palevioletred;
+  overflow-y: auto;
 }

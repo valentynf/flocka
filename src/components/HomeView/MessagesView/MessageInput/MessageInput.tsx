@@ -4,7 +4,7 @@ import styles from './MessageInput.module.css';
 function MessageInput() {
   return (
     <div className={styles['input-container']}>
-      <div className={styles['input-field']} contentEditable="true">
+      <div className={styles['input-field']}>
         <button className={styles['button-send']}>
           <DraftSentIcon strokeColor="#037a5a" fill="#fff" />
         </button>

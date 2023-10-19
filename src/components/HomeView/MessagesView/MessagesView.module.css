@@ -1,16 +1,10 @@
 .messages-view {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: calc(100vh - 44px);
 }
 
-.header {
-}
-
-.messages-list {
+.messages {
   flex: 1;
-  overflow-y: auto; /* scrollbar stuff */
-}
-
-.message-input {
+  height: 10px;
 }

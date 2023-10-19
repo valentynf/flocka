@@ -9,7 +9,7 @@ function MessagesView() {
       <div className={styles['header']}>
         <MessagesHeader />
       </div>
-      <div className={styles['messages-list']}>
+      <div className={styles['messages']}>
         <MessagesList />
       </div>
       <div className={styles['message-input']}>

@@ -1,5 +1,5 @@
 .input-container {
-  height: 140px;
+  height: 135px;
 }
 .input-field {
   position: relative;
@@ -16,8 +16,8 @@
 
 .button-send {
   position: absolute;
-  bottom: 8px;
-  right: 8px;
+  bottom: 4px;
+  right: 4px;
   width: 50px;
   height: 30px;
   background-color: #037a5a;
