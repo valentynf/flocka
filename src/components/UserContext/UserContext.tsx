@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import { UserDataType } from '../../types/appTypes';
-import { useGoogleLogin } from '@react-oauth/google';
+import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 
 const USER_INFO_API = 'https://www.googleapis.com/oauth2/v1/userinfo';
 
@@ -35,7 +35,11 @@ function UserDataProvider({ children }: UserDataProviderProps) {
         }
         return response.json();
       })
-      .then((data) => console.log(data));
+      .then((data) => {
+        const { email, picture, given_name } = data;
+        console.log(email, picture, given_name);
+        setUserData({ name: given_name, avatar_src: picture, email });
+      });
   }
 
   const login = useGoogleLogin({
@@ -43,7 +47,10 @@ function UserDataProvider({ children }: UserDataProviderProps) {
     onError: (err) => console.error(err),
   });
 
-  async function logout() {}
+  function logout() {
+    googleLogout();
+    setUserData({} as UserDataType);
+  }
 
   return (
     <UserContext.Provider

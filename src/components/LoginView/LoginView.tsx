@@ -6,7 +6,7 @@ function LoginView() {
 
   return (
     <div className={styles['login-container']}>
-      <button className={styles['login-button']} onClick={() => login()}>
+      <button className={styles['login-button']} onClick={login}>
         {' '}
         Login with Google
       </button>
