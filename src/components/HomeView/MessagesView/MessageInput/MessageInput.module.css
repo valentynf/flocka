@@ -1,0 +1,50 @@
+.input-container {
+  height: 135px;
+}
+.input-field {
+  position: relative;
+  background-color: #212529;
+  height: 116px;
+  flex: 1;
+  margin: 0 14px;
+  border: 1px solid #555856;
+  border-radius: 8px;
+}
+.input-field:focus {
+  outline: none;
+}
+
+.button-send {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 50px;
+  height: 30px;
+  background-color: #037a5a;
+  border-radius: 4px;
+  border: none;
+  z-index: 2;
+}
+
+.button-send:hover {
+  cursor: pointer;
+  background-color: #108a6c;
+}
+
+.text-area {
+  min-width: calc(100% - 8px);
+  height: calc(100% - 24px);
+  background: none;
+  border: none;
+  resize: none;
+  outline: none;
+  color: #d1d2d3;
+  padding: 12px 0 0 12px;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.textarea::placeholder {
+  color: #727476;
+}

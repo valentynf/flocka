@@ -15,7 +15,7 @@
 .status-icon {
   position: absolute;
   top: 5px;
-  right: -1px;
+  right: 0px;
   width: 10px;
   height: 10px;
 }

@@ -1,11 +1,14 @@
+import useUser from '../../hooks/useUser';
 import ArrowLeft from '../../icons/AppTopbar/ArrowLeft';
 import ArrowRight from '../../icons/AppTopbar/ArrowRight';
 import ClockIcon from '../../icons/AppTopbar/ClockIcon';
-import HelpIcon from '../../icons/AppTopbar/HelpIcon';
+import LogoutIcon from '../../icons/AppTopbar/LogoutIcon';
 import MagGlassIcon from '../../icons/AppTopbar/MagGlassIcon';
 import styles from './AppTopBar.module.css';
 
 function AppTopBar() {
+  const { logout } = useUser();
+
   return (
     <div className={styles['top-bar']}>
       <div className={styles['main']}>
@@ -24,8 +27,8 @@ function AppTopBar() {
         </div>
       </div>
       <div className={styles['help']}>
-        <div className={styles['icon']}>
-          <HelpIcon />
+        <div onClick={logout} className={styles['icon']}>
+          <LogoutIcon />
         </div>
       </div>
     </div>
