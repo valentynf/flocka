@@ -13,3 +13,9 @@ export type MessageDataType = {
   timestamp: string;
   message: string;
 };
+
+export type UserDataType = {
+  name: string;
+  avatar_src: string;
+  email: string;
+};
