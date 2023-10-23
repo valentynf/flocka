@@ -12,7 +12,7 @@ import {
 } from 'react-router-dom';
 
 function App() {
-  const { user_data } = useUser();
+  const { session } = useUser();
 
   return (
     <Router>
@@ -20,18 +20,12 @@ function App() {
         <Routes>
           <Route
             path="/login"
-            element={
-              Object.keys(user_data).length === 0 ? (
-                <LoginView />
-              ) : (
-                <Navigate to="/app" />
-              )
-            }
+            element={session === null ? <LoginView /> : <Navigate to="/app" />}
           />
           <Route
             path="/app"
             element={
-              Object.keys(user_data).length === 0 ? (
+              session === null ? (
                 <Navigate to="/login" />
               ) : (
                 <div>
