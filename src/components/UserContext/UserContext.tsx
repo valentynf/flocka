@@ -28,32 +28,26 @@ function UserDataProvider({ children }: UserDataProviderProps) {
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
-      console.log(data);
       setSession(data.session);
     });
 
-    supabase.auth.onAuthStateChange((event, session) => {
-      console.log('on oauth state change', { event, session });
+    supabase.auth.onAuthStateChange((event) => {
       if (event === 'SIGNED_OUT') {
-        console.log('signed out');
+        setSession(null);
       }
     });
   }, []);
 
-  async function login() {
+  function login() {
     supabase.auth
       .signInWithOAuth({ provider: 'google' })
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+      .catch((err) => console.error('Login failed:', err));
   }
 
   function logout() {
     supabase.auth
       .signOut()
-      .then(() => {
-        setSession(null);
-      })
-      .catch((err) => console.error('Logout failed', err));
+      .catch((err) => console.error('Logout failed:', err));
   }
 
   return (
