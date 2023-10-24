@@ -18,4 +18,5 @@ export type UserDataType = {
   name: string;
   avatar_src: string;
   email: string;
+  id: string;
 };

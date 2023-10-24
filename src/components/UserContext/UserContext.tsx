@@ -3,10 +3,10 @@ import { UserDataType } from '../../types/appTypes';
 import { Session, createClient } from '@supabase/supabase-js';
 
 type UserContextType = {
-  user_data: UserDataType;
+  user_data: UserDataType | null;
+  session: Session | null;
   login: () => void;
   logout: () => void;
-  session: Session | null;
 };
 
 export const UserContext = createContext<UserContextType>(
@@ -23,17 +23,28 @@ const supabase = createClient(
 );
 
 function UserDataProvider({ children }: UserDataProviderProps) {
-  const [userData, setUserData] = useState<UserDataType>({} as UserDataType);
+  const [userData, setUserData] = useState<UserDataType | null>(null);
   const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
+    //returns session (from localStorage), refreshing it if necessary.
+    //to get user info from db use supabase.auth.getUser()
     supabase.auth.getSession().then(({ data }) => {
       setSession(data.session);
     });
 
-    supabase.auth.onAuthStateChange((event) => {
+    supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_OUT') {
         setSession(null);
+      }
+      if (event === 'SIGNED_IN' && session != null) {
+        const { email, full_name, picture } = session.user.user_metadata;
+        setUserData({
+          name: full_name,
+          email,
+          avatar_src: picture,
+          id: session.user.id,
+        });
       }
     });
   }, []);
