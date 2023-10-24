@@ -1,7 +1,7 @@
 import {
   ChannelItemDataType,
   DirectMessageItemDataType,
-} from '../../../types/appTypes';
+} from '../../../../types/appTypes';
 import CollapsibleList from './CollapsibleList/CollapsibleList';
 import ChannelItem from './CollapsibleList/ChannelItem/Channeltem';
 import DirectMessageItem from './CollapsibleList/DirectMessageItem/DirectMessageItem';

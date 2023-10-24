@@ -1,5 +1,5 @@
 import styles from './Message.module.css';
-import { MessageDataType } from '../../../../../types/appTypes';
+import { MessageDataType } from '../../../../../../types/appTypes';
 
 type MessagePropsType = {
   data: MessageDataType;

@@ -1,4 +1,4 @@
-import DraftSentIcon from '../../../../icons/HomeView/HomeSidebar/QuickAccess/DraftSentIcon';
+import DraftSentIcon from '../../../../../icons/HomeView/HomeSidebar/QuickAccess/DraftSentIcon';
 import styles from './MessageInput.module.css';
 
 function MessageInput() {

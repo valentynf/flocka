@@ -1,4 +1,4 @@
-import { DirectMessageItemDataType } from '../../../../../types/appTypes';
+import { DirectMessageItemDataType } from '../../../../../../types/appTypes';
 import styles from './DirectMessageItem.module.css';
 import UserImageWithStatusSmall from '../UserImageWithStatusSmall/UserImageWithStatusSmall';
 

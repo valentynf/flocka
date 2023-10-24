@@ -1,5 +1,5 @@
-import OfflineIconBig from '../../../icons/AppSidebar/UserImageWithStatusBig/OfflineIconBig';
-import OnlineIconBig from '../../../icons/AppSidebar/UserImageWithStatusBig/OnlineIconBig';
+import OfflineIconBig from '../../../../icons/AppSidebar/UserImageWithStatusBig/OfflineIconBig';
+import OnlineIconBig from '../../../../icons/AppSidebar/UserImageWithStatusBig/OnlineIconBig';
 import styles from './UserImageWithStatusBig.module.css';
 
 type UserImageWithStatusBigPropsType = {

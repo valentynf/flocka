@@ -1,6 +1,6 @@
-import AppSidebar from '../AppSidebar/AppSidebar';
-import AppTopBar from '../AppTopbar/AppTopbar';
-import HomeView from '../HomeView/HomeView';
+import AppSidebar from './AppSidebar/AppSidebar';
+import AppTopBar from './AppTopbar/AppTopbar';
+import HomeView from './HomeView/HomeView';
 import styles from './AppLayout.module.css';
 
 function AppLayout() {

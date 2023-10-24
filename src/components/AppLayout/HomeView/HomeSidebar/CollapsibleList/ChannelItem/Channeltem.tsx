@@ -1,6 +1,6 @@
-import PrivateChannelIcon from '../../../../../icons/HomeView/HomeSidebar/CollapsibleList/PrivateChannelIcon';
-import PublicChannelIcon from '../../../../../icons/HomeView/HomeSidebar/CollapsibleList/PubilcChannelIcon';
-import { ChannelItemDataType } from '../../../../../types/appTypes';
+import PrivateChannelIcon from '../../../../../../icons/HomeView/HomeSidebar/CollapsibleList/PrivateChannelIcon';
+import PublicChannelIcon from '../../../../../../icons/HomeView/HomeSidebar/CollapsibleList/PubilcChannelIcon';
+import { ChannelItemDataType } from '../../../../../../types/appTypes';
 import styles from './ChannelItem.module.css';
 
 export type ChannelItemPropsType = {

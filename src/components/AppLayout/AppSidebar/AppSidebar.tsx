@@ -1,9 +1,9 @@
-import BellIcon from '../../icons/AppSidebar/BellIcon';
-import DirectMessagesIcon from '../../icons/AppSidebar/DirectMessagesIcon';
-import DotDotDotIcon from '../../icons/AppSidebar/DotDotDotIcon';
-import HomeIcon from '../../icons/AppSidebar/HomeIcon';
-import PlusIcon from '../../icons/AppSidebar/PlusIcon';
-import RibbonIcon from '../../icons/AppSidebar/RibbonIcon';
+import BellIcon from '../../../icons/AppSidebar/BellIcon';
+import DirectMessagesIcon from '../../../icons/AppSidebar/DirectMessagesIcon';
+import DotDotDotIcon from '../../../icons/AppSidebar/DotDotDotIcon';
+import HomeIcon from '../../../icons/AppSidebar/HomeIcon';
+import PlusIcon from '../../../icons/AppSidebar/PlusIcon';
+import RibbonIcon from '../../../icons/AppSidebar/RibbonIcon';
 import styles from './AppSidebar.module.css';
 import UserImageWithStatusBig from './UserImageWithStatusBig/UserImageWithStatusBig';
 
