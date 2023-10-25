@@ -1,6 +1,6 @@
-import DraftSentIcon from '../../../../../icons/HomeView/HomeSidebar/QuickAccess/DraftSentIcon';
-import ThreadsIcon from '../../../../../icons/HomeView/HomeSidebar/QuickAccess/ThreadsIcon';
-import UnreadMessagesIcon from '../../../../../icons/HomeView/HomeSidebar/QuickAccess/UnreadMessagesIcon';
+import DraftSentIcon from '../../../../../icons/AppLayout/HomeView/HomeSidebar/QuickAccess/DraftSentIcon';
+import ThreadsIcon from '../../../../../icons/AppLayout/HomeView/HomeSidebar/QuickAccess/ThreadsIcon';
+import UnreadMessagesIcon from '../../../../../icons/AppLayout/HomeView/HomeSidebar/QuickAccess/UnreadMessagesIcon';
 import styles from './QuickAccess.module.css';
 
 function QuickAccess() {

@@ -1,5 +1,5 @@
-import OfflineIconSmall from '../../../../../../icons/HomeView/HomeSidebar/CollapsibleList/UserImageWithStatusSmall/OfflineIconSmall';
-import OnlineIconSmall from '../../../../../../icons/HomeView/HomeSidebar/CollapsibleList/UserImageWithStatusSmall/OnlineIconSmall';
+import OfflineIconSmall from '../../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/UserImageWithStatusSmall/OfflineIconSmall';
+import OnlineIconSmall from '../../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/UserImageWithStatusSmall/OnlineIconSmall';
 import styles from './UserImageWithStatusSmall.module.css';
 
 type UserImageWithStatusSmallPropsType = {

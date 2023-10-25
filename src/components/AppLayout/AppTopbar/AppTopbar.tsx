@@ -1,9 +1,9 @@
 import useUser from '../../../hooks/useUser';
-import ArrowLeft from '../../../icons/AppTopbar/ArrowLeft';
-import ArrowRight from '../../../icons/AppTopbar/ArrowRight';
-import ClockIcon from '../../../icons/AppTopbar/ClockIcon';
-import LogoutIcon from '../../../icons/AppTopbar/LogoutIcon';
-import MagGlassIcon from '../../../icons/AppTopbar/MagGlassIcon';
+import ArrowLeft from '../../../icons/AppLayout/AppTopbar/ArrowLeft';
+import ArrowRight from '../../../icons/AppLayout/AppTopbar/ArrowRight';
+import ClockIcon from '../../../icons/AppLayout/AppTopbar/ClockIcon';
+import LogoutIcon from '../../../icons/AppLayout/AppTopbar/LogoutIcon';
+import MagGlassIcon from '../../../icons/AppLayout/AppTopbar/MagGlassIcon';
 import styles from './AppTopBar.module.css';
 
 function AppTopBar() {

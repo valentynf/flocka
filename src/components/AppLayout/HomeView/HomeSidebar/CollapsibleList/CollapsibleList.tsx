@@ -1,7 +1,7 @@
 import styles from './CollapsibleList.module.css';
 import { useState } from 'react';
 
-import ToggleShowChannelsIcon from '../../../../../icons/HomeView/HomeSidebar/CollapsibleList/ToggleShowChannelsIcon';
+import ToggleShowChannelsIcon from '../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/ToggleShowChannelsIcon';
 
 export type CollapsibleListPropsType = {
   name: string;

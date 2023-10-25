@@ -1,5 +1,5 @@
-import OfflineIconMedium from '../../../../../../icons/HomeView/MessagesView/MessagesHeader/UserImageWithStatusMedium/OfflineIconMedium';
-import OnlineIconMedium from '../../../../../../icons/HomeView/MessagesView/MessagesHeader/UserImageWithStatusMedium/OnlineIconMedium';
+import OfflineIconMedium from '../../../../../../icons/AppLayout/HomeView/MessagesView/MessagesHeader/UserImageWithStatusMedium/OfflineIconMedium';
+import OnlineIconMedium from '../../../../../../icons/AppLayout/HomeView/MessagesView/MessagesHeader/UserImageWithStatusMedium/OnlineIconMedium';
 import styles from './UserImageWithStatusMedium.module.css';
 
 type UserImageWithStatusMediumPropsType = {
