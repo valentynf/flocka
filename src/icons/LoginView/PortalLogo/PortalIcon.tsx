@@ -7,8 +7,8 @@ function PortalIcon() {
       />
       <defs>
         <linearGradient id="stoneGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#c4c4c7" stopOpacity={1} />
-          <stop offset="100%" stopColor="#4d4d4d" stopOpacity={1} />
+          <stop offset="0%" stopColor="#4d4d4d" stopOpacity={1} />
+          <stop offset="100%" stopColor="#2D4739" stopOpacity={1} />
         </linearGradient>
       </defs>
     </svg>

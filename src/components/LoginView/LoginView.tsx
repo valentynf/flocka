@@ -1,14 +1,18 @@
 import styles from './LoginView.module.css';
 import useUser from '../../hooks/useUser';
 import PortalLogo from '../../icons/LoginView/PortalLogo/PortalLogo';
+import FlockaIcon from '../../icons/LoginView/FlockaIcon';
 
 function LoginView() {
   const { login } = useUser();
 
   return (
     <div className={styles['login-container']}>
-      <div className={'info'}>
-        <h3 className={styles['app-name']}>flocka</h3>
+      <div className={styles['info']}>
+        <div className={styles['flocka-logo']}>
+          <FlockaIcon />
+          <h3 className={styles['app-name']}>flocka</h3>
+        </div>
         <h2 className={styles['slogan']}>
           Flocka, where whispers converge and in the depths of darkness, they
           entwine.
