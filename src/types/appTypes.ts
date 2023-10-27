@@ -1,20 +1,20 @@
-export type ChannelItemDataType = {
+export type ChannelItemData = {
   name: string;
   type: 'channel-public' | 'channel-private';
 };
 
-export type DirectMessageItemDataType = {
+export type DirectMessageItemData = {
   name: string;
   status: 'online' | 'offline';
 };
 
-export type MessageDataType = {
+export type MessageData = {
   username: string;
   timestamp: string;
   message: string;
 };
 
-export type UserDataType = {
+export type UserData = {
   name: string;
   avatar_src: string;
   email: string;

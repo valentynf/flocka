@@ -1,6 +1,6 @@
 import {
-  ChannelItemDataType,
-  DirectMessageItemDataType,
+  ChannelItemData,
+  DirectMessageItemData,
 } from '../../../../types/appTypes';
 import CollapsibleList from './CollapsibleList/CollapsibleList';
 import ChannelItem from './CollapsibleList/ChannelItem/Channeltem';
@@ -75,7 +75,7 @@ function HomeSideBar() {
             {
               name: item.name,
               status: item.status,
-            } as DirectMessageItemDataType
+            } as DirectMessageItemData
           }
         />
       );
@@ -84,7 +84,7 @@ function HomeSideBar() {
       <ChannelItem
         //still very poor keys generation, change key generation
         key={`${item.name}`}
-        data={item as ChannelItemDataType}
+        data={item as ChannelItemData}
       />
     );
   }
@@ -102,7 +102,7 @@ function HomeSideBar() {
             <ChannelItem
               //still very poor keys generation, change this
               key={`${i}-${el.name}`}
-              data={el as ChannelItemDataType}
+              data={el as ChannelItemData}
             />
           ))}
         </CollapsibleList>
@@ -115,7 +115,7 @@ function HomeSideBar() {
                 {
                   name: el.name,
                   status: el.status,
-                } as DirectMessageItemDataType
+                } as DirectMessageItemData
               }
             />
           ))}

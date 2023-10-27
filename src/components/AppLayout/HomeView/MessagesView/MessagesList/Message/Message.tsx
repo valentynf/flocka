@@ -1,11 +1,11 @@
 import styles from './Message.module.css';
-import { MessageDataType } from '../../../../../../types/appTypes';
+import { MessageData } from '../../../../../../types/appTypes';
 
-type MessagePropsType = {
-  data: MessageDataType;
+type MessageProps = {
+  data: MessageData;
 };
 
-function Message({ data }: MessagePropsType) {
+function Message({ data }: MessageProps) {
   const { username, timestamp, message } = data;
   return (
     <div className={styles['message-container']}>

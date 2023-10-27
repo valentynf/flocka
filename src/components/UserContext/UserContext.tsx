@@ -1,9 +1,9 @@
 import { createContext, useEffect, useState } from 'react';
-import { UserDataType } from '../../types/appTypes';
+import { UserData } from '../../types/appTypes';
 import { Session, createClient } from '@supabase/supabase-js';
 
 type UserContextType = {
-  user_data: UserDataType | null;
+  user_data: UserData | null;
   session: Session | null;
   login: () => void;
   logout: () => void;
@@ -23,7 +23,7 @@ const supabase = createClient(
 );
 
 function UserDataProvider({ children }: UserDataProviderProps) {
-  const [userData, setUserData] = useState<UserDataType | null>(null);
+  const [userData, setUserData] = useState<UserData | null>(null);
   const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {

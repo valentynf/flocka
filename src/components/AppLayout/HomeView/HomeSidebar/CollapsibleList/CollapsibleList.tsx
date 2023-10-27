@@ -3,12 +3,12 @@ import { useState } from 'react';
 
 import ToggleShowChannelsIcon from '../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/ToggleShowChannelsIcon';
 
-export type CollapsibleListPropsType = {
+export type CollapsibleListProps = {
   name: string;
   children: React.ReactNode[];
 };
 
-function CollapsibleList({ name, children }: CollapsibleListPropsType) {
+function CollapsibleList({ name, children }: CollapsibleListProps) {
   const [isExpanded, setisExpanded] = useState(false);
   const toggleExpanded = () => setisExpanded((cur) => !cur);
   return (

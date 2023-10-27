@@ -2,13 +2,11 @@ import OfflineIconSmall from '../../../../../../icons/AppLayout/HomeView/HomeSid
 import OnlineIconSmall from '../../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/UserImageWithStatusSmall/OnlineIconSmall';
 import styles from './UserImageWithStatusSmall.module.css';
 
-type UserImageWithStatusSmallPropsType = {
+type UserImageWithStatusSmallProps = {
   status: 'online' | 'offline';
 };
 
-function UserImageWithStatusSmall({
-  status,
-}: UserImageWithStatusSmallPropsType) {
+function UserImageWithStatusSmall({ status }: UserImageWithStatusSmallProps) {
   return (
     <div className={styles['avatar-container']}>
       <img

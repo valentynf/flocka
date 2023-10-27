@@ -2,11 +2,11 @@ import OfflineIconBig from '../../../../icons/AppLayout/AppSidebar/UserImageWith
 import OnlineIconBig from '../../../../icons/AppLayout/AppSidebar/UserImageWithStatusBig/OnlineIconBig';
 import styles from './UserImageWithStatusBig.module.css';
 
-type UserImageWithStatusBigPropsType = {
+type UserImageWithStatusBigProps = {
   status: 'online' | 'offline';
 };
 
-function UserImageWithStatusBig({ status }: UserImageWithStatusBigPropsType) {
+function UserImageWithStatusBig({ status }: UserImageWithStatusBigProps) {
   return (
     <div className={styles['user-image']}>
       <img

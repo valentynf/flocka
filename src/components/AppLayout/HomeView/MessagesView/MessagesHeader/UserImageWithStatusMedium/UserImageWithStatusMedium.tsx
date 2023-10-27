@@ -2,13 +2,11 @@ import OfflineIconMedium from '../../../../../../icons/AppLayout/HomeView/Messag
 import OnlineIconMedium from '../../../../../../icons/AppLayout/HomeView/MessagesView/MessagesHeader/UserImageWithStatusMedium/OnlineIconMedium';
 import styles from './UserImageWithStatusMedium.module.css';
 
-type UserImageWithStatusMediumPropsType = {
+type UserImageWithStatusMediumProps = {
   status: 'online' | 'offline';
 };
 
-function UserImageWithStatusMedium({
-  status,
-}: UserImageWithStatusMediumPropsType) {
+function UserImageWithStatusMedium({ status }: UserImageWithStatusMediumProps) {
   return (
     <div className={styles['avatar-container']}>
       <img
