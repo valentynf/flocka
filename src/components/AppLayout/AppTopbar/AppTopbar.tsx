@@ -1,13 +1,19 @@
-import useUser from '../../../hooks/useUser';
 import ArrowLeft from '../../../icons/AppLayout/AppTopbar/ArrowLeft';
 import ArrowRight from '../../../icons/AppLayout/AppTopbar/ArrowRight';
 import ClockIcon from '../../../icons/AppLayout/AppTopbar/ClockIcon';
 import LogoutIcon from '../../../icons/AppLayout/AppTopbar/LogoutIcon';
 import MagGlassIcon from '../../../icons/AppLayout/AppTopbar/MagGlassIcon';
+import { logout } from '../../../store/slices/authSlice';
+import { AppDispatch } from '../../../store/store';
 import styles from './AppTopBar.module.css';
+import { useDispatch } from 'react-redux';
 
 function AppTopBar() {
-  const { logout } = useUser();
+  const dispatch: AppDispatch = useDispatch();
+
+  function handleLogout() {
+    dispatch(logout());
+  }
 
   return (
     <div className={styles['top-bar']}>
@@ -27,7 +33,7 @@ function AppTopBar() {
         </div>
       </div>
       <div className={styles['help']}>
-        <div onClick={logout} className={styles['icon']}>
+        <div onClick={handleLogout} className={styles['icon']}>
           <LogoutIcon />
         </div>
       </div>
