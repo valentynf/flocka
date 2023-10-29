@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Session, createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
+export const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL,
   import.meta.env.VITE_SUPABASE_KEY
 );
@@ -16,30 +16,44 @@ const initialState: AuthStateSlice = {
   session: null,
 };
 
-const getSession = createAsyncThunk('auth/getSession', async () => {
-  const { data } = await supabase.auth.getSession();
-  return data.session;
-});
+const signInWithOAuth = createAsyncThunk(
+  'auth/signInWithOAuth',
+  async (_, { rejectWithValue }) => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+    });
+    if (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+const signOut = createAsyncThunk(
+  'auth/signOut',
+  async (_, { rejectWithValue }) => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    login() {
-      supabase.auth.signInWithOAuth({ provider: 'google' });
-    },
-    logout(state) {
-      supabase.auth.signOut();
-      state.session = null;
-    },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(getSession.fulfilled, (state, { payload }) => {
+    setSession(state, { payload }) {
       state.session = payload;
-    });
+    },
   },
+  // handling case when redirect to google login failed
+  // extraReducers: (builder) => {
+  //   builder.addCase(signInWithOAuth.rejected, (state) => {
+
+  //   })
+  // }
 });
 
-export { getSession };
-export const { login, logout } = authSlice.actions;
+export { signInWithOAuth, signOut };
+export const { setSession } = authSlice.actions;
 export default authSlice.reducer;

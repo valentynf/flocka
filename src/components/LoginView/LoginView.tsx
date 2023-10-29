@@ -1,22 +1,16 @@
 import styles from './LoginView.module.css';
 import PortalLogo from '../../icons/LoginView/PortalLogo/PortalLogo';
 import FlockaIcon from '../../icons/LoginView/FlockaIcon';
-import { useDispatch } from 'react-redux';
-import { login, getSession } from '../../store/slices/authSlice';
-import { useEffect } from 'react';
+import { signInWithOAuth } from '../../store/slices/authSlice';
 import { AppDispatch } from '../../store/store';
+import { useDispatch } from 'react-redux';
 
 function LoginView() {
   const dispatch: AppDispatch = useDispatch();
 
-  function handleLogin() {
-    dispatch(login());
-  }
-
-  //not clever workaround for getting session info (if we're logged in)
-  useEffect(() => {
-    dispatch(getSession());
-  });
+  const handleSignIn = () => {
+    dispatch(signInWithOAuth());
+  };
 
   return (
     <div className={styles['login-container']}>
@@ -29,7 +23,7 @@ function LoginView() {
           Flocka, where whispers converge and in the depths of darkness, they
           entwine.
         </h2>
-        <button className={styles['login-button']} onClick={handleLogin}>
+        <button className={styles['login-button']} onClick={handleSignIn}>
           {' '}
           Sign in to Flocka
         </button>

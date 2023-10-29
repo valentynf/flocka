@@ -1,7 +1,5 @@
 import AppLayout from './components/AppLayout/AppLayout';
 import LoginView from './components/LoginView/LoginView';
-import { useSelector } from 'react-redux';
-
 import {
   BrowserRouter as Router,
   Route,
@@ -9,8 +7,11 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { RootState } from './store/store';
+import { useSelector } from 'react-redux';
+import useAuthListener from './hooks/useAuthListener';
 
 function App() {
+  useAuthListener();
   const session = useSelector((state: RootState) => state.auth.session);
 
   return (
