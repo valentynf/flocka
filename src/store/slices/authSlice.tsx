@@ -38,6 +38,18 @@ const signOut = createAsyncThunk(
   }
 );
 
+const getSession = createAsyncThunk(
+  'auth/getSession',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await supabase.auth.getSession();
+      return data.session;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -46,14 +58,13 @@ const authSlice = createSlice({
       state.session = payload;
     },
   },
-  // handling case when redirect to google login failed
-  // extraReducers: (builder) => {
-  //   builder.addCase(signInWithOAuth.rejected, (state) => {
-
-  //   })
-  // }
+  extraReducers: (builder) => {
+    builder.addCase(getSession.fulfilled, (state, { payload }) => {
+      state.session = payload;
+    });
+  },
 });
 
-export { signInWithOAuth, signOut };
+export { signInWithOAuth, signOut, getSession };
 export const { setSession } = authSlice.actions;
 export default authSlice.reducer;
