@@ -1,7 +1,7 @@
 .login-container {
   font-family: 'Lato', sans-serif;
   display: flex;
-  gap: 40px;
+  gap: 80px;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -31,8 +31,8 @@
 }
 
 .logo-container svg {
-  width: 570px;
-  height: 570px;
+  width: 600px;
+  height: 600px;
 }
 
 .login-button {
