@@ -2,8 +2,8 @@ import styles from './LoginView.module.css';
 import PortalLogo from '../../icons/LoginView/PortalLogo/PortalLogo';
 import FlockaIcon from '../../icons/LoginView/FlockaIcon';
 import { signInWithOAuth } from '../../store/slices/authSlice';
-import { AppDispatch } from '../../store/store';
 import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../types/appTypes';
 
 function LoginView() {
   const dispatch: AppDispatch = useDispatch();

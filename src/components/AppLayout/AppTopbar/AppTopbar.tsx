@@ -5,8 +5,8 @@ import ClockIcon from '../../../icons/AppLayout/AppTopbar/ClockIcon';
 import LogoutIcon from '../../../icons/AppLayout/AppTopbar/LogoutIcon';
 import MagGlassIcon from '../../../icons/AppLayout/AppTopbar/MagGlassIcon';
 import { signOut } from '../../../store/slices/authSlice';
-import { AppDispatch } from '../../../store/store';
 import styles from './AppTopBar.module.css';
+import { AppDispatch } from '../../../types/appTypes';
 
 function AppTopBar() {
   const dispatch: AppDispatch = useDispatch();

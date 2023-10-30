@@ -6,9 +6,9 @@ import {
   Routes,
   Navigate,
 } from 'react-router-dom';
-import { RootState } from './store/store';
 import { useSelector } from 'react-redux';
 import useAuthListener from './hooks/useAuthListener';
+import { RootState } from './types/appTypes';
 
 function App() {
   useAuthListener();
