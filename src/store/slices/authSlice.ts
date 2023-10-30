@@ -1,23 +1,18 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Session } from '@supabase/supabase-js';
 import {
   authGetSession,
   authLogin,
   authSignOut,
-  fetchUserData,
-} from '../../api/auth';
-
-export type AuthStateSlice = {
-  user_email: string;
-  session: Session | null;
-};
+} from '../../api/services/authApi';
+import { fetchUserData } from '../../api/services/usersApi';
+import { AuthStateSlice } from '../../types/appTypes';
 
 const initialState: AuthStateSlice = {
   user_email: '',
   session: null,
 };
 
-const signInWithOAuth = createAsyncThunk(
+export const signInWithOAuth = createAsyncThunk(
   'auth/signInWithOAuth',
   async (_, { rejectWithValue }) => {
     const { error } = await authLogin();
@@ -27,7 +22,7 @@ const signInWithOAuth = createAsyncThunk(
   }
 );
 
-const signOut = createAsyncThunk(
+export const signOut = createAsyncThunk(
   'auth/signOut',
   async (_, { rejectWithValue }) => {
     const { error } = await authSignOut();
@@ -37,18 +32,18 @@ const signOut = createAsyncThunk(
   }
 );
 
-const getSession = createAsyncThunk(
+export const getSession = createAsyncThunk(
   'auth/getSession',
   async (_, { rejectWithValue }) => {
-    const { data, error } = await authGetSession();
+    const { session, error } = await authGetSession();
     if (error) {
       return rejectWithValue(error.message);
     }
-    return data;
+    return session;
   }
 );
 
-const getUserData = createAsyncThunk(
+export const getUserData = createAsyncThunk(
   'auth/getUserData',
   async (email: string, { rejectWithValue }) => {
     const { data, error } = await fetchUserData(email);
@@ -72,12 +67,11 @@ const authSlice = createSlice({
     builder.addCase(getSession.fulfilled, (state, { payload }) => {
       state.session = payload;
     });
-    builder.addCase(getUserData.fulfilled, (state, { payload }) => {
+    builder.addCase(getUserData.fulfilled, (_, { payload }) => {
       console.log(payload);
     });
   },
 });
 
-export { signInWithOAuth, signOut, getSession, getUserData };
 export const { setSession } = authSlice.actions;
 export default authSlice.reducer;

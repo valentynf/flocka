@@ -1,3 +1,5 @@
+import { Session } from '@supabase/supabase-js';
+
 export type ChannelItemData = {
   name: string;
   type: 'channel-public' | 'channel-private';
@@ -19,4 +21,9 @@ export type UserData = {
   avatar_src: string;
   email: string;
   id: string;
+};
+
+export type AuthStateSlice = {
+  user_email: string;
+  session: Session | null;
 };
