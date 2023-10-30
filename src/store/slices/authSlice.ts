@@ -1,6 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Session } from '@supabase/supabase-js';
-import { authGetSession, authLogin, authSignOut } from '../../api/auth';
+import {
+  authGetSession,
+  authLogin,
+  authSignOut,
+  fetchUserData,
+} from '../../api/auth';
 
 export type AuthStateSlice = {
   user_email: string;
@@ -43,6 +48,17 @@ const getSession = createAsyncThunk(
   }
 );
 
+const getUserData = createAsyncThunk(
+  'auth/getUserData',
+  async (email: string, { rejectWithValue }) => {
+    const { data, error } = await fetchUserData(email);
+    if (error) {
+      return rejectWithValue(error.message);
+    }
+    return data;
+  }
+);
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -56,9 +72,12 @@ const authSlice = createSlice({
     builder.addCase(getSession.fulfilled, (state, { payload }) => {
       state.session = payload;
     });
+    builder.addCase(getUserData.fulfilled, (state, { payload }) => {
+      console.log(payload);
+    });
   },
 });
 
-export { signInWithOAuth, signOut, getSession };
+export { signInWithOAuth, signOut, getSession, getUserData };
 export const { setSession } = authSlice.actions;
 export default authSlice.reducer;
