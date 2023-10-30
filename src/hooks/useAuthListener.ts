@@ -9,6 +9,7 @@ function useAuthListener() {
   const session = useSelector((state: RootState) => state.auth.session);
 
   useEffect(() => {
+    dispatch(getSession());
     supabase.auth.onAuthStateChange((event) => {
       if (event == 'SIGNED_OUT') {
         dispatch(setSession(null));
@@ -17,15 +18,11 @@ function useAuthListener() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (session == null) {
-      dispatch(getSession());
-    }
-
     const userEmail = session?.user.email;
-    if (userEmail && session != null) {
+    if (userEmail) {
       dispatch(getUserData(userEmail));
     }
-  });
+  }, [session, dispatch]);
 }
 
 export default useAuthListener;
