@@ -1,10 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Session, createClient } from '@supabase/supabase-js';
-
-export const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_KEY
-);
+import { Session } from '@supabase/supabase-js';
+import { authGetSession, authLogin, authSignOut } from '../../api/auth';
 
 export type AuthStateSlice = {
   user_email: string;
@@ -19,9 +15,7 @@ const initialState: AuthStateSlice = {
 const signInWithOAuth = createAsyncThunk(
   'auth/signInWithOAuth',
   async (_, { rejectWithValue }) => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-    });
+    const { error } = await authLogin();
     if (error) {
       return rejectWithValue(error.message);
     }
@@ -31,7 +25,7 @@ const signInWithOAuth = createAsyncThunk(
 const signOut = createAsyncThunk(
   'auth/signOut',
   async (_, { rejectWithValue }) => {
-    const { error } = await supabase.auth.signOut();
+    const { error } = await authSignOut();
     if (error) {
       return rejectWithValue(error.message);
     }
@@ -41,12 +35,11 @@ const signOut = createAsyncThunk(
 const getSession = createAsyncThunk(
   'auth/getSession',
   async (_, { rejectWithValue }) => {
-    try {
-      const { data } = await supabase.auth.getSession();
-      return data.session;
-    } catch (err) {
-      return rejectWithValue(err);
+    const { data, error } = await authGetSession();
+    if (error) {
+      return rejectWithValue(error.message);
     }
+    return data;
   }
 );
 
@@ -58,6 +51,7 @@ const authSlice = createSlice({
       state.session = payload;
     },
   },
+  //add rejected handlers when there's an error state
   extraReducers: (builder) => {
     builder.addCase(getSession.fulfilled, (state, { payload }) => {
       state.session = payload;

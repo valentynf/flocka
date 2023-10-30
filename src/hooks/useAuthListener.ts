@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
-import { supabase, setSession, getSession } from '../store/slices/authSlice';
+import { setSession, getSession } from '../store/slices/authSlice';
 import { useEffect } from 'react';
 import { AppDispatch } from '../store/store';
+import { supabase } from '../api/supabase';
 
 function useAuthListener() {
   const dispatch: AppDispatch = useDispatch();
