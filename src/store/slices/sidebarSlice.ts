@@ -10,7 +10,10 @@ const sidebarSlice = createSlice({
   initialState,
   reducers: {
     setCurrentTab(state, { payload }) {
-      state.current_tab = payload;
+      if (state.current_tab != payload) {
+        console.log('changed');
+        state.current_tab = payload;
+      }
     },
   },
 });
