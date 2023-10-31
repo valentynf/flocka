@@ -8,7 +8,7 @@ import { fetchUserData } from '../../api/services/usersApi';
 import { AuthStateSlice } from '../../types/appTypes';
 
 const initialState: AuthStateSlice = {
-  user_email: '',
+  user_data: null,
   session: null,
 };
 
@@ -67,8 +67,8 @@ const authSlice = createSlice({
     builder.addCase(getSession.fulfilled, (state, { payload }) => {
       state.session = payload;
     });
-    builder.addCase(getUserData.fulfilled, (_, { payload }) => {
-      console.log(payload);
+    builder.addCase(getUserData.fulfilled, (state, { payload }) => {
+      state.user_data = payload;
     });
   },
 });

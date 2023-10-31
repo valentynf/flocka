@@ -1,7 +1,7 @@
 import { Session } from '@supabase/supabase-js';
 import store from '../store/store';
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
+// infering the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
@@ -29,6 +29,6 @@ export type UserData = {
 };
 
 export type AuthStateSlice = {
-  user_email: string;
+  user_data: UserData | null;
   session: Session | null;
 };
