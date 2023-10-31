@@ -32,3 +32,7 @@ export type AuthStateSlice = {
   user_data: UserData | null;
   session: Session | null;
 };
+
+export type SidebarStateSlice = {
+  current_tab: 'HOME' | 'DM' | 'ACTIVITY' | 'LATER';
+};

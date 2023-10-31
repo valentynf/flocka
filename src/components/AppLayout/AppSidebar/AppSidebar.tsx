@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from 'react-redux';
 import BellIcon from '../../../icons/AppLayout/AppSidebar/BellIcon';
 import DirectMessagesIcon from '../../../icons/AppLayout/AppSidebar/DirectMessagesIcon';
 import DotDotDotIcon from '../../../icons/AppLayout/AppSidebar/DotDotDotIcon';
@@ -6,33 +7,54 @@ import PlusIcon from '../../../icons/AppLayout/AppSidebar/PlusIcon';
 import RibbonIcon from '../../../icons/AppLayout/AppSidebar/RibbonIcon';
 import styles from './AppSidebar.module.css';
 import UserImageWithStatusBig from './UserImageWithStatusBig/UserImageWithStatusBig';
+import { AppDispatch, RootState } from '../../../types/appTypes';
+import { setCurrentTab } from '../../../store/slices/sidebarSlice';
 
 function AppSidebar() {
+  const userData = useSelector((state: RootState) => state.auth.user_data);
+  const dispatch: AppDispatch = useDispatch();
+
+  const goHome = () => {
+    dispatch(setCurrentTab('HOME'));
+  };
+
+  const goDirectMessages = () => {
+    dispatch(setCurrentTab('DM'));
+  };
+
+  const goActivity = () => {
+    dispatch(setCurrentTab('ACTIVITY'));
+  };
+
+  const goLater = () => {
+    dispatch(setCurrentTab('LATER'));
+  };
+
   return (
     <div className={styles['sidebar']}>
       <div className={styles['top-section']}>
         <div className={styles['logo-image']}>
           <img src="/src/assets/images/logo.png" />
         </div>
-        <div className={styles['folder']}>
+        <div onClick={goHome} className={styles['folder']}>
           <div className={styles['icon']}>
             <HomeIcon />
           </div>
           <p className={styles['name']}>Home</p>
         </div>
-        <div className={styles['folder']}>
+        <div onClick={goDirectMessages} className={styles['folder']}>
           <div className={styles['icon']}>
             <DirectMessagesIcon />
           </div>
           <p className={styles['name']}>DMs</p>
         </div>
-        <div className={styles['folder']}>
+        <div onClick={goActivity} className={styles['folder']}>
           <div className={styles['icon']}>
             <BellIcon />
           </div>
           <p className={styles['name']}>Activity</p>
         </div>
-        <div className={styles['folder']}>
+        <div onClick={goLater} className={styles['folder']}>
           <div className={styles['icon']}>
             <RibbonIcon />
           </div>
@@ -52,7 +74,14 @@ function AppSidebar() {
           </div>
         </div>
         <div className={styles['user-image']}>
-          <UserImageWithStatusBig status={'offline'} />
+          <UserImageWithStatusBig
+            image_source={
+              userData
+                ? userData.avatar_src
+                : '/src/assets/images/user-image.jpeg'
+            }
+            status={'online'}
+          />
         </div>
       </div>
     </div>
