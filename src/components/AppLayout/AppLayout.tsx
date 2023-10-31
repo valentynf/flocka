@@ -4,6 +4,7 @@ import HomeView from './HomeView/HomeView';
 import styles from './AppLayout.module.css';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../types/appTypes';
+import PlaceholderView from './PlaceholderView/PlaceholderView';
 
 function AppLayout() {
   const currentTab = useSelector(
@@ -21,7 +22,7 @@ function AppLayout() {
             <AppSidebar />
           </div>
           <div className={styles['main-content']}>
-            {currentTab === 'HOME' && <HomeView />}
+            {currentTab === 'HOME' ? <HomeView /> : <PlaceholderView />}
           </div>
         </div>
       </div>
