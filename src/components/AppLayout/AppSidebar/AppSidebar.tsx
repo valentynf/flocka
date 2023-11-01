@@ -12,6 +12,9 @@ import { setCurrentTab } from '../../../store/slices/sidebarSlice';
 
 function AppSidebar() {
   const userData = useSelector((state: RootState) => state.auth.user_data);
+  const currentView = useSelector(
+    (state: RootState) => state.sidebar.current_tab
+  );
   const dispatch: AppDispatch = useDispatch();
 
   const goHome = () => {
@@ -36,25 +39,45 @@ function AppSidebar() {
         <div className={styles['logo-image']}>
           <img src="/src/assets/images/logo.png" />
         </div>
-        <div onClick={goHome} className={styles['folder']}>
+        <div
+          onClick={goHome}
+          className={`${styles['folder']} ${
+            currentView == 'HOME' ? styles['folder-active'] : ''
+          }`}
+        >
           <div className={styles['icon']}>
             <HomeIcon />
           </div>
           <p className={styles['name']}>Home</p>
         </div>
-        <div onClick={goDirectMessages} className={styles['folder']}>
+        <div
+          onClick={goDirectMessages}
+          className={`${styles['folder']} ${
+            currentView == 'DM' ? styles['folder-active'] : ''
+          }`}
+        >
           <div className={styles['icon']}>
             <DirectMessagesIcon />
           </div>
           <p className={styles['name']}>DMs</p>
         </div>
-        <div onClick={goActivity} className={styles['folder']}>
+        <div
+          onClick={goActivity}
+          className={`${styles['folder']} ${
+            currentView == 'ACTIVITY' ? styles['folder-active'] : ''
+          }`}
+        >
           <div className={styles['icon']}>
             <BellIcon />
           </div>
           <p className={styles['name']}>Activity</p>
         </div>
-        <div onClick={goLater} className={styles['folder']}>
+        <div
+          onClick={goLater}
+          className={`${styles['folder']} ${
+            currentView == 'LATER' ? styles['folder-active'] : ''
+          }`}
+        >
           <div className={styles['icon']}>
             <RibbonIcon />
           </div>

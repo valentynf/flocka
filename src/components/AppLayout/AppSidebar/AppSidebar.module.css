@@ -52,6 +52,16 @@ svg {
   transform: scale(1.1);
 }
 
+.folder-active .icon {
+  background-color: #555555;
+  border-radius: 25%;
+}
+
+.folder-active svg {
+  transform: scale(1.1);
+  fill: #c4c4c7;
+}
+
 .folder {
   display: flex;
   flex-direction: column;
