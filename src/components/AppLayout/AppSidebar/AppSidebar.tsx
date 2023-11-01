@@ -41,9 +41,9 @@ function AppSidebar() {
         </div>
         <div
           onClick={goHome}
-          className={`${styles['folder']} ${
-            currentView == 'HOME' ? styles['folder-active'] : ''
-          }`}
+          className={
+            currentView == 'HOME' ? styles['folder-active'] : styles['folder']
+          }
         >
           <div className={styles['icon']}>
             <HomeIcon />
@@ -52,9 +52,9 @@ function AppSidebar() {
         </div>
         <div
           onClick={goDirectMessages}
-          className={`${styles['folder']} ${
-            currentView == 'DM' ? styles['folder-active'] : ''
-          }`}
+          className={
+            currentView == 'DM' ? styles['folder-active'] : styles['folder']
+          }
         >
           <div className={styles['icon']}>
             <DirectMessagesIcon />
@@ -63,9 +63,11 @@ function AppSidebar() {
         </div>
         <div
           onClick={goActivity}
-          className={`${styles['folder']} ${
-            currentView == 'ACTIVITY' ? styles['folder-active'] : ''
-          }`}
+          className={
+            currentView == 'ACTIVITY'
+              ? styles['folder-active']
+              : styles['folder']
+          }
         >
           <div className={styles['icon']}>
             <BellIcon />
@@ -74,9 +76,9 @@ function AppSidebar() {
         </div>
         <div
           onClick={goLater}
-          className={`${styles['folder']} ${
-            currentView == 'LATER' ? styles['folder-active'] : ''
-          }`}
+          className={
+            currentView == 'LATER' ? styles['folder-active'] : styles['folder']
+          }
         >
           <div className={styles['icon']}>
             <RibbonIcon />
