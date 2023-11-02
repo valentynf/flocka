@@ -10,12 +10,9 @@ function MessagesList({ data }: MessagesListProps) {
   return (
     <div className={styles['messages-list']}>
       <div className={styles['reverse-scroll']}>
-        {
-          data.map((el, i) => (
-            <Post data={el} key={i} />
-          ))
-          //adding pathetic workaround with reverse for the resize bug
-        }
+        {data.map((el, i) => (
+          <Post data={el} key={i} />
+        ))}
       </div>
     </div>
   );
