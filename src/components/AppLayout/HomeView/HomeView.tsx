@@ -1,7 +1,7 @@
 import useHomeData from '../../../hooks/useHomeData';
 import HomeSidebar from './HomeSidebar/HomeSidebar';
 import styles from './HomeView.module.css';
-import MessagesView from './MessagesView/MessagesView';
+import ConvoView from './ConvoView/ConvoView';
 
 function HomeView() {
   useHomeData();
@@ -14,7 +14,7 @@ function HomeView() {
         </div>
 
         <div className={styles['home-main']}>
-          <MessagesView />
+          <ConvoView />
         </div>
       </div>
     </div>

@@ -16,4 +16,6 @@
   background-color: #191c20;
   border-left: 1px solid #3d3d3e;
   border-radius: 0 4px 4px 0;
+  width: 100vw; /* i dont understand why this works but don't remove until split pane is added */
+  min-width: 700px;
 }

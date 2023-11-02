@@ -24,7 +24,7 @@ function CollapsibleList({ name, children }: CollapsibleListProps) {
         </button>
         <p>{name}</p>
       </div>
-      {isExpanded && <ul>{children}</ul>}
+      {isExpanded && <ul className={styles['items']}>{children}</ul>}
     </div>
   );
 }

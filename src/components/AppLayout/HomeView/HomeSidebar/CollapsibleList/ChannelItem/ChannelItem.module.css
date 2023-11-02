@@ -2,7 +2,24 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding-left: 5px;
+  min-width: 100%;
+  padding: 0px 5px;
+  border-radius: 4px 4px 4px 4px;
+}
+
+.list-item-channel:hover {
+  background: #333333;
+  cursor: pointer;
+}
+
+.list-item-channel-active {
+  background: #4c4c4c;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 100%;
+  padding: 0px 5px;
+  border-radius: 4px 4px 4px 4px;
 }
 
 .list-item-channel-name {

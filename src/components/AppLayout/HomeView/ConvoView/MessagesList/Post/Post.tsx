@@ -6,7 +6,7 @@ type MessageProps = {
 };
 
 function Post({ data }: MessageProps) {
-  const { user_id, timestamp, message } = data;
+  const { username, timestamp, message } = data;
   return (
     <div className={styles['message-container']}>
       <div className={styles['img-container']}>
@@ -17,7 +17,7 @@ function Post({ data }: MessageProps) {
       </div>
       <div className={styles['message']}>
         <div className={styles['header']}>
-          <span className={styles['username']}>{user_id}</span>
+          <span className={styles['username']}>{username}</span>
           <span className={styles['timestamp']}>{timestamp}</span>
         </div>
         <div className={styles['content']}>

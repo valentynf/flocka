@@ -9,3 +9,13 @@ export const fetchChannelsData = async (channelIds: number[]) => {
 
   return { data, error };
 };
+
+export const fetchCurrentChannel = async (channelId: number) => {
+  const { data, error } = await supabase
+    .from(CHANNELS_TABLE)
+    .select('id, name, messages, type')
+    .eq('id', channelId);
+  console.log(data);
+
+  return { data: data ? data[0] : data, error };
+};

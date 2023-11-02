@@ -5,6 +5,15 @@ import store from '../store/store';
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
+export type AuthStateSlice = {
+  user_data: UserData | null;
+  session: Session | null;
+};
+
+export type SidebarStateSlice = {
+  current_tab: 'HOME' | 'DM' | 'ACTIVITY' | 'LATER';
+};
+
 export type Channel = {
   id: number;
   name: string;
@@ -17,8 +26,9 @@ export type DirectMessageItemData = {
 };
 
 export type Message = {
+  id: number;
   username: string;
-  timestamp: string;
+  timestamp: number;
   message: string;
 };
 
@@ -30,23 +40,14 @@ export type UserData = {
   channels: number[];
 };
 
-export type AuthStateSlice = {
-  user_data: UserData | null;
-  session: Session | null;
-};
-
-export type SidebarStateSlice = {
-  current_tab: 'HOME' | 'DM' | 'ACTIVITY' | 'LATER';
-};
-
 export type HomeStateSlice = {
   channels: Channel[] | null;
-  // currentConvo: CurrentConvo;
+  currentConvo: CurrentConvo | null;
 };
 
-// export type CurrentConvo = {
-//   id: number;
-//   name: string;
-//   messages: Message[];
-//   type: 'channel-public' | 'channel-private';
-// };
+export type CurrentConvo = {
+  id: number;
+  name: string;
+  messages: Message[];
+  type: 'public' | 'private';
+};
