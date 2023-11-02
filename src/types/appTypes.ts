@@ -5,9 +5,10 @@ import store from '../store/store';
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
-export type ChannelItemData = {
+export type Channel = {
+  id: number;
   name: string;
-  type: 'channel-public' | 'channel-private';
+  type: 'public' | 'private';
 };
 
 export type DirectMessageItemData = {
@@ -15,7 +16,7 @@ export type DirectMessageItemData = {
   status: 'online' | 'offline';
 };
 
-export type MessageData = {
+export type Message = {
   username: string;
   timestamp: string;
   message: string;
@@ -26,6 +27,7 @@ export type UserData = {
   avatar_src: string;
   email: string;
   id: string;
+  channels: number[];
 };
 
 export type AuthStateSlice = {
@@ -36,3 +38,15 @@ export type AuthStateSlice = {
 export type SidebarStateSlice = {
   current_tab: 'HOME' | 'DM' | 'ACTIVITY' | 'LATER';
 };
+
+export type HomeStateSlice = {
+  channels: Channel[] | null;
+  // currentConvo: CurrentConvo;
+};
+
+// export type CurrentConvo = {
+//   id: number;
+//   name: string;
+//   messages: Message[];
+//   type: 'channel-public' | 'channel-private';
+// };

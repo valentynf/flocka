@@ -1,8 +1,11 @@
+import useHomeData from '../../../hooks/useHomeData';
 import HomeSidebar from './HomeSidebar/HomeSidebar';
 import styles from './HomeView.module.css';
 import MessagesView from './MessagesView/MessagesView';
 
 function HomeView() {
+  useHomeData();
+
   return (
     <div className={styles['home-view-container']}>
       <div className={styles['home-view']}>

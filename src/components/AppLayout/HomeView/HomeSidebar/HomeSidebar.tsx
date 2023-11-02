@@ -1,6 +1,7 @@
 import {
-  ChannelItemData,
+  Channel,
   DirectMessageItemData,
+  RootState,
 } from '../../../../types/appTypes';
 import CollapsibleList from './CollapsibleList/CollapsibleList';
 import ChannelItem from './CollapsibleList/ChannelItem/Channeltem';
@@ -8,27 +9,7 @@ import DirectMessageItem from './CollapsibleList/DirectMessageItem/DirectMessage
 import SidebarHeader from './SidebarHeader/SidebarHeader';
 import QuickAccess from './QuickAccess/QuickAccess';
 import styles from './HomeSideBar.module.css';
-
-const channelsData = {
-  name: 'Channels',
-  children: [
-    { name: 'team-meetings', type: 'channel-public' },
-    { name: 'project-planning', type: 'channel-private' },
-    { name: 'budget-review', type: 'channel-private' },
-    { name: 'client-pitches', type: 'channel-public' },
-    { name: 'sales-strategies', type: 'channel-private' },
-    { name: 'task-delegation', type: 'channel-private' },
-    { name: 'company-updates', type: 'channel-public' },
-    { name: 'product-development', type: 'channel-private' },
-    { name: 'creative-brainstorming', type: 'channel-private' },
-    { name: 'customer-feedback', type: 'channel-public' },
-    { name: 'employee-onboarding', type: 'channel-private' },
-    { name: 'market-research', type: 'channel-private' },
-    { name: 'leadership-discussions', type: 'channel-public' },
-    { name: 'office-announcements', type: 'channel-public' },
-    { name: 'team-building-ideas', type: 'channel-private' },
-  ],
-};
+import { useSelector } from 'react-redux';
 
 const starredData = {
   name: 'Starred',
@@ -84,29 +65,29 @@ function HomeSideBar() {
       <ChannelItem
         //still very poor keys generation, change key generation
         key={`${item.name}`}
-        data={item as ChannelItemData}
+        data={item as Channel}
       />
     );
   }
+
+  const channelsData = useSelector((state: RootState) => state.home.channels);
 
   return (
     <div className={styles['home-sidebar']}>
       <SidebarHeader />
       <div className={styles['home-sidebar-content']}>
         <QuickAccess />
-        <CollapsibleList name={starredData.name}>
+        {/* <CollapsibleList name={starredData.name}>
           {starredData.children.map(renderStarredContent)}
-        </CollapsibleList>
-        <CollapsibleList name={channelsData.name}>
-          {channelsData.children.map((el, i) => (
-            <ChannelItem
-              //still very poor keys generation, change this
-              key={`${i}-${el.name}`}
-              data={el as ChannelItemData}
-            />
-          ))}
-        </CollapsibleList>
-        <CollapsibleList name={directMessagesData.name}>
+        </CollapsibleList> */}
+        {channelsData && (
+          <CollapsibleList name={'Channels'}>
+            {channelsData.map((el) => (
+              <ChannelItem key={el.id} data={el as Channel} />
+            ))}
+          </CollapsibleList>
+        )}
+        {/* <CollapsibleList name={directMessagesData.name}>
           {directMessagesData.children.map((el, i) => (
             <DirectMessageItem
               //still very poor keys generation, change this
@@ -119,7 +100,7 @@ function HomeSideBar() {
               }
             />
           ))}
-        </CollapsibleList>
+        </CollapsibleList> */}
       </div>
     </div>
   );

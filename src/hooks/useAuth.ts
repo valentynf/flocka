@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { setSession, getSession, getUserData } from '../store/slices/authSlice';
 import { useEffect } from 'react';
-import { supabase } from '../api/supabase';
+import supabase from '../api/supabase';
 import { AppDispatch, RootState } from '../types/appTypes';
 
-function useAuthListener() {
+function useAuth() {
   const dispatch: AppDispatch = useDispatch();
   const session = useSelector((state: RootState) => state.auth.session);
 
@@ -25,4 +25,4 @@ function useAuthListener() {
   }, [session, dispatch]);
 }
 
-export default useAuthListener;
+export default useAuth;

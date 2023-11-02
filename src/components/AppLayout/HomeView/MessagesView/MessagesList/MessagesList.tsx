@@ -1,4 +1,4 @@
-import Message from './Message/Message';
+import Post from './Message/Post';
 import styles from './MessagesList.module.css';
 
 const messagesData = [
@@ -117,7 +117,7 @@ function MessagesList() {
     <div className={styles['messages-list']}>
       <div className={styles['reverse-scroll']}>
         {messagesData
-          .map((el, i) => <Message data={el} key={i} />)
+          .map((el, i) => <Post data={el} key={i} />)
           //adding pathetic workaround with reverse for the resize bug
           .reverse()}
       </div>

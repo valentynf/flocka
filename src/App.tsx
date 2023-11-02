@@ -7,11 +7,12 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import useAuthListener from './hooks/useAuthListener';
+
 import { RootState } from './types/appTypes';
+import useAuth from './hooks/useAuth';
 
 function App() {
-  useAuthListener();
+  useAuth();
   const session = useSelector((state: RootState) => state.auth.session);
 
   return (

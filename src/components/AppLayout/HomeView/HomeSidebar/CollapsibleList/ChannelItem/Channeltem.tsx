@@ -1,16 +1,16 @@
 import PrivateChannelIcon from '../../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PrivateChannelIcon';
 import PublicChannelIcon from '../../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PubilcChannelIcon';
-import { ChannelItemData } from '../../../../../../types/appTypes';
+import { Channel } from '../../../../../../types/appTypes';
 import styles from './ChannelItem.module.css';
 
 export type ChannelItemProps = {
-  data: ChannelItemData;
+  data: Channel;
 };
 
 function ChannelItem({ data }: ChannelItemProps) {
   const { name, type } = data;
   const icon =
-    type === 'channel-public' ? <PublicChannelIcon /> : <PrivateChannelIcon />;
+    type === 'public' ? <PublicChannelIcon /> : <PrivateChannelIcon />;
   return (
     <li className={styles['list-item-channel']}>
       {icon}
