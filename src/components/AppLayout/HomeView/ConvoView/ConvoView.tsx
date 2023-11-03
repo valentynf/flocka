@@ -1,13 +1,13 @@
 import MessageInput from './MessageInput/MessageInput';
-import MessagesHeader from './MessagesHeader/MessagesHeader';
 import MessagesList from './MessagesList/MessagesList';
 import styles from './ConvoView.module.css';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../types/appTypes';
+import ConvoHeader from './MessagesHeader/ConvoHeader';
 
 function ConvoView() {
   const currentConvoData = useSelector(
-    (state: RootState) => state.home.currentConvo
+    (state: RootState) => state.home.current_convo
   );
 
   return (
@@ -15,7 +15,7 @@ function ConvoView() {
       {currentConvoData && (
         <>
           <div className={styles['header']}>
-            <MessagesHeader
+            <ConvoHeader
               type={currentConvoData.type}
               name={currentConvoData.name}
             />

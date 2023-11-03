@@ -15,7 +15,7 @@ export type ChannelItemProps = {
 
 function ChannelItem({ data }: ChannelItemProps) {
   const currentConvoId = useSelector(
-    (state: RootState) => state.home.currentConvo?.id
+    (state: RootState) => state.home.current_convo?.id
   );
 
   const dispatch: AppDispatch = useDispatch();

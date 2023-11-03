@@ -42,7 +42,7 @@ export type UserData = {
 
 export type HomeStateSlice = {
   channels: Channel[] | null;
-  currentConvo: CurrentConvo | null;
+  current_convo: CurrentConvo | null;
 };
 
 export type CurrentConvo = {

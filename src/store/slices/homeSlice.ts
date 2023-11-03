@@ -7,7 +7,7 @@ import {
 
 const initialState: HomeStateSlice = {
   channels: [],
-  currentConvo: null,
+  current_convo: null,
 };
 
 export const fetchChannels = createAsyncThunk(
@@ -41,7 +41,7 @@ const homeSlice = createSlice({
       state.channels = payload;
     });
     builder.addCase(fetchChannelConvo.fulfilled, (state, { payload }) => {
-      state.currentConvo = payload;
+      state.current_convo = payload;
     });
     builder.addCase(fetchChannelConvo.rejected, (state, { payload }) => {
       console.log(payload);

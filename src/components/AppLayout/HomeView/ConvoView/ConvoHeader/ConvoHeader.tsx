@@ -1,13 +1,13 @@
 import PrivateChannelIcon from '../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PrivateChannelIcon';
 import PublicChannelIcon from '../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PubilcChannelIcon';
-import styles from './MessagesHeader.module.css';
+import styles from './ConvoHeader.module.css';
 
-type MessagesHeaderProps = {
+type ConvoHeaderProps = {
   type: 'public' | 'private';
   name: string;
 };
 
-function MessagesHeader({ name, type }: MessagesHeaderProps) {
+function ConvoHeader({ name, type }: ConvoHeaderProps) {
   const icon =
     type == 'public' ? <PublicChannelIcon /> : <PrivateChannelIcon />;
 
@@ -21,4 +21,4 @@ function MessagesHeader({ name, type }: MessagesHeaderProps) {
   );
 }
 
-export default MessagesHeader;
+export default ConvoHeader;
