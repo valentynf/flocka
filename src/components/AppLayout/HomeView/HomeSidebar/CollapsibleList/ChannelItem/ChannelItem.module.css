@@ -3,12 +3,12 @@
   align-items: center;
   gap: 8px;
   min-width: 100%;
-  padding: 0px 5px;
+  padding: 0px 10px;
   border-radius: 4px 4px 4px 4px;
 }
 
 .list-item-channel:hover {
-  background: #333333;
+  background: #262626;
   cursor: pointer;
 }
 
@@ -18,7 +18,7 @@
   align-items: center;
   gap: 8px;
   min-width: 100%;
-  padding: 0px 5px;
+  padding: 0px 10px;
   border-radius: 4px 4px 4px 4px;
 }
 
