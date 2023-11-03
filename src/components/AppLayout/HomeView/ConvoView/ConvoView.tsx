@@ -3,7 +3,7 @@ import MessagesList from './MessagesList/MessagesList';
 import styles from './ConvoView.module.css';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../types/appTypes';
-import ConvoHeader from './MessagesHeader/ConvoHeader';
+import ConvoHeader from './ConvoHeader/ConvoHeader';
 
 function ConvoView() {
   const currentConvoData = useSelector(
@@ -14,7 +14,7 @@ function ConvoView() {
     <div className={styles['messages-view']}>
       {currentConvoData && (
         <>
-          <div className={styles['header']}>
+          <div>
             <ConvoHeader
               type={currentConvoData.type}
               name={currentConvoData.name}
@@ -23,7 +23,7 @@ function ConvoView() {
           <div className={styles['messages']}>
             <MessagesList data={currentConvoData.messages} />
           </div>
-          <div className={styles['message-input']}>
+          <div>
             <MessageInput />
           </div>
         </>

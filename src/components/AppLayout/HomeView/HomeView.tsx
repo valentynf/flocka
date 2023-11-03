@@ -9,10 +9,9 @@ function HomeView() {
   return (
     <div className={styles['home-view-container']}>
       <div className={styles['home-view']}>
-        <div className={styles['home-sidebar']}>
+        <div>
           <HomeSidebar />
         </div>
-
         <div className={styles['home-main']}>
           <ConvoView />
         </div>

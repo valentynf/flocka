@@ -18,10 +18,10 @@ function AppLayout() {
           <AppTopBar />
         </div>
         <div className={styles['main-container']}>
-          <div className={styles['main-sidebar']}>
+          <div>
             <AppSidebar />
           </div>
-          <div className={styles['main-content']}>
+          <div>
             {currentTab === 'HOME' ? <HomeView /> : <PlaceholderView />}
           </div>
         </div>
