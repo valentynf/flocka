@@ -3,7 +3,7 @@ import { AppDispatch, RootState } from '../types/appTypes';
 import { useEffect } from 'react';
 import { fetchChannels } from '../store/slices/homeSlice';
 
-function useHomeData() {
+function useChannels() {
   const dispatch: AppDispatch = useDispatch();
   const channels = useSelector(
     (state: RootState) => state.auth.user_data?.channels
@@ -16,4 +16,4 @@ function useHomeData() {
   }, [channels, dispatch]);
 }
 
-export default useHomeData;
+export default useChannels;

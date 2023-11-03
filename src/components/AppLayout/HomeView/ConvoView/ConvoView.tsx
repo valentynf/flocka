@@ -4,11 +4,14 @@ import styles from './ConvoView.module.css';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../types/appTypes';
 import ConvoHeader from './ConvoHeader/ConvoHeader';
+import useChannelSub from '../../../../hooks/useChannelSub';
 
 function ConvoView() {
   const currentConvoData = useSelector(
     (state: RootState) => state.home.current_convo
   );
+
+  useChannelSub(currentConvoData?.id);
 
   return (
     <div className={styles['messages-view']}>

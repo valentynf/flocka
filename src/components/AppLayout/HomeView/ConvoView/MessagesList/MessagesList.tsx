@@ -10,8 +10,8 @@ function MessagesList({ data }: MessagesListProps) {
   return (
     <div className={styles['messages-list']}>
       <div className={styles['reverse-scroll']}>
-        {data.map((el, i) => (
-          <Post data={el} key={i} />
+        {data.map((el) => (
+          <Post data={el} key={el.id} />
         ))}
       </div>
     </div>

@@ -35,7 +35,11 @@ export const fetchChannelConvo = createAsyncThunk(
 const homeSlice = createSlice({
   name: 'home',
   initialState,
-  reducers: {},
+  reducers: {
+    addNewMessage(state, { payload }) {
+      state.current_convo?.messages.unshift(payload);
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchChannels.fulfilled, (state, { payload }) => {
       state.channels = payload;
@@ -46,4 +50,5 @@ const homeSlice = createSlice({
   },
 });
 
+export const { addNewMessage } = homeSlice.actions;
 export default homeSlice.reducer;
