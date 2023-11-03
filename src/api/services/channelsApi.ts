@@ -16,5 +16,5 @@ export const fetchCurrentChannel = async (channelId: number) => {
     .select('id, name, messages, type')
     .eq('id', channelId);
 
-  return { data: data ? data[0] : data, error };
+  return { data: data ? data[0] : null, error };
 };

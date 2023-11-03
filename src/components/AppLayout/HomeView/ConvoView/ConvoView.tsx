@@ -24,7 +24,7 @@ function ConvoView() {
             <MessagesList data={currentConvoData.messages} />
           </div>
           <div>
-            <MessageInput />
+            <MessageInput placeholder={currentConvoData.name} />
           </div>
         </>
       )}

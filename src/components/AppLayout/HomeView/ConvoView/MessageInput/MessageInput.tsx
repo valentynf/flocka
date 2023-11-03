@@ -1,7 +1,11 @@
 import DraftSentIcon from '../../../../../icons/AppLayout/HomeView/HomeSidebar/QuickAccess/DraftSentIcon';
 import styles from './MessageInput.module.css';
 
-function MessageInput() {
+type MessageInputProps = {
+  placeholder: string;
+};
+
+function MessageInput({ placeholder }: MessageInputProps) {
   return (
     <div className={styles['input-container']}>
       <div className={styles['input-field']}>
@@ -10,7 +14,7 @@ function MessageInput() {
         </button>
         <textarea
           className={styles['text-area']}
-          placeholder="Message Dwight Schrute"
+          placeholder={`Message ${placeholder}`}
         ></textarea>
       </div>
     </div>
