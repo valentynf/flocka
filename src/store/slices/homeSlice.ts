@@ -43,9 +43,6 @@ const homeSlice = createSlice({
     builder.addCase(fetchChannelConvo.fulfilled, (state, { payload }) => {
       state.current_convo = payload;
     });
-    builder.addCase(fetchChannelConvo.rejected, (state, { payload }) => {
-      console.log(payload);
-    });
   },
 });
 
