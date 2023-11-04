@@ -7,7 +7,14 @@ import {
 
 const initialState: HomeStateSlice = {
   channels: [],
-  current_convo: null,
+  current_convo: {
+    messages: [],
+    channel: {
+      id: NaN,
+      name: '',
+      type: 'public',
+    },
+  },
 };
 
 export const fetchChannels = createAsyncThunk(
@@ -45,7 +52,11 @@ const homeSlice = createSlice({
       state.channels = payload;
     });
     builder.addCase(fetchChannelConvo.fulfilled, (state, { payload }) => {
-      state.current_convo = payload;
+      if (payload) {
+        const { id, name, type, messages } = payload;
+        state.current_convo.channel = { id, name, type };
+        state.current_convo.messages = messages;
+      }
     });
   },
 });

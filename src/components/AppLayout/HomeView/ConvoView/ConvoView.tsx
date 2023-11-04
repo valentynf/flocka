@@ -11,23 +11,23 @@ function ConvoView() {
     (state: RootState) => state.home.current_convo
   );
 
-  useChannelSub(currentConvoData?.id);
+  useChannelSub(currentConvoData?.channel.id);
 
   return (
     <div className={styles['messages-view']}>
-      {currentConvoData && (
+      {!Number.isNaN(currentConvoData.channel.id) && (
         <>
           <div>
             <ConvoHeader
-              type={currentConvoData.type}
-              name={currentConvoData.name}
+              type={currentConvoData.channel.type}
+              name={currentConvoData.channel.name}
             />
           </div>
           <div className={styles['messages']}>
             <MessagesList data={currentConvoData.messages} />
           </div>
           <div>
-            <MessageInput placeholder={currentConvoData.name} />
+            <MessageInput placeholder={currentConvoData.channel.name} />
           </div>
         </>
       )}

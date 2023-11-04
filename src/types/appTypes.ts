@@ -24,14 +24,12 @@ export type SidebarStateSlice = {
 
 export type HomeStateSlice = {
   channels: Channel[] | null;
-  current_convo: CurrentConvo | null;
+  current_convo: CurrentConvo;
 };
 
 export type CurrentConvo = {
-  id: number;
-  name: string;
   messages: MessageData[];
-  type: 'public' | 'private';
+  channel: Channel;
 };
 
 export type Channel = {
