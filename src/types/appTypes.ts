@@ -10,8 +10,28 @@ export type AuthStateSlice = {
   session: Session | null;
 };
 
+export type UserData = {
+  name: string;
+  avatar_src: string;
+  email: string;
+  id: string;
+  channels: number[];
+};
+
 export type SidebarStateSlice = {
   current_tab: 'HOME' | 'DM' | 'ACTIVITY' | 'LATER';
+};
+
+export type HomeStateSlice = {
+  channels: Channel[] | null;
+  current_convo: CurrentConvo | null;
+};
+
+export type CurrentConvo = {
+  id: number;
+  name: string;
+  messages: MessageData[];
+  type: 'public' | 'private';
 };
 
 export type Channel = {
@@ -25,29 +45,9 @@ export type DirectMessageItemData = {
   status: 'online' | 'offline';
 };
 
-export type Message = {
+export type MessageData = {
   id: number;
   username: string;
   timestamp: number;
   message: string;
-};
-
-export type UserData = {
-  name: string;
-  avatar_src: string;
-  email: string;
-  id: string;
-  channels: number[];
-};
-
-export type HomeStateSlice = {
-  channels: Channel[] | null;
-  current_convo: CurrentConvo | null;
-};
-
-export type CurrentConvo = {
-  id: number;
-  name: string;
-  messages: Message[];
-  type: 'public' | 'private';
 };

@@ -1,11 +1,11 @@
-import styles from './Post.module.css';
-import { Message } from '../../../../../../types/appTypes';
+import styles from './Message.module.css';
+import { MessageData } from '../../../../../../types/appTypes';
 
 type MessageProps = {
-  data: Message;
+  data: MessageData;
 };
 
-function Post({ data }: MessageProps) {
+function Message({ data }: MessageProps) {
   const { username, timestamp, message } = data;
   return (
     <div className={styles['message-container']}>
@@ -28,4 +28,4 @@ function Post({ data }: MessageProps) {
   );
 }
 
-export default Post;
+export default Message;
