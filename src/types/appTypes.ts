@@ -45,7 +45,7 @@ export type DirectMessageItemData = {
 
 export type MessageData = {
   id: number;
-  username: string;
+  uuid: string;
   timestamp: number;
   message: string;
 };
