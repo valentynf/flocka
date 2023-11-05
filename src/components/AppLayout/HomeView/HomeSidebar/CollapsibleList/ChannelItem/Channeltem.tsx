@@ -7,30 +7,35 @@ import {
   RootState,
 } from '../../../../../../types/appTypes';
 import styles from './ChannelItem.module.css';
-import { fetchChannelConvo } from '../../../../../../store/slices/homeSlice';
+import {
+  fetchChannelConvo,
+  setCurrentChannel,
+} from '../../../../../../store/slices/homeSlice';
 
 export type ChannelItemProps = {
   data: Channel;
 };
 
 function ChannelItem({ data }: ChannelItemProps) {
-  const currentConvoId = useSelector(
-    (state: RootState) => state.home.current_convo.channel.id
+  const { name, type, id } = data;
+  const icon =
+    type === 'public' ? <PublicChannelIcon /> : <PrivateChannelIcon />;
+
+  const currentConvo = useSelector(
+    (state: RootState) => state.home.current_convo
   );
 
   const dispatch: AppDispatch = useDispatch();
   const handleChannelClick = () => {
+    dispatch(setCurrentChannel(data));
     dispatch(fetchChannelConvo(id));
   };
 
-  const { name, type, id } = data;
-  const icon =
-    type === 'public' ? <PublicChannelIcon /> : <PrivateChannelIcon />;
   return (
     <li
       onClick={handleChannelClick}
       className={
-        currentConvoId == id
+        currentConvo.channel.id == id
           ? styles['list-item-channel-active']
           : styles['list-item-channel']
       }

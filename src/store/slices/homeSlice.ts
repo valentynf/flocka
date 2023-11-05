@@ -1,13 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { HomeStateSlice } from '../../types/appTypes';
 import {
+  fetchChannelMessages,
   fetchChannelsData,
-  fetchCurrentChannel,
 } from '../../api/services/channelsApi';
 
 const initialState: HomeStateSlice = {
   channels: [],
   current_convo: {
+    // add isLoading state to fix the UI bug when channel info is changed but previous channel
+    // messages are shown for a moment
     messages: [],
     channel: {
       id: NaN,
@@ -31,7 +33,7 @@ export const fetchChannels = createAsyncThunk(
 export const fetchChannelConvo = createAsyncThunk(
   'home/fetchChannelConvo',
   async (channelId: number, { rejectWithValue }) => {
-    const { data, error } = await fetchCurrentChannel(channelId);
+    const { data, error } = await fetchChannelMessages(channelId);
     if (error) {
       rejectWithValue(error.message);
     }
@@ -46,6 +48,9 @@ const homeSlice = createSlice({
     addNewMessage(state, { payload }) {
       state.current_convo?.messages.unshift(payload);
     },
+    setCurrentChannel(state, { payload }) {
+      state.current_convo.channel = payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchChannels.fulfilled, (state, { payload }) => {
@@ -53,13 +58,11 @@ const homeSlice = createSlice({
     });
     builder.addCase(fetchChannelConvo.fulfilled, (state, { payload }) => {
       if (payload) {
-        const { id, name, type, messages } = payload;
-        state.current_convo.channel = { id, name, type };
-        state.current_convo.messages = messages;
+        state.current_convo.messages = payload.messages;
       }
     });
   },
 });
 
-export const { addNewMessage } = homeSlice.actions;
+export const { addNewMessage, setCurrentChannel } = homeSlice.actions;
 export default homeSlice.reducer;
