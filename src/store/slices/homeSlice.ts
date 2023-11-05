@@ -46,7 +46,7 @@ const homeSlice = createSlice({
   initialState,
   reducers: {
     addNewMessage(state, { payload }) {
-      state.current_convo?.messages.unshift(payload);
+      state.current_convo.messages.unshift(payload);
     },
     setCurrentChannel(state, { payload }) {
       state.current_convo.channel = payload;
