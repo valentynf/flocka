@@ -15,7 +15,7 @@ function ConvoView() {
 
   return (
     <div className={styles['messages-view']}>
-      {currentConvoData.messages.length != 0 && (
+      {!Number.isNaN(currentConvoData.channel.id) && (
         <>
           <div>
             <ConvoHeader
