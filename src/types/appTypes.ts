@@ -44,8 +44,13 @@ export type DirectMessageItemData = {
 };
 
 export type MessageData = {
-  id: number;
-  uuid: string;
+  id: string;
+  senderId: string;
   timestamp: number;
   message: string;
+};
+
+export type MessagePayload = {
+  channelId: number;
+  message: MessageData;
 };

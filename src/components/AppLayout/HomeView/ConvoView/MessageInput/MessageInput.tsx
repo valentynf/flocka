@@ -1,13 +1,10 @@
 import { ChangeEvent, useState } from 'react';
 import DraftSentIcon from '../../../../../icons/AppLayout/HomeView/HomeSidebar/QuickAccess/DraftSentIcon';
 import styles from './MessageInput.module.css';
-import {
-  AppDispatch,
-  MessageData,
-  RootState,
-} from '../../../../../types/appTypes';
+import { AppDispatch, RootState } from '../../../../../types/appTypes';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendMessage } from '../../../../../store/slices/homeSlice';
+import { generateMessage } from '../../../../../utils/helper';
 
 type MessageInputProps = {
   placeholder: string;
@@ -20,14 +17,11 @@ function MessageInput({ placeholder }: MessageInputProps) {
   const convoData = useSelector((state: RootState) => state.home.current_convo);
 
   const handleSendClick = () => {
-    console.log(messageText);
-    const message: MessageData = {
-      message: messageText,
-      timestamp: Date.now(),
-      uuid: userData ? userData.id : '',
-      id: 400,
-    };
-    dispatch(sendMessage({ channelId: convoData.channel.id, message }));
+    if (userData) {
+      const message = generateMessage(userData.id, messageText);
+      setMessageText('');
+      dispatch(sendMessage({ channelId: convoData.channel.id, message }));
+    }
   };
 
   const handleTextUpdate = (e: ChangeEvent<HTMLTextAreaElement>) => {

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { HomeStateSlice, MessageData } from '../../types/appTypes';
+import { HomeStateSlice, MessagePayload } from '../../types/appTypes';
 import {
   fetchChannelMessages,
   fetchChannelsData,
@@ -9,8 +9,8 @@ import {
 const initialState: HomeStateSlice = {
   channels: [],
   current_convo: {
-    // add isLoading state to fix the UI bug when channel info is changed but previous channel
-    // messages are shown for a moment
+    // add isLoading state to fix the UI bug when channel info is changed
+    // but previous channel messages are shown for a moment
     messages: [],
     channel: {
       id: NaN,
@@ -44,10 +44,7 @@ export const fetchChannelConvo = createAsyncThunk(
 
 export const sendMessage = createAsyncThunk(
   'home/sendMessage',
-  async (
-    { channelId, message }: { channelId: number; message: MessageData },
-    { rejectWithValue }
-  ) => {
+  async ({ channelId, message }: MessagePayload, { rejectWithValue }) => {
     const { data, error } = await rpcSendMessage(channelId, message);
     if (error) {
       rejectWithValue(error.message);
@@ -75,12 +72,6 @@ const homeSlice = createSlice({
       if (payload) {
         state.current_convo.messages = payload.messages;
       }
-    });
-    builder.addCase(sendMessage.fulfilled, (_, { payload }) => {
-      console.log('sukcass', payload);
-    });
-    builder.addCase(sendMessage.rejected, (_, { payload }) => {
-      console.log('rejected. reason:', payload);
     });
   },
 });
