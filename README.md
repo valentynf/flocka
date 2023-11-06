@@ -1,12 +1,16 @@
-## Flocka
+## Flocka - The Slack's Silly Sibling
+
+- **Data:** PostgeSQL managed by [Supabase](https://supabase.com/)
+- **Front-end:** Vite, React and TypeScript
+- **State management:** Redux Toolkit
 
 ## Features
 
-none
+1. **Authentication**: Users can sign up and log in securely using Supabase authentication via Google, ensuring a personalized experience.
 
-## Getting Started
+2. **Real-time Messaging**: Flocka supports real-time messaging, making communication smooth and efficient.
 
-To get started with Flocka follow these steps:
+## Dev
 
 1. Clone the repository to your local machine:
 
