@@ -1,7 +1,7 @@
 .login-container {
   font-family: 'Lato', sans-serif;
   display: flex;
-  gap: 56px;
+  gap: 80px;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -13,6 +13,16 @@
   width: 30%;
 }
 
+.flocka-logo {
+  display: flex;
+  align-items: center;
+}
+
+.flocka-logo svg {
+  width: 56px;
+  height: 56px;
+}
+
 .logo-container {
   display: flex;
   align-items: center;
@@ -20,8 +30,14 @@
   width: 30%;
 }
 
+.logo-container svg {
+  width: 600px;
+  height: 600px;
+}
+
 .login-button {
-  padding: 10px 60px;
+  padding: 10px 0;
+  width: 300px;
   font-family: 'Lato', sans-serif;
   background-color: #2f195f;
   border: none;
@@ -35,16 +51,12 @@
   background-color: #4c289a;
 }
 
-.login-container svg {
-  width: 570px;
-  height: 570px;
-}
-
 .app-name {
   font-size: 36px;
   letter-spacing: 1px;
   font-weight: 700;
   color: #c4c4c7;
+  margin: 10px 0;
 }
 
 .slogan {
@@ -52,11 +64,13 @@
   font-size: 40px;
   font-weight: 600;
   color: #c4c4c7;
+  margin-top: 16px;
+  margin-bottom: 32px;
 }
 
 .login-description {
   width: 600px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 300;
   color: #d1d2d3;
 }

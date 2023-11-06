@@ -1,12 +1,12 @@
 import styles from './Message.module.css';
-import { MessageDataType } from '../../../../../../types/appTypes';
+import { MessageData } from '../../../../../../types/appTypes';
 
-type MessagePropsType = {
-  data: MessageDataType;
+type MessageProps = {
+  data: MessageData;
 };
 
-function Message({ data }: MessagePropsType) {
-  const { username, timestamp, message } = data;
+function Message({ data }: MessageProps) {
+  const { senderId, timestamp, message } = data;
   return (
     <div className={styles['message-container']}>
       <div className={styles['img-container']}>
@@ -17,7 +17,7 @@ function Message({ data }: MessagePropsType) {
       </div>
       <div className={styles['message']}>
         <div className={styles['header']}>
-          <span className={styles['username']}>{username}</span>
+          <span className={styles['username']}>{senderId}</span>
           <span className={styles['timestamp']}>{timestamp}</span>
         </div>
         <div className={styles['content']}>

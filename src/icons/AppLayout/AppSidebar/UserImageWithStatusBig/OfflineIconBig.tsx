@@ -6,7 +6,7 @@ function OfflineIconBig() {
         cy="8"
         r="7.155"
         stroke="#202020"
-        strokeWidth="3"
+        strokeWidth="2"
         fill="none"
       />
       <circle

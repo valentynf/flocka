@@ -1,9 +1,9 @@
-type DraftSentIconPropTypes = {
+type DraftSentIconProp = {
   fill: string;
   strokeColor: string;
 };
 
-function DraftSentIcon({ fill, strokeColor }: DraftSentIconPropTypes) {
+function DraftSentIcon({ fill, strokeColor }: DraftSentIconProp) {
   return (
     <svg
       viewBox="0 0 24 24"

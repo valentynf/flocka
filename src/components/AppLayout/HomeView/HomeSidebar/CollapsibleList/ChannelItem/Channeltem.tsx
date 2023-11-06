@@ -1,18 +1,45 @@
+import { useDispatch, useSelector } from 'react-redux';
 import PrivateChannelIcon from '../../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PrivateChannelIcon';
 import PublicChannelIcon from '../../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PubilcChannelIcon';
-import { ChannelItemDataType } from '../../../../../../types/appTypes';
+import {
+  AppDispatch,
+  Channel,
+  RootState,
+} from '../../../../../../types/appTypes';
 import styles from './ChannelItem.module.css';
+import {
+  fetchChannelConvo,
+  setCurrentChannel,
+} from '../../../../../../store/slices/homeSlice';
 
-export type ChannelItemPropsType = {
-  data: ChannelItemDataType;
+export type ChannelItemProps = {
+  data: Channel;
 };
 
-function ChannelItem({ data }: ChannelItemPropsType) {
-  const { name, type } = data;
+function ChannelItem({ data }: ChannelItemProps) {
+  const { name, type, id } = data;
   const icon =
-    type === 'channel-public' ? <PublicChannelIcon /> : <PrivateChannelIcon />;
+    type === 'public' ? <PublicChannelIcon /> : <PrivateChannelIcon />;
+
+  const currentConvo = useSelector(
+    (state: RootState) => state.home.current_convo
+  );
+
+  const dispatch: AppDispatch = useDispatch();
+  const handleChannelClick = () => {
+    dispatch(setCurrentChannel(data));
+    dispatch(fetchChannelConvo(id));
+  };
+
   return (
-    <li className={styles['list-item-channel']}>
+    <li
+      onClick={handleChannelClick}
+      className={
+        currentConvo.channel.id == id
+          ? styles['list-item-channel-active']
+          : styles['list-item-channel']
+      }
+    >
       {icon}
       <p className={styles['list-item-channel-name']}>{name}</p>
     </li>

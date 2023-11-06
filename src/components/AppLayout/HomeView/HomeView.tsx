@@ -1,17 +1,19 @@
 import HomeSidebar from './HomeSidebar/HomeSidebar';
 import styles from './HomeView.module.css';
-import MessagesView from './MessagesView/MessagesView';
+import ConvoView from './ConvoView/ConvoView';
+import useChannels from '../../../hooks/useChannels';
 
 function HomeView() {
+  useChannels();
+
   return (
     <div className={styles['home-view-container']}>
       <div className={styles['home-view']}>
-        <div className={styles['home-sidebar']}>
+        <div>
           <HomeSidebar />
         </div>
-
         <div className={styles['home-main']}>
-          <MessagesView />
+          <ConvoView />
         </div>
       </div>
     </div>

@@ -1,15 +1,19 @@
 import AppLayout from './components/AppLayout/AppLayout';
 import LoginView from './components/LoginView/LoginView';
-import useUser from './hooks/useUser';
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   Navigate,
 } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import { RootState } from './types/appTypes';
+import useAuth from './hooks/useAuth';
 
 function App() {
-  const { session } = useUser();
+  useAuth();
+  const session = useSelector((state: RootState) => state.auth.session);
 
   return (
     <Router>
