@@ -1,7 +1,7 @@
 import { RealtimeChannel } from '@supabase/supabase-js';
 import { CHANNELS_TABLE } from '../../config/config';
 import supabase from '../supabase';
-import { AppDispatch } from '../../types/appTypes';
+import { AppDispatch, MessageData } from '../../types/appTypes';
 import { addNewMessage } from '../../store/slices/homeSlice';
 
 export const fetchChannelsData = async (channelIds: number[]) => {
@@ -42,4 +42,15 @@ export const setChannelSubscription = (
     .subscribe();
 
   return channelSub;
+};
+
+export const rpcSendMessage = async (
+  channelId: number,
+  message: MessageData
+) => {
+  const { data, error } = await supabase.rpc('add_message_to_channel', {
+    channel_id: channelId,
+    message,
+  });
+  return { data, error };
 };
