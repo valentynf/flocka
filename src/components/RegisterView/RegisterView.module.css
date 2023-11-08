@@ -1,0 +1,71 @@
+input:focus {
+  outline: none;
+}
+
+.register-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.email-description {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 200;
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+.heading {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.form-container {
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #161616;
+  padding: 12px 24px;
+  color: #c4c4c7;
+  border-radius: 5%;
+  border: 1px solid #3d3d3e;
+  width: 480px;
+}
+
+.form-container form {
+  width: 100%;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 0px;
+}
+
+.input-field label {
+  font-size: 14px;
+}
+
+.input-field input {
+  background-color: #161616;
+  color: #c4c4c7;
+  border-radius: 4px;
+  border: 1px solid #3d3d3e;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 200;
+  height: 36px;
+  padding-left: 8px;
+}
+
+.upload-field {
+  display: flex;
+  flex-direction: column;
+}
