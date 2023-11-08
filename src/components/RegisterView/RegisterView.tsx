@@ -1,6 +1,31 @@
+import { ChangeEvent, useState } from 'react';
 import styles from './RegisterView.module.css';
+import { loadImageFromInput } from '../../utils/helper';
+import { AppDispatch, RootState } from '../../types/appTypes';
+import { useDispatch, useSelector } from 'react-redux';
+import { signOut } from '../../store/slices/authSlice';
 
 function RegisterView() {
+  const dispatch: AppDispatch = useDispatch();
+  const sessionUserData = useSelector(
+    (state: RootState) => state.auth.session?.user.user_metadata
+  );
+  const userImage = sessionUserData?.picture;
+  const userEmail = sessionUserData?.email;
+
+  const [imageSrc, setImageSrc] = useState<string>(userImage);
+
+  const handleSignOut = () => {
+    dispatch(signOut());
+  };
+
+  const onFileChanged = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+      loadImageFromInput(file, setImageSrc);
+    }
+  };
+
   return (
     <div className={styles['register-view']}>
       <div className={styles['form-container']}>
@@ -11,7 +36,7 @@ function RegisterView() {
             <input
               className={`${styles['disabled']} ${styles['input-label']}`}
               type="text"
-              value="user@email.com"
+              value={userEmail}
               readOnly
             />
             <p className={styles['email-description']}>
@@ -23,18 +48,17 @@ function RegisterView() {
             <input type="text" />
           </div>
           <div className={'avatar-container'}>
-            <img
-              className={styles['avatar-preview']}
-              src="/src/assets/images/user-image.jpeg"
-            ></img>
+            <img className={styles['avatar-preview']} src={imageSrc}></img>
           </div>
           <div className={styles['upload-field']}>
             <label className={styles['input-label']}>Upload Photo</label>
-            <input type="file" accept="image/*" />
+            <input onChange={onFileChanged} type="file" accept="image/*" />
           </div>
           <div className={styles['buttons-container']}>
             {/* semantically wrong to include logout button in form */}
             <button
+              type="button"
+              onClick={handleSignOut}
               className={`${styles['button-logout']} ${styles['button']}`}
             >
               Depart

@@ -8,3 +8,14 @@ export const generateMessage = (
   const messageData = { senderId, message, id: uuid(), timestamp: Date.now() };
   return messageData;
 };
+
+export const loadImageFromInput = (
+  file: File,
+  setImageSrc: (src: string) => void
+) => {
+  const reader = new FileReader();
+  reader.onload = () => {
+    setImageSrc(reader.result as string);
+  };
+  reader.readAsDataURL(file);
+};
