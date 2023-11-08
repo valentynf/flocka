@@ -4,13 +4,12 @@ function RegisterView() {
   return (
     <div className={styles['register-view']}>
       <div className={styles['form-container']}>
-        <h2 className={styles['heading']}>Register New User</h2>
-
+        <h2 className={styles['heading']}>Awaken a New Soul</h2>
         <form>
           <div className={styles['input-field']}>
             <label>Email</label>
             <input
-              className={styles['disabled']}
+              className={`${styles['disabled']} ${styles['input-label']}`}
               type="text"
               value="user@email.com"
               readOnly
@@ -20,16 +19,32 @@ function RegisterView() {
             </p>
           </div>
           <div className={styles['input-field']}>
-            <label>Display Name</label>
+            <label className={styles['input-label']}>Display Name</label>
             <input type="text" />
           </div>
+          <div className={'avatar-container'}>
+            <img
+              className={styles['avatar-preview']}
+              src="/src/assets/images/user-image.jpeg"
+            ></img>
+          </div>
           <div className={styles['upload-field']}>
-            <label>Upload Image</label>
+            <label className={styles['input-label']}>Upload Photo</label>
             <input type="file" accept="image/*" />
           </div>
-          <div className="form-field">
-            <button type="submit">Register</button>
-            <button className="logout-button">Logout</button>
+          <div className={styles['buttons-container']}>
+            {/* semantically wrong to include logout button in form */}
+            <button
+              className={`${styles['button-logout']} ${styles['button']}`}
+            >
+              Depart
+            </button>
+            <button
+              className={`${styles['button-submit']} ${styles['button']}`}
+              type="submit"
+            >
+              Enroll
+            </button>
           </div>
         </form>
       </div>
