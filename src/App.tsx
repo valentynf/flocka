@@ -10,21 +10,37 @@ import { useSelector } from 'react-redux';
 
 import { RootState } from './types/appTypes';
 import useAuth from './hooks/useAuth';
+import RegisterView from './components/RegisterView/RegisterView';
 
 function App() {
+  const authData = useSelector((state: RootState) => state.auth);
+
   useAuth();
-  const session = useSelector((state: RootState) => state.auth.session);
 
   return (
     <Router>
       <Routes>
         <Route
           path="/login"
-          element={session === null ? <LoginView /> : <Navigate to="/app" />}
+          element={
+            authData.session === null ? (
+              <LoginView />
+            ) : authData.user_data === null ? (
+              <RegisterView />
+            ) : (
+              <Navigate to="/app" />
+            )
+          }
         />
         <Route
           path="/app"
-          element={session === null ? <Navigate to="/login" /> : <AppLayout />}
+          element={
+            authData.user_data !== null && authData.session !== null ? (
+              <AppLayout />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         />
         <Route path="/*" element={<Navigate to="/app" />} />
       </Routes>

@@ -7,5 +7,6 @@ export const fetchUserData = async (userEmail: string) => {
     .select('id, email, name, avatar_src, channels')
     .eq('email', userEmail);
 
-  return { data: data ? data[0] : null, error };
+  //temporarily or not modified function to return null if there's no matches in db
+  return { data: data && data.length > 0 ? data[0] : null, error };
 };
