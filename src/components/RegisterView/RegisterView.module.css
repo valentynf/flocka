@@ -72,10 +72,6 @@ input:focus {
   border: 1px solid #3d3d3e;
 }
 
-.avatar-container {
-  padding: 2px;
-}
-
 .upload-field {
   display: flex;
   flex-direction: column;

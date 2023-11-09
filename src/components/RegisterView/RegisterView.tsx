@@ -3,17 +3,19 @@ import styles from './RegisterView.module.css';
 import { loadImageFromInput } from '../../utils/helper';
 import { AppDispatch, RootState } from '../../types/appTypes';
 import { useDispatch, useSelector } from 'react-redux';
-import { signOut } from '../../store/slices/authSlice';
+import { createNewUser, signOut } from '../../store/slices/authSlice';
+import { uploadAvatar } from '../../api/services/storageBucketApi';
 
 function RegisterView() {
   const dispatch: AppDispatch = useDispatch();
   const sessionUserData = useSelector(
-    (state: RootState) => state.auth.session?.user.user_metadata
+    (state: RootState) => state.auth.session?.user
   );
-  const userImage = sessionUserData?.picture;
-  const userEmail = sessionUserData?.email;
+  const userImageSrc = sessionUserData?.user_metadata.picture;
+  const userEmail = sessionUserData?.user_metadata.email;
+  const userId = sessionUserData?.id;
 
-  const [imageSrc, setImageSrc] = useState<string>(userImage);
+  const [imageSrc, setImageSrc] = useState<string>(userImageSrc);
 
   const handleSignOut = () => {
     dispatch(signOut());
@@ -26,11 +28,33 @@ function RegisterView() {
     }
   };
 
+  const onFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const avatar = data.get('avatarFile') as File;
+    const name = data.get('name') as string;
+    let avatar_src = userImageSrc;
+
+    if (avatar.size > 0) {
+      try {
+        const res = await uploadAvatar(avatar);
+        avatar_src = res;
+      } catch (err) {
+        console.error('Could not upload the avatar:', err);
+      }
+    }
+    if (userEmail && userId) {
+      dispatch(
+        createNewUser({ id: userId, email: userEmail, name, avatar_src })
+      );
+    }
+  };
+
   return (
     <div className={styles['register-view']}>
       <div className={styles['form-container']}>
         <h2 className={styles['heading']}>Awaken a New Soul</h2>
-        <form>
+        <form onSubmit={onFormSubmit}>
           <div className={styles['input-field']}>
             <label>Email</label>
             <input
@@ -45,14 +69,25 @@ function RegisterView() {
           </div>
           <div className={styles['input-field']}>
             <label className={styles['input-label']}>Display Name</label>
-            <input type="text" />
+            <input
+              pattern="^[a-zA-Z ]{6,18}$"
+              name="name"
+              type="text"
+              title="Name must be between 6 and 18 symbols, including one space"
+              required
+            />
           </div>
-          <div className={'avatar-container'}>
+          <div>
             <img className={styles['avatar-preview']} src={imageSrc}></img>
           </div>
           <div className={styles['upload-field']}>
             <label className={styles['input-label']}>Upload Photo</label>
-            <input onChange={onFileChanged} type="file" accept="image/*" />
+            <input
+              name="avatarFile"
+              onChange={onFileChanged}
+              type="file"
+              accept="image/jpeg, image/png"
+            />
           </div>
           <div className={styles['buttons-container']}>
             {/* semantically wrong to include logout button in form */}

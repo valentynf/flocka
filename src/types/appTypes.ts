@@ -54,3 +54,10 @@ export type MessagePayload = {
   channelId: number;
   message: MessageData;
 };
+
+export type UserPayload = {
+  id: string;
+  name: string;
+  email: string;
+  avatar_src: string;
+};
