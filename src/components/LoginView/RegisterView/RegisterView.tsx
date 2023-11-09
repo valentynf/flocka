@@ -1,10 +1,10 @@
 import { ChangeEvent, useState } from 'react';
 import styles from './RegisterView.module.css';
-import { loadImageFromInput } from '../../utils/helper';
-import { AppDispatch, RootState } from '../../types/appTypes';
+import { loadImageFromInput } from '../../../utils/helper';
+import { AppDispatch, RootState } from '../../../types/appTypes';
 import { useDispatch, useSelector } from 'react-redux';
-import { createNewUser, signOut } from '../../store/slices/authSlice';
-import { uploadAvatar } from '../../api/services/storageBucketApi';
+import { createNewUser, signOut } from '../../../store/slices/authSlice';
+import { uploadAvatar } from '../../../api/services/storageBucketApi';
 
 function RegisterView() {
   const dispatch: AppDispatch = useDispatch();
@@ -43,6 +43,7 @@ function RegisterView() {
         console.error('Could not upload the avatar:', err);
       }
     }
+
     if (userEmail && userId) {
       dispatch(
         createNewUser({ id: userId, email: userEmail, name, avatar_src })
@@ -53,7 +54,17 @@ function RegisterView() {
   return (
     <div className={styles['register-view']}>
       <div className={styles['form-container']}>
-        <h2 className={styles['heading']}>Awaken a New Soul</h2>
+        <div className={styles['form-header']}>
+          <img
+            className={styles['torch-image']}
+            src="src/assets/images/torch.gif"
+          ></img>
+          <h2 className={styles['heading']}>Awaken a New Soul</h2>
+          <img
+            className={styles['torch-image']}
+            src="src/assets/images/torch.gif"
+          ></img>
+        </div>
         <form onSubmit={onFormSubmit}>
           <div className={styles['input-field']}>
             <label>Email</label>
@@ -63,7 +74,7 @@ function RegisterView() {
               value={userEmail}
               readOnly
             />
-            <p className={styles['email-description']}>
+            <p className={styles['description']}>
               Email you've used to login via Google, not possible to change
             </p>
           </div>
@@ -88,6 +99,9 @@ function RegisterView() {
               type="file"
               accept="image/jpeg, image/png"
             />
+            <p className={styles['description']}>
+              jpeg/png, file size limit: 512kb
+            </p>
           </div>
           <div className={styles['buttons-container']}>
             {/* semantically wrong to include logout button in form */}

@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 
 import { RootState } from './types/appTypes';
 import useAuth from './hooks/useAuth';
-import RegisterView from './components/RegisterView/RegisterView';
+import RegisterView from './components/LoginView/RegisterView/RegisterView';
 
 function App() {
   const authData = useSelector((state: RootState) => state.auth);
