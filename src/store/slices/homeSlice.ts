@@ -16,6 +16,7 @@ const initialState: HomeStateSlice = {
       id: NaN,
       name: '',
       type: 'public',
+      participants: [],
     },
   },
 };

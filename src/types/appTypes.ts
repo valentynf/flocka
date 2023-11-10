@@ -8,7 +8,6 @@ export type AppDispatch = typeof store.dispatch;
 export type AuthStateSlice = {
   user_data: UserData | null;
   session: Session | null;
-  isLoading: boolean;
 };
 
 export type UserData = {
@@ -37,6 +36,7 @@ export type Channel = {
   id: number;
   name: string;
   type: 'public' | 'private';
+  participants: string[];
 };
 
 export type DirectMessageItemData = {
@@ -51,6 +51,14 @@ export type MessageData = {
   message: string;
 };
 
+export type FullMessageData = {
+  id: string;
+  name: string;
+  timestamp: number;
+  message: string;
+  avatar_src: string;
+};
+
 export type MessagePayload = {
   channelId: number;
   message: MessageData;
@@ -60,5 +68,11 @@ export type UserPayload = {
   id: string;
   name: string;
   email: string;
+  avatar_src: string;
+};
+
+export type ParticipantData = {
+  id: string;
+  name: string;
   avatar_src: string;
 };

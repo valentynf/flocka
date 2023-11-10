@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { setSession, getSession, getUserData } from '../store/slices/authSlice';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import supabase from '../api/supabase';
 import { AppDispatch, RootState } from '../types/appTypes';
 
 function useAuth() {
   const dispatch: AppDispatch = useDispatch();
   const session = useSelector((state: RootState) => state.auth.session);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     dispatch(getSession());
@@ -20,9 +21,12 @@ function useAuth() {
   useEffect(() => {
     const userEmail = session?.user.email;
     if (userEmail) {
-      dispatch(getUserData(userEmail));
+      setIsLoading(true);
+      dispatch(getUserData(userEmail)).finally(() => setIsLoading(false));
     }
   }, [session, dispatch]);
+
+  return { isLoading };
 }
 
 export default useAuth;

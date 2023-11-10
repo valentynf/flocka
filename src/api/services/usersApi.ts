@@ -20,3 +20,13 @@ export const insertUserData = async (newUserData: UserPayload) => {
 
   return { data: data ? data[0] : null, error };
 };
+
+export const fetchParticipantsData = async (participants: string[]) => {
+  const { data, error } = await supabase
+    .from(USERS_TABLE)
+    .select('id, name, avatar_src')
+    .in('id', participants);
+  if (error) throw error;
+
+  return data;
+};

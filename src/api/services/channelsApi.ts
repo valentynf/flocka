@@ -7,7 +7,7 @@ import { addNewMessage } from '../../store/slices/homeSlice';
 export const fetchChannelsData = async (channelIds: number[]) => {
   const { data, error } = await supabase
     .from(CHANNELS_TABLE)
-    .select('id, name, type')
+    .select('id, name, type, participants')
     .in('id', channelIds);
 
   return { data, error };

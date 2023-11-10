@@ -15,7 +15,7 @@ import RegisterView from './components/LoginView/RegisterView/RegisterView';
 function App() {
   const authData = useSelector((state: RootState) => state.auth);
 
-  useAuth();
+  const { isLoading } = useAuth();
 
   return (
     <Router>
@@ -23,7 +23,7 @@ function App() {
         <Route
           path="/login"
           element={
-            authData.session === null || authData.isLoading ? (
+            authData.session === null || isLoading ? (
               <LoginView />
             ) : authData.user_data === null ? (
               <RegisterView />
