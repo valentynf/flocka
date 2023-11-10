@@ -9,6 +9,10 @@ input:focus {
   height: 100vh;
 }
 
+.spinner {
+  padding: 30px;
+}
+
 .form-header {
   display: flex;
   align-items: center;
@@ -31,8 +35,7 @@ input:focus {
 }
 
 .heading {
-  margin-top: 8px;
-  margin-bottom: 0;
+  margin: 8px 4px 0px 0px;
 }
 
 .form-container {

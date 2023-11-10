@@ -5,8 +5,10 @@ import { AppDispatch, RootState } from '../../../types/appTypes';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNewUser, signOut } from '../../../store/slices/authSlice';
 import { uploadAvatar } from '../../../api/services/storageBucketApi';
+import { ThreeCircles } from 'react-loader-spinner';
 
 function RegisterView() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const dispatch: AppDispatch = useDispatch();
   const sessionUserData = useSelector(
     (state: RootState) => state.auth.session?.user
@@ -30,6 +32,7 @@ function RegisterView() {
 
   const onFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     const data = new FormData(e.currentTarget);
     const avatar = data.get('avatarFile') as File;
     const name = data.get('name') as string;
@@ -41,13 +44,19 @@ function RegisterView() {
         avatar_src = res;
       } catch (err) {
         console.error('Could not upload the avatar:', err);
+        setIsLoading(false);
       }
     }
 
     if (userEmail && userId) {
       dispatch(
         createNewUser({ id: userId, email: userEmail, name, avatar_src })
-      );
+      )
+        .unwrap()
+        .catch((err) => {
+          console.error('Could not create a new user:', err);
+          setIsLoading(false);
+        });
     }
   };
 
@@ -65,61 +74,67 @@ function RegisterView() {
             src="src/assets/images/torch.gif"
           ></img>
         </div>
-        <form onSubmit={onFormSubmit}>
-          <div className={styles['input-field']}>
-            <label>Email</label>
-            <input
-              className={`${styles['disabled']} ${styles['input-label']}`}
-              type="text"
-              value={userEmail}
-              readOnly
-            />
-            <p className={styles['description']}>
-              Email you've used to login via Google, not possible to change
-            </p>
+        {!isLoading ? (
+          <div className={styles['spinner']}>
+            <ThreeCircles height="100" width="100" color="#33174d" />
           </div>
-          <div className={styles['input-field']}>
-            <label className={styles['input-label']}>Display Name</label>
-            <input
-              pattern="^[a-zA-Z ]{6,18}$"
-              name="name"
-              type="text"
-              title="Name must be between 6 and 18 symbols, including one space"
-              required
-            />
-          </div>
-          <div>
-            <img className={styles['avatar-preview']} src={imageSrc}></img>
-          </div>
-          <div className={styles['upload-field']}>
-            <label className={styles['input-label']}>Upload Photo</label>
-            <input
-              name="avatarFile"
-              onChange={onFileChanged}
-              type="file"
-              accept="image/jpeg, image/png"
-            />
-            <p className={styles['description']}>
-              jpeg/png, file size limit: 512kb
-            </p>
-          </div>
-          <div className={styles['buttons-container']}>
-            {/* semantically wrong to include logout button in form */}
-            <button
-              type="button"
-              onClick={handleSignOut}
-              className={`${styles['button-logout']} ${styles['button']}`}
-            >
-              Depart
-            </button>
-            <button
-              className={`${styles['button-submit']} ${styles['button']}`}
-              type="submit"
-            >
-              Enroll
-            </button>
-          </div>
-        </form>
+        ) : (
+          <form onSubmit={onFormSubmit}>
+            <div className={styles['input-field']}>
+              <label>Email</label>
+              <input
+                className={`${styles['disabled']} ${styles['input-label']}`}
+                type="text"
+                value={userEmail}
+                readOnly
+              />
+              <p className={styles['description']}>
+                Email you've used to login via Google, not possible to change
+              </p>
+            </div>
+            <div className={styles['input-field']}>
+              <label className={styles['input-label']}>Display Name</label>
+              <input
+                pattern="^[a-zA-Z ]{6,18}$"
+                name="name"
+                type="text"
+                title="Name must be between 6 and 18 symbols, including one space"
+                required
+              />
+            </div>
+            <div>
+              <img className={styles['avatar-preview']} src={imageSrc}></img>
+            </div>
+            <div className={styles['upload-field']}>
+              <label className={styles['input-label']}>Upload Photo</label>
+              <input
+                name="avatarFile"
+                onChange={onFileChanged}
+                type="file"
+                accept="image/jpeg, image/png"
+              />
+              <p className={styles['description']}>
+                jpeg/png, file size limit: 512kb
+              </p>
+            </div>
+            <div className={styles['buttons-container']}>
+              {/* semantically wrong to include logout button in form */}
+              <button
+                type="button"
+                onClick={handleSignOut}
+                className={`${styles['button-logout']} ${styles['button']}`}
+              >
+                Depart
+              </button>
+              <button
+                className={`${styles['button-submit']} ${styles['button']}`}
+                type="submit"
+              >
+                Enroll
+              </button>
+            </div>
+          </form>
+        )}
       </div>
     </div>
   );
