@@ -23,7 +23,7 @@ function App() {
         <Route
           path="/login"
           element={
-            authData.session === null ? (
+            authData.session === null || authData.isLoading ? (
               <LoginView />
             ) : authData.user_data === null ? (
               <RegisterView />
@@ -42,7 +42,7 @@ function App() {
             )
           }
         />
-        <Route path="/*" element={<Navigate to="/app" />} />
+        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
   );

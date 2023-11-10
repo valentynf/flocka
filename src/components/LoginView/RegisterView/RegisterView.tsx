@@ -51,12 +51,10 @@ function RegisterView() {
     if (userEmail && userId) {
       dispatch(
         createNewUser({ id: userId, email: userEmail, name, avatar_src })
-      )
-        .unwrap()
-        .catch((err) => {
-          console.error('Could not create a new user:', err);
-          setIsLoading(false);
-        });
+      ).catch((err) => {
+        console.error('Could not create a new user:', err);
+        setIsLoading(false);
+      });
     }
   };
 
@@ -74,7 +72,7 @@ function RegisterView() {
             src="src/assets/images/torch.gif"
           ></img>
         </div>
-        {!isLoading ? (
+        {isLoading ? (
           <div className={styles['spinner']}>
             <ThreeCircles height="100" width="100" color="#33174d" />
           </div>

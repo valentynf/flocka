@@ -10,6 +10,7 @@ import { AuthStateSlice, UserPayload } from '../../types/appTypes';
 const initialState: AuthStateSlice = {
   user_data: null,
   session: null,
+  isLoading: false,
 };
 
 export const signInWithOAuth = createAsyncThunk(
@@ -78,8 +79,12 @@ const authSlice = createSlice({
     builder.addCase(getSession.fulfilled, (state, { payload }) => {
       state.session = payload;
     });
+    builder.addCase(getUserData.pending, (state) => {
+      state.isLoading = true;
+    });
     builder.addCase(getUserData.fulfilled, (state, { payload }) => {
       state.user_data = payload;
+      state.isLoading = false;
     });
     builder.addCase(createNewUser.fulfilled, (state, { payload }) => {
       state.user_data = payload;

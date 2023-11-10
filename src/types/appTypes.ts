@@ -8,6 +8,7 @@ export type AppDispatch = typeof store.dispatch;
 export type AuthStateSlice = {
   user_data: UserData | null;
   session: Session | null;
+  isLoading: boolean;
 };
 
 export type UserData = {
