@@ -2,21 +2,18 @@ import { MessageData, RootState } from '../../../../../types/appTypes';
 import styles from './MessagesList.module.css';
 import Message from './Message/Message';
 import { useSelector } from 'react-redux';
-import useParticipants from '../../../../../hooks/useParticipants';
 
 type MessagesListProps = {
   data: MessageData[];
 };
 
 function MessagesList({ data }: MessagesListProps) {
-  const participantIds = useSelector(
-    (state: RootState) => state.home.current_convo.channel.participants
+  const pariticapsData = useSelector(
+    (state: RootState) => state.app_data.users_data
   );
 
-  const { participantsData } = useParticipants(participantIds);
-
   const fullData = data.map((message) => {
-    const participant = participantsData[message.senderId];
+    const participant = pariticapsData[message.senderId];
 
     return {
       id: message.id,

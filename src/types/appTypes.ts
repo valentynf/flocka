@@ -5,6 +5,23 @@ import store from '../store/store';
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
+export type AppDataStateSlice = {
+  users_data: UsersDataRecord;
+};
+
+export type UsersData = {
+  id: string;
+  name: string;
+  avatar_src: string;
+};
+
+export type UsersDataRecord = {
+  [key: string]: {
+    name: string;
+    avatar_src: string;
+  };
+};
+
 export type AuthStateSlice = {
   user_data: UserData | null;
   session: Session | null;
@@ -68,11 +85,5 @@ export type UserPayload = {
   id: string;
   name: string;
   email: string;
-  avatar_src: string;
-};
-
-export type ParticipantData = {
-  id: string;
-  name: string;
   avatar_src: string;
 };

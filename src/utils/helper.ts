@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-import { MessageData } from '../types/appTypes';
+import { MessageData, UsersData } from '../types/appTypes';
 
 export const generateMessage = (
   senderId: string,
@@ -19,3 +19,12 @@ export const loadImageFromInput = (
   };
   reader.readAsDataURL(file);
 };
+
+export const usersDataToRecord = (usersData: UsersData[]) =>
+  usersData.reduce(
+    (acc: Record<string, { name: string; avatar_src: string }>, el) => {
+      acc[`${el.id}`] = { name: el.name, avatar_src: el.avatar_src };
+      return acc;
+    },
+    {}
+  );

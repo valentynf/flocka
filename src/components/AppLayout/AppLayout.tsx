@@ -5,11 +5,14 @@ import styles from './AppLayout.module.css';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../types/appTypes';
 import PlaceholderView from './PlaceholderView/PlaceholderView';
+import useAppData from '../../hooks/useAppData';
 
 function AppLayout() {
   const currentTab = useSelector(
     (state: RootState) => state.sidebar.current_tab
   );
+
+  useAppData();
 
   return (
     <div className={styles['main-view']}>
