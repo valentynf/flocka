@@ -8,7 +8,7 @@ import {
 } from '../../../../../../types/appTypes';
 import styles from './ChannelItem.module.css';
 import {
-  fetchChannelConvo,
+  getChannelConvo,
   setCurrentChannel,
 } from '../../../../../../store/slices/homeSlice';
 
@@ -28,7 +28,7 @@ function ChannelItem({ data }: ChannelItemProps) {
   const dispatch: AppDispatch = useDispatch();
   const handleChannelClick = () => {
     dispatch(setCurrentChannel(data));
-    dispatch(fetchChannelConvo(id));
+    dispatch(getChannelConvo(id));
   };
 
   return (

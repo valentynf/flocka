@@ -21,8 +21,8 @@ const initialState: HomeStateSlice = {
   },
 };
 
-export const fetchChannels = createAsyncThunk(
-  'home/fetchChannels',
+export const getChannels = createAsyncThunk(
+  'home/getChannels',
   async (channelIds: number[], { rejectWithValue }) => {
     const { data, error } = await fetchChannelsData(channelIds);
     if (error) {
@@ -32,8 +32,8 @@ export const fetchChannels = createAsyncThunk(
   }
 );
 
-export const fetchChannelConvo = createAsyncThunk(
-  'home/fetchChannelConvo',
+export const getChannelConvo = createAsyncThunk(
+  'home/getChannelConvo',
   async (channelId: number, { rejectWithValue }) => {
     const { data, error } = await fetchChannelMessages(channelId);
     if (error) {
@@ -66,10 +66,10 @@ const homeSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchChannels.fulfilled, (state, { payload }) => {
+    builder.addCase(getChannels.fulfilled, (state, { payload }) => {
       state.channels = payload;
     });
-    builder.addCase(fetchChannelConvo.fulfilled, (state, { payload }) => {
+    builder.addCase(getChannelConvo.fulfilled, (state, { payload }) => {
       if (payload) {
         state.current_convo.messages = payload.messages;
       }
