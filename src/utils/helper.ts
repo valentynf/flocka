@@ -37,3 +37,34 @@ export const formatTimestamp = (timestamp: number): string => {
 
   return `${hours % 12 || 12}:${minutes} ${dayTime}`;
 };
+
+export const formatMessageDate = (timestamp: number): string => {
+  const currentDate = new Date();
+  const messageDate = new Date(timestamp);
+  const yesterday = new Date(currentDate);
+  yesterday.setDate(currentDate.getDate() - 1);
+
+  if (isSameDay(currentDate, messageDate)) {
+    return 'Today';
+  }
+
+  if (isSameDay(yesterday, messageDate)) {
+    return 'Yesterday';
+  }
+
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+  };
+
+  return `${messageDate.toLocaleDateString(undefined, options)}`;
+};
+
+const isSameDay = (date1: Date, date2: Date): boolean => {
+  return (
+    date1.getFullYear() === date2.getFullYear() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getDate() === date2.getDate()
+  );
+};

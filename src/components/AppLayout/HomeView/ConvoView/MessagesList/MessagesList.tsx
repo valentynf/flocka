@@ -29,9 +29,24 @@ function MessagesList({ data }: MessagesListProps) {
   return (
     <div className={styles['messages-list']}>
       <div className={styles['reverse-scroll']}>
-        {fullData.map((el) => (
-          <Message data={el} key={el.id} />
-        ))}
+        {fullData.map((message, i) => {
+          const currentDate = new Date(message.timestamp).toLocaleDateString();
+          const nextDate =
+            i < fullData.length - 1
+              ? new Date(fullData[i + 1].timestamp).toLocaleDateString()
+              : null;
+
+          const isFirstToday =
+            i === fullData.length - 1 || currentDate !== nextDate;
+
+          return (
+            <Message
+              firstToday={isFirstToday}
+              data={message}
+              key={message.id}
+            />
+          );
+        })}
       </div>
     </div>
   );

@@ -8,6 +8,30 @@
   background-color: #212529;
 }
 
+.first-message-today {
+  border-top: 1px solid #3d3d3e;
+}
+
+.date-container {
+  position: absolute;
+  width: calc(85vw - 60px);
+  display: flex;
+  justify-content: center;
+}
+
+.message-date {
+  position: absolute;
+  bottom: -8px;
+  background-color: #181c20;
+  padding: 4px 16px;
+  font-size: 14px;
+  color: #d1d2d3;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  border: 1px solid #3d3d3e;
+  border-radius: 4px;
+}
+
 .user-image {
   width: 36px;
   height: 36px;
