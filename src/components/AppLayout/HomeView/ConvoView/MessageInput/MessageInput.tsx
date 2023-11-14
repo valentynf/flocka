@@ -16,11 +16,19 @@ function MessageInput({ placeholder }: MessageInputProps) {
   const userData = useSelector((state: RootState) => state.auth.user_data);
   const convoData = useSelector((state: RootState) => state.home.current_convo);
   const isEmptyInput = messageText.length === 0;
+
   const handleSendClick = () => {
     if (userData) {
       const message = generateMessage(userData.id, messageText);
       setMessageText('');
       dispatch(sendMessage({ channelId: convoData.channel.id, message }));
+    }
+  };
+
+  const handleEnterToSend = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey && !isEmptyInput) {
+      e.preventDefault();
+      handleSendClick();
     }
   };
 
@@ -45,9 +53,20 @@ function MessageInput({ placeholder }: MessageInputProps) {
         <textarea
           value={messageText}
           onChange={handleTextUpdate}
+          onKeyDown={handleEnterToSend}
           className={styles['text-area']}
           placeholder={`Message ${placeholder}`}
         ></textarea>
+      </div>
+      <div
+        className={`${styles['tip-container']} ${
+          messageText.length >= 3 ? styles['tip-active'] : ''
+        }`}
+      >
+        <p className={styles['shift-enter-tip']}>
+          <span className={styles['key-stroke']}>Shift + Return</span> to add a
+          new line
+        </p>
       </div>
     </div>
   );
