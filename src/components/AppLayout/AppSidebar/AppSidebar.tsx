@@ -42,7 +42,7 @@ function AppSidebar() {
         <div
           onClick={goHome}
           className={
-            currentView == 'HOME' ? styles['folder-active'] : styles['folder']
+            currentView === 'HOME' ? styles['folder-active'] : styles['folder']
           }
         >
           <div className={styles['icon']}>
@@ -53,7 +53,7 @@ function AppSidebar() {
         <div
           onClick={goDirectMessages}
           className={
-            currentView == 'DM' ? styles['folder-active'] : styles['folder']
+            currentView === 'DM' ? styles['folder-active'] : styles['folder']
           }
         >
           <div className={styles['icon']}>
@@ -64,7 +64,7 @@ function AppSidebar() {
         <div
           onClick={goActivity}
           className={
-            currentView == 'ACTIVITY'
+            currentView === 'ACTIVITY'
               ? styles['folder-active']
               : styles['folder']
           }
@@ -77,7 +77,7 @@ function AppSidebar() {
         <div
           onClick={goLater}
           className={
-            currentView == 'LATER' ? styles['folder-active'] : styles['folder']
+            currentView === 'LATER' ? styles['folder-active'] : styles['folder']
           }
         >
           <div className={styles['icon']}>

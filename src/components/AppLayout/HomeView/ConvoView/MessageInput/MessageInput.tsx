@@ -15,7 +15,7 @@ function MessageInput({ placeholder }: MessageInputProps) {
   const dispatch: AppDispatch = useDispatch();
   const userData = useSelector((state: RootState) => state.auth.user_data);
   const convoData = useSelector((state: RootState) => state.home.current_convo);
-
+  const isEmptyInput = messageText.length === 0;
   const handleSendClick = () => {
     if (userData) {
       const message = generateMessage(userData.id, messageText);
@@ -31,8 +31,16 @@ function MessageInput({ placeholder }: MessageInputProps) {
   return (
     <div className={styles['input-container']}>
       <div className={styles['input-field']}>
-        <button onClick={handleSendClick} className={styles['button-send']}>
-          <DraftSentIcon strokeColor="#037a5a" fill="#fff" />
+        <button
+          disabled={isEmptyInput}
+          onClick={handleSendClick}
+          className={styles['button-send']}
+        >
+          <DraftSentIcon
+            //don't like this solution, but i won't look at it
+            strokeColor={isEmptyInput ? '#212529' : '#037a5a'}
+            fill={isEmptyInput ? '#5d6062' : '#fff'}
+          />
         </button>
         <textarea
           value={messageText}

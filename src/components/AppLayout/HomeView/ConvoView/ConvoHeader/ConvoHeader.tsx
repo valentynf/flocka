@@ -9,7 +9,7 @@ type ConvoHeaderProps = {
 
 function ConvoHeader({ name, type }: ConvoHeaderProps) {
   const icon =
-    type == 'public' ? <PublicChannelIcon /> : <PrivateChannelIcon />;
+    type === 'public' ? <PublicChannelIcon /> : <PrivateChannelIcon />;
 
   return (
     <div className={styles['header-container']}>

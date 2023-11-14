@@ -11,7 +11,7 @@ export const getUsersData = createAsyncThunk(
   'app-data/getUsersData',
   async (_, { rejectWithValue }) => {
     const { data, error } = await fetchUsersData();
-    if (error || data == null) {
+    if (error || data === null) {
       return rejectWithValue(error);
     }
     return usersDataToRecord(data);

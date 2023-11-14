@@ -12,7 +12,7 @@ function useAuth() {
   useEffect(() => {
     dispatch(getSession());
     supabase.auth.onAuthStateChange((event) => {
-      if (event == 'SIGNED_OUT') {
+      if (event === 'SIGNED_OUT') {
         dispatch(setSession(null));
       }
     });
