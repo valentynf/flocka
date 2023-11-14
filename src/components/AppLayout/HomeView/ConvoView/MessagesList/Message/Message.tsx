@@ -1,5 +1,6 @@
 import styles from './Message.module.css';
 import { FullMessageData } from '../../../../../../types/appTypes';
+import { formatTimestamp } from '../../../../../../utils/helper';
 
 type MessageProps = {
   data: FullMessageData;
@@ -15,7 +16,9 @@ function Message({ data }: MessageProps) {
       <div className={styles['message']}>
         <div className={styles['header']}>
           <span className={styles['username']}>{name}</span>
-          <span className={styles['timestamp']}>{timestamp}</span>
+          <span className={styles['timestamp']}>
+            {formatTimestamp(timestamp)}
+          </span>
         </div>
         <div className={styles['content']}>
           <p className={styles['text']}>{message}</p>

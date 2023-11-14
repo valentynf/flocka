@@ -28,3 +28,12 @@ export const usersDataToRecord = (usersData: UsersData[]) =>
     },
     {}
   );
+
+export const formatTimestamp = (timestamp: number): string => {
+  const date = new Date(timestamp);
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const dayTime = hours >= 12 ? 'PM' : 'AM';
+
+  return `${hours % 12 || 12}:${minutes} ${dayTime}`;
+};
