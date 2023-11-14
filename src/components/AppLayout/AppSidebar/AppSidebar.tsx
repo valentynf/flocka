@@ -9,6 +9,7 @@ import styles from './AppSidebar.module.css';
 import UserImageWithStatusBig from './UserImageWithStatusBig/UserImageWithStatusBig';
 import { AppDispatch, RootState } from '../../../types/appTypes';
 import { setCurrentTab } from '../../../store/slices/sidebarSlice';
+import FlockaIcon from '../../../icons/LoginView/FlockaIcon';
 
 function AppSidebar() {
   const userData = useSelector((state: RootState) => state.auth.user_data);
@@ -36,9 +37,11 @@ function AppSidebar() {
   return (
     <div className={styles['sidebar']}>
       <div className={styles['top-section']}>
-        <div className={styles['logo-image']}>
-          <img src="/src/assets/images/logo.png" />
-        </div>
+        <a href="https://github.com/valentynf/flocka" target="_blank">
+          <div className={styles['logo']}>
+            <FlockaIcon />
+          </div>
+        </a>
         <div
           onClick={goHome}
           className={

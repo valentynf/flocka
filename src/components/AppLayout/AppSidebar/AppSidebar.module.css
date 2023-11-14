@@ -83,7 +83,7 @@
   font-family: 'Lato', sans-serif;
 }
 
-.logo-image {
+.logo {
   width: 36px;
   height: 36px;
   margin-bottom: 10px;
@@ -92,17 +92,14 @@
   justify-content: center;
 }
 
-.logo-image img {
-  width: 36px;
-  height: 36px;
-  border: 1px solid #313132;
-  border-radius: 25%;
+.logo svg {
+  fill: #555555;
 }
 
-.logo-image:hover {
+.logo:hover {
   cursor: pointer;
 }
 
-.user-image:hover {
+.user:hover {
   cursor: pointer;
 }
