@@ -12,7 +12,12 @@ function AddPopup({ hidePopup }: AddPopupProps) {
   const [isActive, setIsActive] = useState<boolean>(false);
   const popupDivRef = useRef<HTMLDivElement | null>(null);
 
-  useClickedOutsideDiv(popupDivRef, hidePopup);
+  useClickedOutsideDiv(popupDivRef, () => {
+    setIsActive(false);
+    setTimeout(() => {
+      hidePopup();
+    }, 400);
+  });
 
   //this is for animation purposes only
   useEffect(() => setIsActive(true), []);
