@@ -25,7 +25,13 @@ function AppSidebar() {
     currentView === anotherView ? styles['folder-active'] : styles['folder'];
 
   const toggleAddPopup = () => {
-    setIsMenuOpen(() => !isAddMenuOpen);
+    if (isAddMenuOpen) {
+      setTimeout(() => {
+        setIsMenuOpen(false);
+      }, 400);
+    } else {
+      setIsMenuOpen(true);
+    }
   };
 
   const goHome = () => {

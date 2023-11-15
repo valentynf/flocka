@@ -14,9 +14,7 @@ function AddPopup({ hidePopup }: AddPopupProps) {
 
   useClickedOutsideDiv(popupDivRef, () => {
     setIsActive(false);
-    setTimeout(() => {
-      hidePopup();
-    }, 400);
+    hidePopup();
   });
 
   //this is for animation purposes only
