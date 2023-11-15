@@ -1,15 +1,90 @@
 .add-popup {
-  height: 300px;
-  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 300px;
   opacity: 0;
   background-color: aliceblue;
   position: absolute;
   bottom: 8px;
-  left: 72px;
+  left: 64px;
   transition: opacity 0.5s ease-in-out, left 0.5s ease-in-out;
+  background-color: #252525;
+  border: 1px solid #3d3d3e;
+  border-radius: 4px;
+  font-family: 'Lato', sans-serif;
 }
 
 .add-popup.active {
   opacity: 1;
-  left: 80px;
+  left: 70px;
+}
+
+.popup-header {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  font-weight: 700;
+  padding-left: 16px;
+}
+
+.popup-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.action {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  padding: 4px 0 8px 0;
+}
+
+.action:hover {
+  background-color: #363636;
+  cursor: pointer;
+}
+
+.purple {
+  background-color: #3f1c63;
+}
+
+.grey {
+  background-color: #1d1c1d;
+}
+
+.icon {
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-left: 16px;
+}
+
+.icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.action-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.action-name {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.action-description {
+  font-size: 13px;
+  font-weight: 300;
 }
