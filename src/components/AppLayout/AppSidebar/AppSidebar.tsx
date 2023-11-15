@@ -24,7 +24,7 @@ function AppSidebar() {
   const getViewSwitchStyles = (currentView: View, anotherView: View): string =>
     currentView === anotherView ? styles['folder-active'] : styles['folder'];
 
-  const handleAddNewClick = () => {
+  const toggleAddPopup = () => {
     setIsMenuOpen(() => !isAddMenuOpen);
   };
 
@@ -98,7 +98,7 @@ function AppSidebar() {
       <div className={styles['bottom-section']}>
         <div className={styles['folder']}>
           <div
-            onClick={handleAddNewClick}
+            onClick={toggleAddPopup}
             className={`${styles['icon-create-new']} ${
               isAddMenuOpen ? styles['active'] : ''
             }`}
@@ -106,7 +106,7 @@ function AppSidebar() {
             <PlusIcon />
           </div>
         </div>
-        {isAddMenuOpen && <AddPopup />}
+        {isAddMenuOpen && <AddPopup hidePopup={toggleAddPopup} />}
         <div className={styles['user-image']}>
           <UserImageWithStatusBig
             image_source={
@@ -122,5 +122,4 @@ function AppSidebar() {
   );
 }
 
-// ${styles['create-new-active']}
 export default AppSidebar;
