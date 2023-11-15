@@ -28,10 +28,9 @@ function AppSidebar() {
     if (isAddMenuOpen) {
       setTimeout(() => {
         setIsMenuOpen(false);
-      }, 400);
-    } else {
-      setIsMenuOpen(true);
+      }, 300);
     }
+    setIsMenuOpen(true);
   };
 
   const goHome = () => {
