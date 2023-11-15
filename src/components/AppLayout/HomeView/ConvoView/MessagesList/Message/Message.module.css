@@ -18,7 +18,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  left: calc(50% + 200px);
+  left: calc(50% + 190px);
 }
 
 .message-date {
