@@ -35,8 +35,10 @@ export type UserData = {
   channels: number[];
 };
 
+export type View = 'HOME' | 'DM' | 'ACTIVITY' | 'LATER';
+
 export type SidebarStateSlice = {
-  current_tab: 'HOME' | 'DM' | 'ACTIVITY' | 'LATER';
+  current_tab: View;
 };
 
 export type HomeStateSlice = {

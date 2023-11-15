@@ -7,9 +7,10 @@ import PlusIcon from '../../../icons/AppLayout/AppSidebar/PlusIcon';
 import RibbonIcon from '../../../icons/AppLayout/AppSidebar/RibbonIcon';
 import styles from './AppSidebar.module.css';
 import UserImageWithStatusBig from './UserImageWithStatusBig/UserImageWithStatusBig';
-import { AppDispatch, RootState } from '../../../types/appTypes';
+import { AppDispatch, RootState, View } from '../../../types/appTypes';
 import { setCurrentTab } from '../../../store/slices/sidebarSlice';
 import FlockaIcon from '../../../icons/LoginView/FlockaIcon';
+import { useState } from 'react';
 
 function AppSidebar() {
   const userData = useSelector((state: RootState) => state.auth.user_data);
@@ -17,6 +18,14 @@ function AppSidebar() {
     (state: RootState) => state.sidebar.current_tab
   );
   const dispatch: AppDispatch = useDispatch();
+  const [isAddMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+  const getViewSwitchStyles = (currentView: View, anotherView: View): string =>
+    currentView === anotherView ? styles['folder-active'] : styles['folder'];
+
+  const handleAddNewClick = () => {
+    setIsMenuOpen(() => !isAddMenuOpen);
+  };
 
   const goHome = () => {
     dispatch(setCurrentTab('HOME'));
@@ -44,9 +53,7 @@ function AppSidebar() {
         </a>
         <div
           onClick={goHome}
-          className={
-            currentView === 'HOME' ? styles['folder-active'] : styles['folder']
-          }
+          className={getViewSwitchStyles(currentView, 'HOME')}
         >
           <div className={styles['icon']}>
             <HomeIcon />
@@ -55,9 +62,7 @@ function AppSidebar() {
         </div>
         <div
           onClick={goDirectMessages}
-          className={
-            currentView === 'DM' ? styles['folder-active'] : styles['folder']
-          }
+          className={getViewSwitchStyles(currentView, 'DM')}
         >
           <div className={styles['icon']}>
             <DirectMessagesIcon />
@@ -66,11 +71,7 @@ function AppSidebar() {
         </div>
         <div
           onClick={goActivity}
-          className={
-            currentView === 'ACTIVITY'
-              ? styles['folder-active']
-              : styles['folder']
-          }
+          className={getViewSwitchStyles(currentView, 'ACTIVITY')}
         >
           <div className={styles['icon']}>
             <BellIcon />
@@ -79,9 +80,7 @@ function AppSidebar() {
         </div>
         <div
           onClick={goLater}
-          className={
-            currentView === 'LATER' ? styles['folder-active'] : styles['folder']
-          }
+          className={getViewSwitchStyles(currentView, 'LATER')}
         >
           <div className={styles['icon']}>
             <RibbonIcon />
@@ -97,7 +96,12 @@ function AppSidebar() {
       </div>
       <div className={styles['bottom-section']}>
         <div className={styles['folder']}>
-          <div className={styles['icon-create-new']}>
+          <div
+            onClick={handleAddNewClick}
+            className={`${styles['icon-create-new']} ${
+              isAddMenuOpen ? styles['create-new-active'] : ''
+            }`}
+          >
             <PlusIcon />
           </div>
         </div>
@@ -116,4 +120,5 @@ function AppSidebar() {
   );
 }
 
+// ${styles['create-new-active']}
 export default AppSidebar;
