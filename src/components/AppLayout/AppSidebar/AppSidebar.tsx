@@ -11,6 +11,7 @@ import { AppDispatch, RootState, View } from '../../../types/appTypes';
 import { setCurrentTab } from '../../../store/slices/sidebarSlice';
 import FlockaIcon from '../../../icons/LoginView/FlockaIcon';
 import { useState } from 'react';
+import AddPopup from './AddPopup/AddPopup';
 
 function AppSidebar() {
   const userData = useSelector((state: RootState) => state.auth.user_data);
@@ -99,12 +100,13 @@ function AppSidebar() {
           <div
             onClick={handleAddNewClick}
             className={`${styles['icon-create-new']} ${
-              isAddMenuOpen ? styles['create-new-active'] : ''
+              isAddMenuOpen ? styles['active'] : ''
             }`}
           >
             <PlusIcon />
           </div>
         </div>
+        {isAddMenuOpen && <AddPopup />}
         <div className={styles['user-image']}>
           <UserImageWithStatusBig
             image_source={
