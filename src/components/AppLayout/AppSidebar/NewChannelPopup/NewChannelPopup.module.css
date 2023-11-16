@@ -56,10 +56,35 @@
 .input {
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.channel-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 29px;
+  left: 2px;
+}
+
+.channel-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.char-counter {
+  position: absolute;
+  font-size: 18px;
+  top: 34px;
+  left: 368px;
+  color: #757575;
 }
 
 .input-label {
-  margin: 12px 0;
+  margin-bottom: 4px;
 }
 
 .input-field {
@@ -73,18 +98,30 @@
   padding-right: 32px;
 }
 
-.input-error {
+.input-error-info {
   font-size: 14px;
   font-weight: 300;
   margin: 0;
-  color: #ca5f7f;
+  color: #e74c3c;
+  max-width: 400px;
 }
 
 .input-description {
+  max-width: 400px;
   font-size: 14px;
   font-weight: 300;
   margin: 0;
   color: #c4c4c7;
+}
+
+.input-error {
+  border-color: #e74c3c;
+  box-shadow: 0 0 10px rgba(231, 76, 60, 0.7);
+}
+
+.input-focused:not(.input-error) {
+  border-color: #3f1c63;
+  box-shadow: 0 0 10px rgba(63, 28, 99, 0.7);
 }
 
 .alert-icon {
@@ -105,6 +142,7 @@
   border: none;
   border-radius: 4px;
   font-size: 18px;
+  margin-top: 16px;
   color: #c4c4c7;
 }
 
