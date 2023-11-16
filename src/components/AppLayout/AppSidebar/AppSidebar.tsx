@@ -12,6 +12,7 @@ import { setCurrentTab } from '../../../store/slices/sidebarSlice';
 import FlockaIcon from '../../../icons/LoginView/FlockaIcon';
 import { useState } from 'react';
 import AddPopup from './AddPopup/AddPopup';
+import NewChannelPopup from './NewChannelPopup/NewChannelPopup';
 
 function AppSidebar() {
   const userData = useSelector((state: RootState) => state.auth.user_data);
@@ -20,6 +21,7 @@ function AppSidebar() {
   );
   const dispatch: AppDispatch = useDispatch();
   const [isAddMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isNewChannelOpen, setIsNewChannelOpen] = useState<boolean>(false);
 
   const getViewSwitchStyles = (currentView: View, anotherView: View): string =>
     currentView === anotherView ? styles['folder-active'] : styles['folder'];
@@ -31,6 +33,10 @@ function AppSidebar() {
       }, 300);
     }
     setIsMenuOpen(true);
+  };
+
+  const toggleNewChannelPopup = () => {
+    setIsNewChannelOpen(() => !isNewChannelOpen);
   };
 
   const goHome = () => {
@@ -51,6 +57,9 @@ function AppSidebar() {
 
   return (
     <div className={styles['sidebar']}>
+      {isNewChannelOpen && (
+        <NewChannelPopup hidePopup={toggleNewChannelPopup} />
+      )}
       <div className={styles['top-section']}>
         <a href="https://github.com/valentynf/flocka" target="_blank">
           <div className={styles['logo']}>
@@ -111,7 +120,12 @@ function AppSidebar() {
             <PlusIcon />
           </div>
         </div>
-        {isAddMenuOpen && <AddPopup hidePopup={toggleAddPopup} />}
+        {isAddMenuOpen && (
+          <AddPopup
+            hidePopup={toggleAddPopup}
+            showAddChannel={toggleNewChannelPopup}
+          />
+        )}
         <div className={styles['user-image']}>
           <UserImageWithStatusBig
             image_source={

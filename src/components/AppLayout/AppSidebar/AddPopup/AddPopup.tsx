@@ -6,9 +6,10 @@ import useClickedOutsideDiv from '../../../../hooks/useClickedOutsideDiv';
 
 type AddPopupProps = {
   hidePopup: () => void;
+  showAddChannel: () => void;
 };
 
-function AddPopup({ hidePopup }: AddPopupProps) {
+function AddPopup({ hidePopup, showAddChannel }: AddPopupProps) {
   const [isActive, setIsActive] = useState<boolean>(false);
   const popupDivRef = useRef<HTMLDivElement | null>(null);
 
@@ -16,9 +17,12 @@ function AddPopup({ hidePopup }: AddPopupProps) {
     setIsActive(false);
     hidePopup();
   });
-
   //this is for animation purposes only
   useEffect(() => setIsActive(true), []);
+
+  const handleNewChannelClick = () => {
+    showAddChannel();
+  };
 
   return (
     <div
@@ -28,7 +32,7 @@ function AddPopup({ hidePopup }: AddPopupProps) {
         <span>Create</span>
       </div>
       <div className={styles['popup-actions']}>
-        <div className={styles['action']}>
+        <div onClick={handleNewChannelClick} className={styles['action']}>
           <div className={`${styles['icon']} ${styles['grey']}`}>
             <PublicChannelIcon />
           </div>
