@@ -11,11 +11,15 @@ import { useSelector } from 'react-redux';
 import { RootState } from './types/appTypes';
 import useAuth from './hooks/useAuth';
 import RegisterView from './components/LoginView/RegisterView/RegisterView';
+import AppLoadingView from './components/AppLayout/AppLoadingView/AppLoadingView';
 
 function App() {
   const authData = useSelector((state: RootState) => state.auth);
 
   const { isLoading } = useAuth();
+
+  if (isLoading)
+    return <AppLoadingView message="Consuming the essence of users data" />;
 
   return (
     <Router>
