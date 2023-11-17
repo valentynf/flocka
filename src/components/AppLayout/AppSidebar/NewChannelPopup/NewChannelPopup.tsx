@@ -32,7 +32,7 @@ function NewChannelPopup({ hidePopup }: NewChannelPopupProps) {
   hyphens).`;
   const isError =
     isExistingChannel ||
-    inputValue.length === 0 ||
+    inputValue.length <= 3 ||
     (!isValidInput && !isInputFocused);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
