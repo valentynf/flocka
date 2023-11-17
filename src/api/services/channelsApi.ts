@@ -66,7 +66,6 @@ export const checkExistingChannel = async (
       .eq('name', name)
       .abortSignal(ac.signal);
 
-    console.log(data?.length);
     if (data && data.length === 1) {
       return true;
     }

@@ -149,7 +149,11 @@
   color: #c4c4c7;
 }
 
-.create-channel-button:hover {
+.create-channel-button:hover:not(:disabled) {
   cursor: pointer;
   background-color: #3f1c63;
+}
+
+.create-channel-button:disabled {
+  cursor: not-allowed;
 }

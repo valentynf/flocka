@@ -15,7 +15,7 @@ function NewChannelPopup({ hidePopup }: NewChannelPopupProps) {
 
   const [inputValue, setInputValue] = useState<string>('');
   const [isInputFocused, setIsInputFocused] = useState<boolean>(true);
-  const isValidInput = /^[a-z0-9]+(-[a-z0-9]+)*$/.test(inputValue);
+  const isValidText = /^[a-z0-9]+(-[a-z0-9]+)*$/.test(inputValue);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -30,10 +30,9 @@ function NewChannelPopup({ hidePopup }: NewChannelPopupProps) {
     : `Give your channel
   a proper name to continue (lowercase letters, numbers and
   hyphens).`;
-  const isError =
-    isExistingChannel ||
-    inputValue.length <= 3 ||
-    (!isValidInput && !isInputFocused);
+
+  const isValidInput =
+    isExistingChannel || inputValue.length <= 3 || !isValidText;
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -45,6 +44,10 @@ function NewChannelPopup({ hidePopup }: NewChannelPopupProps) {
 
   const handleInputBlur = () => {
     setIsInputFocused(false);
+  };
+
+  const handleCreateButtonClick = () => {
+    console.log('click');
   };
 
   return (
@@ -66,7 +69,7 @@ function NewChannelPopup({ hidePopup }: NewChannelPopupProps) {
             value={inputValue}
             onChange={handleInputChange}
             className={`${styles['input-field']} ${
-              isError ? styles['input-error'] : ''
+              isValidInput ? styles['input-error'] : ''
             } ${isInputFocused ? styles['input-focused'] : ''}`}
             type="text"
             placeholder="e.g #start-a-cult"
@@ -77,7 +80,7 @@ function NewChannelPopup({ hidePopup }: NewChannelPopupProps) {
           <span className={styles['char-counter']}>
             {30 - inputValue.length || ''}
           </span>
-          {isError ? (
+          {isValidInput ? (
             <p className={styles['input-error-info']}>
               <span className={styles['alert-icon']}>⚠</span> {errorMessage}
             </p>
@@ -89,7 +92,13 @@ function NewChannelPopup({ hidePopup }: NewChannelPopupProps) {
           )}
         </div>
         <div className={styles['modal-footer']}>
-          <button className={styles['create-channel-button']}>Create</button>
+          <button
+            onClick={handleCreateButtonClick}
+            disabled={isValidInput}
+            className={styles['create-channel-button']}
+          >
+            Create
+          </button>
         </div>
       </div>
     </div>
