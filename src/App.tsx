@@ -15,6 +15,8 @@ import AppLoadingView from './components/AppLayout/AppLoadingView/AppLoadingView
 
 function App() {
   const authData = useSelector((state: RootState) => state.auth);
+  const isAuthenticated = authData.session !== null;
+  const isExistingUser = authData.user_data !== null;
 
   const { isLoading } = useAuth();
 
@@ -27,19 +29,21 @@ function App() {
         <Route
           path="/login"
           element={
-            authData.session === null || isLoading ? (
-              <LoginView />
-            ) : authData.user_data === null ? (
-              <RegisterView />
+            isAuthenticated ? (
+              isExistingUser ? (
+                <Navigate to="/app" />
+              ) : (
+                <RegisterView />
+              )
             ) : (
-              <Navigate to="/app" />
+              <LoginView />
             )
           }
         />
         <Route
           path="/app"
           element={
-            authData.user_data !== null && authData.session !== null ? (
+            isAuthenticated && isExistingUser ? (
               <AppLayout />
             ) : (
               <Navigate to="/login" />

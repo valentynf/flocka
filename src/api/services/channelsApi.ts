@@ -1,5 +1,9 @@
 import { RealtimeChannel } from '@supabase/supabase-js';
-import { CHANNELS_TABLE, RPC_SEND_MESSAGE } from '../../config/config';
+import {
+  CHANNELS_TABLE,
+  RPC_CREATE_PUBLIC_CHANNEL,
+  RPC_SEND_MESSAGE,
+} from '../../config/config';
 import supabase from '../supabase';
 import { AppDispatch, MessageData } from '../../types/appTypes';
 import { addNewMessage } from '../../store/slices/homeSlice';
@@ -44,17 +48,6 @@ export const setChannelSubscription = (
   return channelSub;
 };
 
-export const rpcSendMessage = async (
-  channel_id: number,
-  message: MessageData
-) => {
-  const { data, error } = await supabase.rpc(RPC_SEND_MESSAGE, {
-    channel_id,
-    message,
-  });
-  return { data, error };
-};
-
 export const checkExistingChannel = async (
   name: string,
   ac: AbortController
@@ -72,4 +65,34 @@ export const checkExistingChannel = async (
     return false;
   }
   return false;
+};
+
+//RPC
+
+// This call only adds the message to the array of messages
+// Returns 'message sent'
+export const rpcSendMessage = async (
+  channel_id: number,
+  message: MessageData
+) => {
+  const { data, error } = await supabase.rpc(RPC_SEND_MESSAGE, {
+    channel_id,
+    message,
+  });
+  return { data, error };
+};
+
+// This call does several things
+// 1. Creates a new table with creator (user_id) as the only participant
+// 2. Adds channel to the channels list of the creator
+// 3. Returns new channel id
+export const rpcCreatePublicChannel = async (
+  channel_name: string,
+  user_id: string
+) => {
+  const { data, error } = await supabase.rpc(RPC_CREATE_PUBLIC_CHANNEL, {
+    channel_name,
+    user_id,
+  });
+  return { data, error };
 };

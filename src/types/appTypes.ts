@@ -89,3 +89,8 @@ export type UserPayload = {
   email: string;
   avatar_src: string;
 };
+
+export type NewChannelPayload = {
+  channel_name: string;
+  user_id: string;
+};
