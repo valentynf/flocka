@@ -3,6 +3,7 @@ import useClickOverlay from '../../../../hooks/useClickOverlay';
 import styles from './NewChannelPopup.module.css';
 import PlusIcon from '../../../../icons/AppLayout/AppSidebar/PlusIcon';
 import PublicChannelIcon from '../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PubilcChannelIcon';
+import useExistingChannel from '../../../../hooks/useExistingChannel';
 
 type NewChannelPopupProps = {
   hidePopup: () => void;
@@ -11,18 +12,28 @@ type NewChannelPopupProps = {
 function NewChannelPopup({ hidePopup }: NewChannelPopupProps) {
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
+
   const [inputValue, setInputValue] = useState<string>('');
   const [isInputFocused, setIsInputFocused] = useState<boolean>(true);
-
   const isValidInput = /^[a-z0-9]+(-[a-z0-9]+)*$/.test(inputValue);
-
-  useClickOverlay(overlayRef, hidePopup);
 
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
   }, []);
+  useClickOverlay(overlayRef, hidePopup);
+
+  const isExistingChannel = useExistingChannel(inputValue);
+  const errorMessage = isExistingChannel
+    ? 'Channel with this name already exists'
+    : `Give your channel
+  a proper name to continue (lowercase letters, numbers and
+  hyphens).`;
+  const isError =
+    isExistingChannel ||
+    inputValue.length === 0 ||
+    (!isValidInput && !isInputFocused);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -55,9 +66,7 @@ function NewChannelPopup({ hidePopup }: NewChannelPopupProps) {
             value={inputValue}
             onChange={handleInputChange}
             className={`${styles['input-field']} ${
-              inputValue.length === 0 || (!isValidInput && !isInputFocused)
-                ? styles['input-error']
-                : ''
+              isError ? styles['input-error'] : ''
             } ${isInputFocused ? styles['input-focused'] : ''}`}
             type="text"
             placeholder="e.g #start-a-cult"
@@ -68,11 +77,9 @@ function NewChannelPopup({ hidePopup }: NewChannelPopupProps) {
           <span className={styles['char-counter']}>
             {30 - inputValue.length || ''}
           </span>
-          {inputValue.length === 0 || (!isValidInput && !isInputFocused) ? (
+          {isError ? (
             <p className={styles['input-error-info']}>
-              <span className={styles['alert-icon']}>⚠</span> Give your channel
-              a proper name to continue (lowercase letters, numbers and
-              hyphens).
+              <span className={styles['alert-icon']}>⚠</span> {errorMessage}
             </p>
           ) : (
             <p className={styles['input-description']}>

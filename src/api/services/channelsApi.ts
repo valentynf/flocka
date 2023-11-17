@@ -54,3 +54,23 @@ export const rpcSendMessage = async (
   });
   return { data, error };
 };
+
+export const checkExistingChannel = async (
+  name: string,
+  ac: AbortController
+): Promise<boolean> => {
+  if (name.length > 3) {
+    const { data } = await supabase
+      .from(CHANNELS_TABLE)
+      .select('name')
+      .eq('name', name)
+      .abortSignal(ac.signal);
+
+    console.log(data?.length);
+    if (data && data.length === 1) {
+      return true;
+    }
+    return false;
+  }
+  return false;
+};
