@@ -30,7 +30,7 @@ function AppSidebar() {
     if (isAddMenuOpen) {
       setTimeout(() => {
         setIsMenuOpen(false);
-      }, 300);
+      }, 200);
     }
     setIsMenuOpen(true);
   };

@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './AddPopup.module.css';
 import NewMessageIcon from '../../../../icons/AppLayout/HomeView/HomeSidebar/SidebarHeader/NewMessageIcon';
 import PublicChannelIcon from '../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PubilcChannelIcon';
-import useClickedOutsideDiv from '../../../../hooks/useClickedOutsideDiv';
+import PopupOverlay from '../../../shared/PopupOverlay/PopupOverlay';
 
 type AddPopupProps = {
   hidePopup: () => void;
@@ -11,12 +11,7 @@ type AddPopupProps = {
 
 function AddPopup({ hidePopup, showAddChannel }: AddPopupProps) {
   const [isActive, setIsActive] = useState<boolean>(false);
-  const popupDivRef = useRef<HTMLDivElement | null>(null);
 
-  useClickedOutsideDiv(popupDivRef, () => {
-    setIsActive(false);
-    hidePopup();
-  });
   //this is for animation purposes only
   useEffect(() => setIsActive(true), []);
 
@@ -25,37 +20,39 @@ function AddPopup({ hidePopup, showAddChannel }: AddPopupProps) {
   };
 
   return (
-    <div
-      className={`${styles['add-popup']} ${isActive ? styles['active'] : ''}`}
-    >
-      <div ref={popupDivRef} className={styles['popup-header']}>
-        <span>Create</span>
-      </div>
-      <div className={styles['popup-actions']}>
-        <div onClick={handleNewChannelClick} className={styles['action']}>
-          <div className={`${styles['icon']} ${styles['grey']}`}>
-            <PublicChannelIcon />
+    <PopupOverlay transparent={true} onClick={hidePopup}>
+      <div
+        className={`${styles['add-popup']} ${isActive ? styles['active'] : ''}`}
+      >
+        <div className={styles['popup-header']}>
+          <span>Create</span>
+        </div>
+        <div className={styles['popup-actions']}>
+          <div onClick={handleNewChannelClick} className={styles['action']}>
+            <div className={`${styles['icon']} ${styles['grey']}`}>
+              <PublicChannelIcon />
+            </div>
+            <div className={styles['action-info']}>
+              <span className={styles['action-name']}>Channel</span>
+              <span className={styles['action-description']}>
+                Start a group conversation by topic
+              </span>
+            </div>
           </div>
-          <div className={styles['action-info']}>
-            <span className={styles['action-name']}>Channel</span>
-            <span className={styles['action-description']}>
-              Start a group conversation by topic
-            </span>
+          <div className={styles['action']}>
+            <div className={`${styles['icon']} ${styles['purple']}`}>
+              <NewMessageIcon />
+            </div>
+            <div className={styles['action-info']}>
+              <span className={styles['action-name']}>Message</span>
+              <span className={styles['action-description']}>
+                Start a conversation in a DM or channel
+              </span>
+            </div>
           </div>
         </div>
-        <div className={styles['action']}>
-          <div className={`${styles['icon']} ${styles['purple']}`}>
-            <NewMessageIcon />
-          </div>
-          <div className={styles['action-info']}>
-            <span className={styles['action-name']}>Message</span>
-            <span className={styles['action-description']}>
-              Start a conversation in a DM or channel
-            </span>
-          </div>
-        </div>
       </div>
-    </div>
+    </PopupOverlay>
   );
 }
 
