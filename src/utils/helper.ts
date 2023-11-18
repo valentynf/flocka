@@ -73,3 +73,10 @@ export const getThreeParticipants = (participants: string[]): string[] => {
   if (participants.length <= 3) return participants;
   return participants.slice(0, 3);
 };
+
+export const isMatchingThePattern = (
+  input: string,
+  pattern: string
+): boolean => {
+  return new RegExp(pattern).test(input);
+};
