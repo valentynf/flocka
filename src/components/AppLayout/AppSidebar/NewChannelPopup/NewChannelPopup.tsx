@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import useClickOverlay from '../../../../hooks/useClickOverlay';
 import styles from './NewChannelPopup.module.css';
 import PlusIcon from '../../../../icons/AppLayout/AppSidebar/PlusIcon';
 import PublicChannelIcon from '../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PubilcChannelIcon';
@@ -8,6 +7,7 @@ import { AppDispatch, RootState } from '../../../../types/appTypes';
 import { useDispatch, useSelector } from 'react-redux';
 import { addNewChannel } from '../../../../store/slices/homeSlice';
 import { ThreeCircles } from 'react-loader-spinner';
+import PopupOverlay from '../../../shared/PopupOverlay/PopupOverlay';
 
 type NewChannelPopupProps = {
   hidePopup: () => void;
@@ -17,7 +17,6 @@ function NewChannelPopup({ hidePopup }: NewChannelPopupProps) {
   const dispatch: AppDispatch = useDispatch();
   const userData = useSelector((state: RootState) => state.auth.user_data);
 
-  const overlayRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const [inputValue, setInputValue] = useState<string>('');
@@ -30,7 +29,6 @@ function NewChannelPopup({ hidePopup }: NewChannelPopupProps) {
       inputRef.current.focus();
     }
   }, []);
-  useClickOverlay(overlayRef, hidePopup);
 
   const isExistingChannel = useExistingChannel(inputValue);
   const errorMessage = isExistingChannel
@@ -67,7 +65,7 @@ function NewChannelPopup({ hidePopup }: NewChannelPopupProps) {
   };
 
   return (
-    <div ref={overlayRef} className={styles['overlay']}>
+    <PopupOverlay onClick={hidePopup}>
       <div className={styles['add-channel-modal']}>
         <div className={styles['modal-header']}>
           <h3 className={styles['heading']}>Create a channel</h3>
@@ -122,7 +120,7 @@ function NewChannelPopup({ hidePopup }: NewChannelPopupProps) {
           )}
         </div>
       </div>
-    </div>
+    </PopupOverlay>
   );
 }
 
