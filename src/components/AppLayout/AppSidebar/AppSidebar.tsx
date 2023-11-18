@@ -20,19 +20,14 @@ function AppSidebar() {
     (state: RootState) => state.sidebar.current_tab
   );
   const dispatch: AppDispatch = useDispatch();
-  const [isAddMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isAddMenuOpen, setIsAddMenuOpen] = useState<boolean>(false);
   const [isNewChannelOpen, setIsNewChannelOpen] = useState<boolean>(false);
 
   const getViewSwitchStyles = (currentView: View, anotherView: View): string =>
     currentView === anotherView ? styles['folder-active'] : styles['folder'];
 
   const toggleAddPopup = () => {
-    if (isAddMenuOpen) {
-      setTimeout(() => {
-        setIsMenuOpen(false);
-      }, 200);
-    }
-    setIsMenuOpen(true);
+    setIsAddMenuOpen(() => !isAddMenuOpen);
   };
 
   const toggleNewChannelPopup = () => {

@@ -17,6 +17,7 @@ function AddPopup({ hidePopup, showAddChannel }: AddPopupProps) {
 
   const handleNewChannelClick = () => {
     showAddChannel();
+    hidePopup();
   };
 
   return (
