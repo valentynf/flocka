@@ -44,10 +44,6 @@ hyphens).`;
     setIsInputFocused(false);
   };
 
-  //   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //     setInputValue(event.target.value);
-  //   };
-
   return (
     <>
       <div className={styles['input']}>
