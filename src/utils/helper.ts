@@ -70,15 +70,6 @@ const isSameDay = (date1: Date, date2: Date): boolean => {
 };
 
 export const getThreeParticipants = (participants: string[]): string[] => {
-  const arrayLength = participants.length;
-
-  if (arrayLength === 0) return Array.from<string>({ length: 3 }).fill('dummy');
-  if (arrayLength === 1)
-    return [
-      ...participants,
-      ...Array.from<string>({ length: 2 }).fill('dummy'),
-    ];
-  if (arrayLength === 2) return [...participants, 'dummy'];
-  if (arrayLength === 3) return participants;
+  if (participants.length <= 3) return participants;
   return participants.slice(0, 3);
 };

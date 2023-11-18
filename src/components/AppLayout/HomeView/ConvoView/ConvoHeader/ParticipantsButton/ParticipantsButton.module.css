@@ -2,15 +2,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 2px;
   box-sizing: border-box;
   padding: 2px;
-  height: 28px;
+  height: 36px;
   width: 76px;
   background-color: #181c20;
   border: 1px solid #3d3d3e;
   border-radius: 4px;
-  font-size: 13px;
+  font-size: 14px;
   color: #a4a5a6;
   font-family: 'Lato', sans-serif;
 }
@@ -26,15 +26,15 @@
   align-items: center;
   justify-content: center;
   width: 48px;
-  height: 20px;
+  height: 24px;
   overflow: hidden;
 }
 
 .participant-photo {
   box-sizing: border-box;
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   top: 0;
   left: 0;
   border: 2px solid #181c20;
