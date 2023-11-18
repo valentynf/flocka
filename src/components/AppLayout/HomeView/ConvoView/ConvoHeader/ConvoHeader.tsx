@@ -17,6 +17,7 @@ function ConvoHeader({ name, type }: ConvoHeaderProps) {
         <div className={styles['icon']}>{icon}</div>
         <p className={styles['name']}>{name}</p>
       </div>
+      <div></div>
     </div>
   );
 }

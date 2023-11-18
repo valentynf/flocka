@@ -17,7 +17,7 @@
 
 .channel-info:hover {
   background-color: #212529;
-  cursor: default;
+  cursor: pointer;
   border-radius: 4px;
 }
 
