@@ -1,8 +1,12 @@
 .participants-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
   box-sizing: border-box;
   padding: 2px;
   height: 28px;
-  width: 72px;
+  width: 76px;
   background-color: #181c20;
   border: 1px solid #3d3d3e;
   border-radius: 4px;
@@ -14,4 +18,36 @@
 .participants-button:hover {
   background-color: #202326;
   cursor: pointer;
+}
+
+.three-photos {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 20px;
+  overflow: hidden;
+}
+
+.participant-photo {
+  box-sizing: border-box;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  border: 2px solid #181c20;
+  border-radius: 4px;
+  z-index: 3;
+}
+
+.second-photo {
+  z-index: 2;
+  left: 14px;
+}
+
+.third-photo {
+  z-index: 1;
+  left: 27px;
 }

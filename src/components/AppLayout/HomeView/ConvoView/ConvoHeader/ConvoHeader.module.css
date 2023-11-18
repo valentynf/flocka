@@ -15,12 +15,12 @@
   gap: 2px;
   height: 30px;
   width: max-content;
+  border-radius: 4px;
 }
 
 .channel-info:hover {
-  background-color: #212529;
+  background-color: #202326;
   cursor: pointer;
-  border-radius: 4px;
 }
 
 .name {
