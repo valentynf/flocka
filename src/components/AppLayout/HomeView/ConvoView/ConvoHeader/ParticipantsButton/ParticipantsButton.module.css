@@ -1,0 +1,17 @@
+.participants-button {
+  box-sizing: border-box;
+  padding: 2px;
+  height: 28px;
+  width: 72px;
+  background-color: #181c20;
+  border: 1px solid #3d3d3e;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #a4a5a6;
+  font-family: 'Lato', sans-serif;
+}
+
+.participants-button:hover {
+  background-color: #202326;
+  cursor: pointer;
+}

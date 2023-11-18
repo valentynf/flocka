@@ -1,6 +1,7 @@
 import PrivateChannelIcon from '../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PrivateChannelIcon';
 import PublicChannelIcon from '../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PubilcChannelIcon';
 import styles from './ConvoHeader.module.css';
+import ParticipantsButton from './ParticipantsButton/ParticipantsButton';
 
 type ConvoHeaderProps = {
   type: 'public' | 'private';
@@ -17,7 +18,7 @@ function ConvoHeader({ name, type }: ConvoHeaderProps) {
         <div className={styles['icon']}>{icon}</div>
         <p className={styles['name']}>{name}</p>
       </div>
-      <div></div>
+      <ParticipantsButton />
     </div>
   );
 }
