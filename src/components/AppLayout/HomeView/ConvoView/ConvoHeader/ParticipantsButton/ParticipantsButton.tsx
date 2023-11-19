@@ -3,7 +3,11 @@ import styles from './ParticipantsButton.module.css';
 import { RootState } from '../../../../../../types/appTypes';
 import { getThreeParticipants } from '../../../../../../utils/helper';
 
-function ParticipantsButton() {
+type ParticipantsButtonProps = {
+  onClick: () => void;
+};
+
+function ParticipantsButton({ onClick }: ParticipantsButtonProps) {
   const convoData = useSelector((state: RootState) => state.home.current_convo);
   const usersData = useSelector(
     (state: RootState) => state.app_data.users_data
@@ -13,7 +17,7 @@ function ParticipantsButton() {
   const participantsToShow = getThreeParticipants(convoParticipants);
 
   return (
-    <button className={styles['participants-button']}>
+    <button onClick={onClick} className={styles['participants-button']}>
       <div className={styles['three-photos']}>
         {participantsToShow.map((participantId, index) => {
           const imageSource = usersData[participantId]

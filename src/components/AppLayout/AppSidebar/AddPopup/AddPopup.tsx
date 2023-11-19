@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './AddPopup.module.css';
 import NewMessageIcon from '../../../../icons/AppLayout/HomeView/HomeSidebar/SidebarHeader/NewMessageIcon';
 import PublicChannelIcon from '../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PubilcChannelIcon';
-import PopupOverlay from '../../../shared/PopupOverlay/PopupOverlay';
+import PopupOverlay from '../../../shared/AppPopup/PopupOverlay/PopupOverlay';
 
 type AddPopupProps = {
   hidePopup: () => void;

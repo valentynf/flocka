@@ -27,7 +27,7 @@ function AppSidebar() {
     currentView === anotherView ? styles['folder-active'] : styles['folder'];
 
   const toggleAddPopup = () => {
-    setIsAddMenuOpen(() => !isAddMenuOpen);
+    setIsAddMenuOpen((oldValue) => !oldValue);
   };
 
   const toggleNewChannelPopup = () => {

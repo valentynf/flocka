@@ -1,6 +1,6 @@
 import { ReactNode, useRef } from 'react';
 import styles from './PopupOverlay.module.css';
-import useClickOverlay from '../../../hooks/useClickOverlay';
+import useClickOverlay from '../../../../hooks/useClickOverlay';
 
 type PopupOverlayProps = {
   onClick: () => void;

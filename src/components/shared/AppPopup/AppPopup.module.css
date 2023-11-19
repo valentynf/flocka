@@ -1,4 +1,4 @@
-.add-channel-modal {
+.app-popup {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -13,8 +13,25 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: #c4c4c7;
 }
 
+.name {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  font-size: 20px;
+  margin: 0;
+}
+
+.icon {
+  box-sizing: border-box;
+  padding-top: 6px;
+}
 .close-button {
   display: flex;
   align-items: center;
@@ -33,9 +50,4 @@
 
 .close-button svg {
   transform: rotate(45deg);
-}
-
-.heading {
-  font-size: 20px;
-  margin: 0;
 }

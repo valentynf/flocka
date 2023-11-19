@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import styles from './NewChannelPopup.module.css';
-import PlusIcon from '../../../../icons/AppLayout/AppSidebar/PlusIcon';
 import { AppDispatch, RootState } from '../../../../types/appTypes';
 import { useDispatch, useSelector } from 'react-redux';
 import { addNewChannel } from '../../../../store/slices/homeSlice';
-import PopupOverlay from '../../../shared/PopupOverlay/PopupOverlay';
 import ChannelInput from './ChannelInput/ChannelInput';
+import AppPopup from '../../../shared/AppPopup/AppPopup';
 
 type NewChannelPopupProps = {
   hidePopup: () => void;
@@ -26,7 +24,7 @@ function NewChannelPopup({ hidePopup }: NewChannelPopupProps) {
     }
   }, []);
 
-  const handleCreateButtonClick = () => {
+  const handleCreateChannel = () => {
     if (userData) {
       setIsLoading(true);
       dispatch(
@@ -43,24 +41,16 @@ function NewChannelPopup({ hidePopup }: NewChannelPopupProps) {
   };
 
   return (
-    <PopupOverlay onClick={hidePopup}>
-      <div className={styles['add-channel-modal']}>
-        <div className={styles['modal-header']}>
-          <h3 className={styles['heading']}>Create a channel</h3>
-          <button onClick={hidePopup} className={styles['close-button']}>
-            <PlusIcon />
-          </button>
-        </div>
-        <ChannelInput
-          inputRef={inputRef}
-          inputValue={inputValue}
-          handleInputChange={handleInputChange}
-          handleSubmit={handleCreateButtonClick}
-          isSubmitting={isLoading}
-          pattern="^[a-z0-9]+(-[a-z0-9]+)*$"
-        />
-      </div>
-    </PopupOverlay>
+    <AppPopup name="Create a channel" hidePopup={hidePopup}>
+      <ChannelInput
+        inputRef={inputRef}
+        inputValue={inputValue}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleCreateChannel}
+        isSubmitting={isLoading}
+        pattern="^[a-z0-9]+(-[a-z0-9]+)*$"
+      />
+    </AppPopup>
   );
 }
 
