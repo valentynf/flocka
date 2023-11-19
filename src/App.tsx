@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 
 import { RootState } from './types/appTypes';
 import useAuth from './hooks/useAuth';
-import RegisterView from './components/LoginView/RegisterView/RegisterView';
+import RegisterView from './components/RegisterView/RegisterView';
 import AppLoadingView from './components/AppLayout/AppLoadingView/AppLoadingView';
 
 function App() {
@@ -20,6 +20,8 @@ function App() {
 
   const { isLoading } = useAuth();
 
+  const isUserLoggedIn = isAuthenticated && isExistingUser;
+
   if (isLoading)
     return <AppLoadingView message="Consuming the essence of users data" />;
 
@@ -27,13 +29,17 @@ function App() {
     <Router>
       <Routes>
         <Route
+          path="/app"
+          element={isUserLoggedIn ? <AppLayout /> : <Navigate to="/login" />}
+        />
+        <Route
           path="/login"
           element={
             isAuthenticated ? (
               isExistingUser ? (
                 <Navigate to="/app" />
               ) : (
-                <RegisterView />
+                <Navigate to="/register" />
               )
             ) : (
               <LoginView />
@@ -41,13 +47,9 @@ function App() {
           }
         />
         <Route
-          path="/app"
+          path="/register"
           element={
-            isAuthenticated && isExistingUser ? (
-              <AppLayout />
-            ) : (
-              <Navigate to="/login" />
-            )
+            isAuthenticated ? <RegisterView /> : <Navigate to="/login" />
           }
         />
         <Route path="*" element={<Navigate to="/login" />} />

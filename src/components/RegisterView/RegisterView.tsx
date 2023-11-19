@@ -1,10 +1,10 @@
 import { ChangeEvent, useState } from 'react';
 import styles from './RegisterView.module.css';
-import { loadImageFromInput } from '../../../utils/helper';
-import { AppDispatch, RootState } from '../../../types/appTypes';
+import { loadImageFromInput } from '../../utils/helper';
+import { AppDispatch, RootState } from '../../types/appTypes';
 import { useDispatch, useSelector } from 'react-redux';
-import { createNewUser, signOut } from '../../../store/slices/authSlice';
-import { uploadAvatar } from '../../../api/services/storageBucketApi';
+import { createNewUser, signOut } from '../../store/slices/authSlice';
+import { uploadAvatar } from '../../api/services/storageBucketApi';
 import { ThreeCircles } from 'react-loader-spinner';
 
 function RegisterView() {

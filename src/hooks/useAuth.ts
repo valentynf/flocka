@@ -10,7 +10,6 @@ function useAuth() {
   const [isLoadingUserData, setIsLoadingUserData] = useState<boolean>(false);
   const [isLoadingSessionData, setIsLoadingSessionData] =
     useState<boolean>(false);
-  //add nother state for the first effect
 
   const isLoading = isLoadingUserData || isLoadingSessionData;
 
