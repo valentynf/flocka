@@ -80,6 +80,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .create-channel-button {
@@ -100,5 +101,12 @@
 }
 
 .create-channel-button:disabled {
-  cursor: not-allowed;
+  background-color: #34373a;
+  color: #aaabad;
+}
+
+.small-loader {
+  position: absolute;
+  top: 17px;
+  left: 60px;
 }

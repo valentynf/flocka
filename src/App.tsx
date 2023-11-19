@@ -17,10 +17,9 @@ function App() {
   const authData = useSelector((state: RootState) => state.auth);
   const isAuthenticated = authData.session !== null;
   const isExistingUser = authData.user_data !== null;
+  const isUserLoggedIn = isAuthenticated && isExistingUser;
 
   const { isLoading } = useAuth();
-
-  const isUserLoggedIn = isAuthenticated && isExistingUser;
 
   if (isLoading)
     return <AppLoadingView message="Consuming the essence of users data" />;

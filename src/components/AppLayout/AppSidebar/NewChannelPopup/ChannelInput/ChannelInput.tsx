@@ -25,10 +25,13 @@ function ChannelInput({
   const [isInputFocused, setIsInputFocused] = useState<boolean>(true);
 
   const isValidText = isMatchingThePattern(inputValue, pattern);
-  const isExistingChannel = useExistingChannel(inputValue);
+  const { isExistingChannel, isCheckingExistingChannel } =
+    useExistingChannel(inputValue);
 
   const isValidInput =
     !isExistingChannel && inputValue.length > 3 && isValidText;
+  const isEmptyInput = inputValue.length === 0;
+  const isError = !isValidInput && !isSubmitting && !isEmptyInput;
 
   const errorMessage = isExistingChannel
     ? 'Channel with this name already exists'
@@ -56,7 +59,7 @@ hyphens).`;
           value={inputValue}
           onChange={handleInputChange}
           className={`${styles['input-field']} ${
-            !isValidInput && !isSubmitting ? styles['input-error'] : ''
+            isError ? styles['input-error'] : ''
           } ${isInputFocused && !isSubmitting ? styles['input-focused'] : ''}`}
           type="text"
           placeholder="e.g #start-a-cult"
@@ -68,7 +71,7 @@ hyphens).`;
         <span className={styles['char-counter']}>
           {30 - inputValue.length || ''}
         </span>
-        {!isValidInput && !isSubmitting ? (
+        {isError ? (
           <p className={styles['input-error-info']}>
             <span className={styles['alert-icon']}>⚠</span> {errorMessage}
           </p>
@@ -83,13 +86,22 @@ hyphens).`;
         {isSubmitting ? (
           <ThreeCircles height="50" width="50" color="#33174d" />
         ) : (
-          <button
-            onClick={handleSubmit}
-            disabled={!isValidInput}
-            className={styles['create-channel-button']}
-          >
-            Create
-          </button>
+          <>
+            {isCheckingExistingChannel && (
+              <div className={styles['small-loader']}>
+                <ThreeCircles height="35" width="35" color="#33174d" />
+              </div>
+            )}
+            <button
+              onClick={handleSubmit}
+              disabled={
+                !isValidInput || isCheckingExistingChannel || isEmptyInput
+              }
+              className={styles['create-channel-button']}
+            >
+              Create
+            </button>
+          </>
         )}
       </div>
     </>
