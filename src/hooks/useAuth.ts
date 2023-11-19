@@ -7,22 +7,32 @@ import { AppDispatch, RootState } from '../types/appTypes';
 function useAuth() {
   const dispatch: AppDispatch = useDispatch();
   const session = useSelector((state: RootState) => state.auth.session);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoadingUserData, setIsLoadingUserData] = useState<boolean>(false);
+  const [isLoadingSessionData, setIsLoadingSessionData] =
+    useState<boolean>(false);
+  //add nother state for the first effect
+
+  const isLoading = isLoadingUserData || isLoadingSessionData;
 
   useEffect(() => {
-    dispatch(getSession());
     supabase.auth.onAuthStateChange((event) => {
       if (event === 'SIGNED_OUT') {
         dispatch(setSession(null));
       }
+    });
+    setIsLoadingSessionData(true);
+    dispatch(getSession()).finally(() => {
+      setIsLoadingSessionData(false);
     });
   }, [dispatch]);
 
   useEffect(() => {
     const userEmail = session?.user.email;
     if (userEmail) {
-      setIsLoading(true);
-      dispatch(getUserData(userEmail)).finally(() => setIsLoading(false));
+      setIsLoadingUserData(true);
+      dispatch(getUserData(userEmail)).finally(() =>
+        setIsLoadingUserData(false)
+      );
     }
   }, [session, dispatch]);
 
