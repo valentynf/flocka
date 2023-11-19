@@ -1,4 +1,5 @@
 .messages-view {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: calc(100vh - 44px);
@@ -8,4 +9,10 @@
 .messages {
   flex: 1;
   height: 10px;
+}
+
+.loader {
+  position: absolute;
+  left: calc(50% - 48px);
+  bottom: calc(50% + 40px);
 }

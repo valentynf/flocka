@@ -7,10 +7,7 @@ import {
   RootState,
 } from '../../../../../../types/appTypes';
 import styles from './ChannelItem.module.css';
-import {
-  getChannelConvo,
-  setCurrentChannel,
-} from '../../../../../../store/slices/homeSlice';
+import { setCurrentChannel } from '../../../../../../store/slices/homeSlice';
 
 export type ChannelItemProps = {
   data: Channel;
@@ -27,8 +24,8 @@ function ChannelItem({ data }: ChannelItemProps) {
 
   const dispatch: AppDispatch = useDispatch();
   const handleChannelClick = () => {
+    //this triggers a messages data render in convoview
     dispatch(setCurrentChannel(data));
-    dispatch(getChannelConvo(id));
   };
 
   return (

@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../../types/appTypes';
 import ConvoHeader from './ConvoHeader/ConvoHeader';
 import useChannelSub from '../../../../hooks/useChannelSub';
+import { ThreeCircles } from 'react-loader-spinner';
 // import { useState } from 'react';
 
 function ConvoView() {
@@ -14,26 +15,31 @@ function ConvoView() {
     (state: RootState) => state.home.current_convo
   );
 
-  useChannelSub(currentConvoData?.channel.id);
+  const isLoadingMessages = useChannelSub(currentConvoData?.channel.id);
 
   return (
     <div className={styles['messages-view']}>
-      {!Number.isNaN(currentConvoData.channel.id) && (
-        <>
-          <div>
-            <ConvoHeader
-              type={currentConvoData.channel.type}
-              name={currentConvoData.channel.name}
-            />
+      <div>
+        <ConvoHeader
+          type={currentConvoData.channel.type}
+          name={currentConvoData.channel.name}
+        />
+      </div>
+      <div className={styles['messages']}>
+        {isLoadingMessages ? (
+          <div className={styles['loader']}>
+            <ThreeCircles height="130" width="130" color="#212529" />
           </div>
-          <div className={styles['messages']}>
-            <MessagesList data={currentConvoData.messages} />
-          </div>
-          <div>
-            <MessageInput placeholder={currentConvoData.channel.name} />
-          </div>
-        </>
-      )}
+        ) : (
+          <MessagesList data={currentConvoData.messages} />
+        )}
+      </div>
+      <div>
+        <MessageInput
+          isDisabled={isLoadingMessages}
+          placeholder={currentConvoData.channel.name}
+        />
+      </div>
     </div>
   );
 }

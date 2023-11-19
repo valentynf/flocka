@@ -8,9 +8,10 @@ import { generateMessage } from '../../../../../utils/helper';
 
 type MessageInputProps = {
   placeholder: string;
+  isDisabled: boolean;
 };
 
-function MessageInput({ placeholder }: MessageInputProps) {
+function MessageInput({ placeholder, isDisabled }: MessageInputProps) {
   const [messageText, setMessageText] = useState<string>('');
   const dispatch: AppDispatch = useDispatch();
   const userData = useSelector((state: RootState) => state.auth.user_data);
@@ -51,6 +52,7 @@ function MessageInput({ placeholder }: MessageInputProps) {
           />
         </button>
         <textarea
+          disabled={isDisabled}
           value={messageText}
           onChange={handleTextUpdate}
           onKeyDown={handleEnterToSend}
