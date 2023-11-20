@@ -18,6 +18,7 @@
 .participants-button:hover {
   background-color: #202326;
   cursor: pointer;
+  color: #c4c4c7;
 }
 
 .three-photos {

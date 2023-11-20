@@ -1,5 +1,6 @@
 .message-container {
   display: flex;
+  position: relative;
   gap: 10px;
   padding: 4px 0 4px 14px;
 }
@@ -12,14 +13,10 @@
   border-top: 1px solid #3d3d3e;
 }
 
-.date-container {
+/* .date-container {
   position: absolute;
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  left: calc(50% + 190px);
-}
+
+} */
 
 .message-date {
   display: flex;
@@ -32,11 +29,13 @@
   white-space: nowrap;
   color: #d1d2d3;
   max-width: 250px;
-  bottom: -8px;
+  bottom: 38px;
+  left: calc(50% - 74px);
   padding: 4px 16px;
   border: 1px solid #3d3d3e;
   border-radius: 4px;
   background-color: #181c20;
+  z-index: 3;
 }
 
 .user-image {

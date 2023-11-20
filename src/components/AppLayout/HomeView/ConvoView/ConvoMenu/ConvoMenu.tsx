@@ -21,7 +21,14 @@ function ConvoMenu({ hidePopup }: ConvoMenuProps) {
 
   return (
     <AppPopup icon={icon} name={convoName} hidePopup={hidePopup}>
-      <div className={styles['convo-menu']}></div>
+      <div className={styles['convo-menu']}>
+        <div className={styles['menu']}></div>
+        <div className={styles['content']}>
+          <div className={styles['about-tab']}></div>
+          <div className={styles['members-tab']}></div>
+          <div className={styles['settings-tab']}></div>
+        </div>
+      </div>
     </AppPopup>
   );
 }
