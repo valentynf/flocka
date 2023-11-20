@@ -19,9 +19,11 @@ function Message({ data, firstToday }: MessageProps) {
       }`}
     >
       {firstToday && (
-        <span className={styles['message-date']}>
-          {formatMessageDate(timestamp)}
-        </span>
+        <div className={styles['date-container']}>
+          <span className={styles['message-date']}>
+            {formatMessageDate(timestamp)}
+          </span>
+        </div>
       )}
       <div className={styles['img-container']}>
         <img src={avatar_src} className={styles['user-image']} />
