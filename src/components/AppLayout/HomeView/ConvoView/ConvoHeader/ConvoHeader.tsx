@@ -22,7 +22,9 @@ function ConvoHeader({ name, type }: ConvoHeaderProps) {
 
   return (
     <div className={styles['header-container']}>
-      {isConvoMenuOpen && <ConvoMenu hidePopup={toggleConvoMenu} />}
+      {isConvoMenuOpen && (
+        <ConvoMenu firstTab={'MEMBERS'} hidePopup={toggleConvoMenu} />
+      )}
       <div className={styles['channel-info']}>
         <div className={styles['icon']}>{icon}</div>
         <p className={styles['name']}>{name}</p>
