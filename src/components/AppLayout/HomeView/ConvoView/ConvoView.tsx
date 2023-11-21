@@ -6,11 +6,8 @@ import { RootState } from '../../../../types/appTypes';
 import ConvoHeader from './ConvoHeader/ConvoHeader';
 import useConvoSub from '../../../../hooks/useConvoSub';
 import { ThreeCircles } from 'react-loader-spinner';
-// import { useState } from 'react';
 
 function ConvoView() {
-  // const [isConvoMenuOpened, setIsConvoMenuOpened] = useState<boolean>(false);
-
   const currentConvoData = useSelector(
     (state: RootState) => state.home.current_convo
   );
