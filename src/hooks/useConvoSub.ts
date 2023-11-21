@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
-import { setChannelSubscription } from '../api/services/channelsApi';
+import { setConversationSubscription } from '../api/services/channelsApi';
 import { useDispatch } from 'react-redux';
 import { getChannelConvo } from '../store/slices/homeSlice';
 import { AppDispatch } from '../types/appTypes';
 
-function useChannelSub(channelId: number | undefined) {
+function useConvoSub(channelId: number | undefined) {
   const [isLoadingMessages, setIsLoadingMessages] = useState<boolean>(false);
   const dispatch: AppDispatch = useDispatch();
 
+  //temporarily added loading messages here as well
   useEffect(() => {
     if (channelId != undefined) {
       setIsLoadingMessages(true);
@@ -19,7 +20,7 @@ function useChannelSub(channelId: number | undefined) {
 
   useEffect(() => {
     if (channelId != undefined) {
-      const room = setChannelSubscription(channelId, dispatch);
+      const room = setConversationSubscription(channelId, dispatch);
 
       return () => {
         room.unsubscribe();
@@ -30,4 +31,4 @@ function useChannelSub(channelId: number | undefined) {
   return isLoadingMessages;
 }
 
-export default useChannelSub;
+export default useConvoSub;

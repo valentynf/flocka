@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { AppDispatch, RootState } from '../../../../types/appTypes';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewChannel } from '../../../../store/slices/homeSlice';
+import { createNewChannel } from '../../../../store/slices/homeSlice';
 import AppPopup from '../../../shared/AppPopup/AppPopup';
 import styles from './NewChannelPopup.module.css';
 import { ThreeCircles } from 'react-loader-spinner';
@@ -49,7 +49,7 @@ function NewChannelPopup({ hidePopup }: NewChannelPopupProps) {
     if (userData) {
       setIsLoading(true);
       dispatch(
-        addNewChannel({ channel_name: inputValue, user_id: userData.id })
+        createNewChannel({ channel_name: inputValue, user_id: userData.id })
       ).finally(() => {
         setIsLoading(false);
         hidePopup();

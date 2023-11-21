@@ -24,6 +24,17 @@ const initialState: HomeStateSlice = {
   },
 };
 
+export const getNewChannel = createAsyncThunk(
+  'home/getNewChannel',
+  async (channelId: number, { rejectWithValue }) => {
+    const { data, error } = await fetchChannelsData([channelId]);
+    if (error) {
+      return rejectWithValue(error.message);
+    }
+    return data;
+  }
+);
+
 export const getChannels = createAsyncThunk(
   'home/getChannels',
   async (channelIds: number[], { rejectWithValue }) => {
@@ -57,8 +68,8 @@ export const sendMessage = createAsyncThunk(
   }
 );
 
-export const addNewChannel = createAsyncThunk(
-  'home/addNewChannel',
+export const createNewChannel = createAsyncThunk(
+  'home/createNewChannel',
   async ({ channel_name, user_id }: NewChannelPayload, { rejectWithValue }) => {
     const { data, error } = await rpcCreatePublicChannel(channel_name, user_id);
     if (error) {
@@ -80,18 +91,17 @@ const homeSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getChannels.fulfilled, (state, { payload }) => {
-      state.channels = payload;
-    });
+    builder.addCase(getNewChannel.fulfilled, (state, { payload }) => {
+      if (payload && state.channels) {
+        state.channels.push(payload[0]);
+      }
+    }),
+      builder.addCase(getChannels.fulfilled, (state, { payload }) => {
+        state.channels = payload;
+      });
     builder.addCase(getChannelConvo.fulfilled, (state, { payload }) => {
       if (payload) {
         state.current_convo.messages = payload.messages;
-      }
-    });
-    //a-la realtime update when new channel is added
-    builder.addCase(addNewChannel.fulfilled, (state, { payload }) => {
-      if (state.channels && payload) {
-        state.channels.push(payload);
       }
     });
   },

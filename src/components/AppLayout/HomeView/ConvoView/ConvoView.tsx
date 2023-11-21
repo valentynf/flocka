@@ -4,7 +4,7 @@ import styles from './ConvoView.module.css';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../types/appTypes';
 import ConvoHeader from './ConvoHeader/ConvoHeader';
-import useChannelSub from '../../../../hooks/useChannelSub';
+import useConvoSub from '../../../../hooks/useConvoSub';
 import { ThreeCircles } from 'react-loader-spinner';
 // import { useState } from 'react';
 
@@ -15,7 +15,7 @@ function ConvoView() {
     (state: RootState) => state.home.current_convo
   );
 
-  const isLoadingMessages = useChannelSub(currentConvoData?.channel.id);
+  const isLoadingMessages = useConvoSub(currentConvoData?.channel.id);
 
   return (
     <div className={styles['messages-view']}>
