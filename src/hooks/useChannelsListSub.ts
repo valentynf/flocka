@@ -11,10 +11,8 @@ function useChannelsListSub() {
   useEffect(() => {
     if (userId != undefined) {
       const room = setChannelsListSubscription(userId, dispatch);
-      console.log('subscriiption here', userId);
 
       return () => {
-        console.log('unsib');
         room.unsubscribe();
       };
     }
