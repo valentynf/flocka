@@ -15,14 +15,31 @@ function AddMembersPopup({ hidePopup }: AddMembersPopupProps) {
   const { name, type } = currentConvoData.channel;
   const icon = getChannelIcon(type);
 
+  const handleAddMembersClick = () => {};
+
   return (
     <AppPopup
       hidePopup={hidePopup}
-      prefix={'Add members to'}
+      prefix={'Add people to'}
       name={name}
       icon={icon}
     >
-      <div className={styles['add-members-popup']}></div>
+      <div className={styles['add-members-popup']}>
+        <div className={styles['input-field']}>
+          <input
+            placeholder="for example, Herman"
+            className={styles['input']}
+          ></input>
+        </div>
+        <div className={styles['button-container']}>
+          <button
+            onClick={handleAddMembersClick}
+            className={styles['button-submit']}
+          >
+            Add
+          </button>
+        </div>
+      </div>
     </AppPopup>
   );
 }

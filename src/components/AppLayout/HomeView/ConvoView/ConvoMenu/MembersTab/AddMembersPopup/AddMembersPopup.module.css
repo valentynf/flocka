@@ -1,0 +1,44 @@
+input:focus {
+  outline: none;
+}
+
+.add-members-popup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: 'Lato', sans-serif;
+}
+
+.input {
+  font-family: 'Lato', sans-serif;
+  width: 450px;
+  font-size: 17px;
+  height: 40px;
+  background-color: #1a1d21;
+  color: #d1d2d3;
+  border: 1px solid #3d3d3e;
+  border-radius: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button-submit {
+  background-color: #33174d;
+  font-size: 16px;
+  font-weight: 200;
+  padding: 8px 24px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 200;
+  border: none;
+  color: #c4c4c4;
+}
+
+.button-submit:hover {
+  background-color: #3f1c63;
+  cursor: pointer;
+}

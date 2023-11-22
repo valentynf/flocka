@@ -44,7 +44,7 @@ input:focus {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #161616;
+  background-color: #1a1d21;
   padding: 12px 24px;
   color: #c4c4c7;
   border-radius: 5%;
@@ -68,7 +68,7 @@ input:focus {
 }
 
 .input-field input {
-  background-color: #161616;
+  background-color: #1a1d21;
   color: #c4c4c7;
   border-radius: 4px;
   border: 1px solid #3d3d3e;
@@ -127,8 +127,8 @@ input::file-selector-button:hover {
   padding: 8px 24px;
   font-family: 'Lato', sans-serif;
   font-weight: 200;
-  border: 1px solid #3d3d3e;
   color: #c4c4c4;
+  border: none;
 }
 
 .button:hover {
@@ -144,7 +144,7 @@ input::file-selector-button:hover {
 }
 
 .button-logout {
-  background-color: #161616;
+  background-color: #1a1d21;
 }
 
 .button-logout:hover {

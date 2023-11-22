@@ -3,11 +3,10 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../../../types/appTypes';
 import AppPopup from '../../../../shared/AppPopup/AppPopup';
 import styles from './ConvoMenu.module.css';
-import PublicChannelIcon from '../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PubilcChannelIcon';
-import PrivateChannelIcon from '../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PrivateChannelIcon';
 import AboutTab from './AboutTab/AboutTab';
 import MembersTab from './MembersTab/MembersTab';
 import SettingsTab from './SettingsTab/SettingsTab';
+import { getChannelIcon } from '../../../../../utils/helper';
 
 type ConvoMenuTab = 'ABOUT' | 'MEMBERS' | 'SETTINGS';
 
@@ -21,8 +20,7 @@ function ConvoMenu({ hidePopup, firstTab }: ConvoMenuProps) {
     (state: RootState) => state.home.current_convo
   );
   const { name, type } = channel;
-  const icon =
-    type === 'public' ? <PublicChannelIcon /> : <PrivateChannelIcon />;
+  const icon = getChannelIcon(type);
   const [currentTab, setCurrentTab] = useState<ConvoMenuTab>(firstTab);
 
   const switchTab = (tabName: ConvoMenuTab) => {

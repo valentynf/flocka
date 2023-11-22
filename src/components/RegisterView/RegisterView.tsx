@@ -30,7 +30,7 @@ function RegisterView() {
     }
   };
 
-  const onFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
     const data = new FormData(e.currentTarget);
@@ -77,7 +77,7 @@ function RegisterView() {
             <ThreeCircles height="100" width="100" color="#33174d" />
           </div>
         ) : (
-          <form onSubmit={onFormSubmit}>
+          <form onSubmit={handleFormSubmit}>
             <div className={styles['input-field']}>
               <label>Email</label>
               <input
