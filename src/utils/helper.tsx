@@ -1,5 +1,7 @@
 import { v4 as uuid } from 'uuid';
 import { MessageData, UsersData } from '../types/appTypes';
+import PublicChannelIcon from '../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PubilcChannelIcon';
+import PrivateChannelIcon from '../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PrivateChannelIcon';
 
 export const generateMessage = (
   senderId: string,
@@ -79,4 +81,8 @@ export const isMatchingThePattern = (
   pattern: string
 ): boolean => {
   return new RegExp(pattern).test(input);
+};
+
+export const getChannelIcon = (type: 'public' | 'private') => {
+  return type === 'public' ? <PublicChannelIcon /> : <PrivateChannelIcon />;
 };

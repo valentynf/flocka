@@ -7,15 +7,17 @@ type AppPopupProps = {
   name: string;
   hidePopup: () => void;
   icon?: ReactNode;
+  prefix?: string;
   children: ReactNode;
 };
 
-function AppPopup({ hidePopup, children, name, icon }: AppPopupProps) {
+function AppPopup({ hidePopup, children, name, icon, prefix }: AppPopupProps) {
   return (
     <PopupOverlay onClick={hidePopup}>
       <div className={styles['app-popup']}>
         <div className={styles['modal-header']}>
           <div className={styles['name']}>
+            {prefix && <span className={styles['prefix']}>{prefix}</span>}
             <div className={styles['icon']}>{icon}</div>
             <h3 className={styles['text']}>{name}</h3>
           </div>

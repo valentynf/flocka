@@ -2,6 +2,8 @@ import { useSelector } from 'react-redux';
 import styles from './MembersTab.module.css';
 import { RootState } from '../../../../../../types/appTypes';
 import NewUserIcon from '../../../../../../icons/AppLayout/HomeView/ConvoView/ConvoMenu/NewUserIcon';
+import { useState } from 'react';
+import AddMembersPopup from './AddMembersPopup/AddMembersPopup';
 
 function MembersTab() {
   const currentConvoData = useSelector(
@@ -12,14 +14,27 @@ function MembersTab() {
   );
   const { participants } = currentConvoData.channel;
 
+  const [isAddMembersPopupOpen, setIsAddMembersPopupOpen] =
+    useState<boolean>(false);
+
+  const toggleAddMembersMenu = () => {
+    setIsAddMembersPopupOpen((oldValue) => !oldValue);
+  };
+
   return (
     <div className={styles['members-tab']}>
-      <div className={`${styles['add-people']} ${styles['list-item']}`}>
+      {isAddMembersPopupOpen && (
+        <AddMembersPopup hidePopup={toggleAddMembersMenu} />
+      )}
+      <button
+        onClick={toggleAddMembersMenu}
+        className={`${styles['add-people']} ${styles['list-item']}`}
+      >
         <div className={styles['add-icon']}>
           <NewUserIcon color={'#6930aa'} />
         </div>
         <span className={styles['member-name']}>Add a soul</span>
-      </div>
+      </button>
       <div className={styles['participants-list']}>
         {participants.map((userId, index) => {
           const userData = usersData[userId];

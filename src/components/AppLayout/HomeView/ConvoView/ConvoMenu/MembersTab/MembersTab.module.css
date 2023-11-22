@@ -49,6 +49,12 @@
   background-color: #202327;
 }
 
+.add-people {
+  font-family: 'Lato', sans-serif;
+  background-color: #1a1d21;
+  border: none;
+}
+
 .add-people.list-item:hover {
   background-color: rgba(104, 44, 171, 0.15);
   cursor: pointer;

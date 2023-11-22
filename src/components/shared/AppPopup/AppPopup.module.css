@@ -1,4 +1,5 @@
 .app-popup {
+  box-sizing: inherit;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -10,6 +11,11 @@
   padding: 8px 16px;
 }
 
+.app-popup:has(.app-popup) {
+  /* dimming the border if there's a child popup*/
+  border-color: #181819;
+}
+
 .modal-header {
   display: flex;
   align-items: center;
@@ -19,7 +25,6 @@
 
 .name {
   display: flex;
-  gap: 2px;
   align-items: center;
   justify-content: center;
 }
@@ -51,4 +56,10 @@
 
 .close-button svg {
   transform: rotate(45deg);
+}
+
+.prefix {
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 4px;
 }
