@@ -1,70 +1,62 @@
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { RootState } from '../../../../../types/appTypes';
 import AppPopup from '../../../../shared/AppPopup/AppPopup';
 import styles from './ConvoMenu.module.css';
-import { RootState } from '../../../../../types/appTypes';
 import PublicChannelIcon from '../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PubilcChannelIcon';
 import PrivateChannelIcon from '../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PrivateChannelIcon';
-import { useState } from 'react';
+import AboutTab from './AboutTab/AboutTab';
+import MembersTab from './MembersTab/MembersTab';
+import SettingsTab from './SettingsTab/SettingsTab';
 
-type ConvoMenuTabs = 'ABOUT' | 'MEMBERS' | 'SETTINGS';
+type ConvoMenuTab = 'ABOUT' | 'MEMBERS' | 'SETTINGS';
 
 type ConvoMenuProps = {
   hidePopup: () => void;
-  firstTab: ConvoMenuTabs;
+  firstTab: ConvoMenuTab;
 };
 
 function ConvoMenu({ hidePopup, firstTab }: ConvoMenuProps) {
-  const currentConvoData = useSelector(
+  const { channel } = useSelector(
     (state: RootState) => state.home.current_convo
   );
-
-  const [currentTab, setCurrentTab] = useState<ConvoMenuTabs>(firstTab);
-
-  const convoName = currentConvoData.channel.name;
-  const channelType = currentConvoData.channel.type;
+  const { name, type } = channel;
   const icon =
-    channelType === 'public' ? <PublicChannelIcon /> : <PrivateChannelIcon />;
+    type === 'public' ? <PublicChannelIcon /> : <PrivateChannelIcon />;
+  const [currentTab, setCurrentTab] = useState<ConvoMenuTab>(firstTab);
 
-  const switchTab = (tabName: ConvoMenuTabs) => {
+  const switchTab = (tabName: ConvoMenuTab) => {
     setCurrentTab(tabName);
   };
 
+  const renderTabButton = (tab: ConvoMenuTab) => (
+    <button
+      onClick={() => switchTab(tab)}
+      className={`${styles['menu-button']} ${
+        currentTab === tab ? styles['active-tab'] : ''
+      }`}
+    >
+      {tab.charAt(0).toUpperCase() + tab.slice(1).toLowerCase()}
+      {tab === 'MEMBERS' && (
+        <span className={styles['members-count']}>
+          {channel.participants.length}
+        </span>
+      )}
+    </button>
+  );
+
   return (
-    <AppPopup icon={icon} name={convoName} hidePopup={hidePopup}>
+    <AppPopup icon={icon} name={name} hidePopup={hidePopup}>
       <div className={styles['convo-menu']}>
         <div className={styles['tabs-menu']}>
-          <button
-            onClick={() => switchTab('ABOUT')}
-            className={`${styles['menu-button']} ${
-              currentTab === 'ABOUT' ? styles['active-tab'] : ''
-            }`}
-          >
-            About
-          </button>
-          <button
-            onClick={() => switchTab('MEMBERS')}
-            className={`${styles['menu-button']} ${
-              currentTab === 'MEMBERS' ? styles['active-tab'] : ''
-            }`}
-          >
-            Members
-            <span className={styles['members-count']}>
-              {currentConvoData.channel.participants.length}
-            </span>
-          </button>
-          <button
-            onClick={() => switchTab('SETTINGS')}
-            className={`${styles['menu-button']} ${
-              currentTab === 'SETTINGS' ? styles['active-tab'] : ''
-            }`}
-          >
-            Settings
-          </button>
+          {renderTabButton('ABOUT')}
+          {renderTabButton('MEMBERS')}
+          {renderTabButton('SETTINGS')}
         </div>
         <div className={styles['content']}>
-          <div className={styles['about-tab']}></div>
-          <div className={styles['members-tab']}></div>
-          <div className={styles['settings-tab']}></div>
+          {currentTab === 'ABOUT' && <AboutTab />}
+          {currentTab === 'MEMBERS' && <MembersTab />}
+          {currentTab === 'SETTINGS' && <SettingsTab />}
         </div>
       </div>
     </AppPopup>
