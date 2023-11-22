@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import BellIcon from '../../../icons/AppLayout/AppSidebar/BellIcon';
 import DirectMessagesIcon from '../../../icons/AppLayout/AppSidebar/DirectMessagesIcon';
-import DotDotDotIcon from '../../../icons/AppLayout/AppSidebar/DotDotDotIcon';
 import HomeIcon from '../../../icons/AppLayout/AppSidebar/HomeIcon';
 import PlusIcon from '../../../icons/AppLayout/AppSidebar/PlusIcon';
 import RibbonIcon from '../../../icons/AppLayout/AppSidebar/RibbonIcon';
@@ -96,12 +95,6 @@ function AppSidebar() {
             <RibbonIcon />
           </div>
           <p className={styles['name']}>Later</p>
-        </div>
-        <div className={styles['folder']}>
-          <div className={styles['icon']}>
-            <DotDotDotIcon />
-          </div>
-          <p className={styles['name']}>More</p>
         </div>
       </div>
       <div className={styles['bottom-section']}>
