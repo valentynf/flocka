@@ -34,3 +34,7 @@
 .active-tab {
   color: #d1d2d3;
 }
+
+.content {
+  padding-top: 48px;
+}
