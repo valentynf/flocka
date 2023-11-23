@@ -1,18 +1,22 @@
 import { ChangeEvent, useState } from 'react';
 import styles from './RegisterView.module.css';
-import { loadImageFromInput } from '../../utils/helper';
+import { isMatchingThePattern, loadImageFromInput } from '../../utils/helper';
 import { AppDispatch, RootState } from '../../types/appTypes';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNewUser, signOut } from '../../store/slices/authSlice';
 import { uploadAvatar } from '../../api/services/storageBucketApi';
 import { ThreeCircles } from 'react-loader-spinner';
+import { useNavigate } from 'react-router-dom';
 
 function RegisterView() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [nameInputValue, setNameInputValue] = useState<string>('');
   const dispatch: AppDispatch = useDispatch();
   const sessionUserData = useSelector(
     (state: RootState) => state.auth.session?.user
   );
+  const navigate = useNavigate();
+
   const userImageSrc = sessionUserData?.user_metadata.picture;
   const userEmail = sessionUserData?.user_metadata.email;
   const userId = sessionUserData?.id;
@@ -21,6 +25,10 @@ function RegisterView() {
 
   const handleSignOut = () => {
     dispatch(signOut());
+  };
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setNameInputValue(e.target.value);
   };
 
   const onFileChanged = (e: ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +40,7 @@ function RegisterView() {
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsLoading(true);
+
     const data = new FormData(e.currentTarget);
     const avatar = data.get('avatarFile') as File;
     const name = data.get('name') as string;
@@ -40,6 +48,7 @@ function RegisterView() {
 
     if (avatar.size > 0) {
       try {
+        setIsLoading(true);
         const res = await uploadAvatar(avatar);
         avatar_src = res;
       } catch (err) {
@@ -49,12 +58,18 @@ function RegisterView() {
     }
 
     if (userEmail && userId) {
+      setIsLoading(true);
       dispatch(
         createNewUser({ id: userId, email: userEmail, name, avatar_src })
-      ).catch((err) => {
-        console.error('Could not create a new user:', err);
-        setIsLoading(false);
-      });
+      )
+        .catch((err) => {
+          console.error('Could not create a new user:', err);
+          setIsLoading(false);
+        })
+        .finally(() => {
+          setIsLoading(false);
+          navigate('/app');
+        });
     }
   };
 
@@ -93,10 +108,14 @@ function RegisterView() {
             <div className={styles['input-field']}>
               <label className={styles['input-label']}>Display Name</label>
               <input
-                pattern="^[a-zA-Z ]{6,18}$"
+                value={nameInputValue}
+                pattern="^[a-zA-Z ]{6,25}$"
+                onChange={handleInputChange}
                 name="name"
                 type="text"
-                title="Name must be between 6 and 18 symbols, including one space"
+                title="Name must be between 6 and 25 symbols, including one space"
+                autoComplete="off"
+                maxLength={25}
                 required
               />
             </div>
@@ -127,6 +146,10 @@ function RegisterView() {
               <button
                 className={`${styles['button-submit']} ${styles['button']}`}
                 type="submit"
+                disabled={
+                  isLoading ||
+                  !isMatchingThePattern(nameInputValue, '^[a-zA-Z ]{6,25}$')
+                }
               >
                 Enroll
               </button>
