@@ -23,7 +23,6 @@ const appDataSlice = createSlice({
   initialState,
   reducers: {
     addNewUserRecord(state, { payload }) {
-      console.log('adding new user data', payload);
       state.users_data = { ...state.users_data, ...payload };
     },
   },
