@@ -53,7 +53,9 @@ export const getUserData = createAsyncThunk(
     return data;
   }
 );
-
+// There's a trigger in supabase that automatically
+// adds new user id to the list of participants in the channel
+// after insert new user data to the users-app table
 export const createNewUser = createAsyncThunk(
   'auth/createNewUser',
   async (userData: UserPayload, { rejectWithValue }) => {
