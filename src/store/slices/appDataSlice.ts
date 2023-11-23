@@ -21,7 +21,12 @@ export const getUsersData = createAsyncThunk(
 const appDataSlice = createSlice({
   name: 'app-data',
   initialState,
-  reducers: {},
+  reducers: {
+    addNewUserRecord(state, { payload }) {
+      console.log('adding new user data', payload);
+      state.users_data = { ...state.users_data, ...payload };
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getUsersData.fulfilled, (state, { payload }) => {
       state.users_data = payload;
@@ -29,4 +34,5 @@ const appDataSlice = createSlice({
   },
 });
 
+export const { addNewUserRecord } = appDataSlice.actions;
 export default appDataSlice.reducer;

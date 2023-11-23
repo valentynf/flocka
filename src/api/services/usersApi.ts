@@ -1,6 +1,9 @@
+import { RealtimeChannel } from '@supabase/supabase-js';
 import { USERS_TABLE } from '../../config/config';
-import { UserPayload } from '../../types/appTypes';
+import { AppDispatch, UserPayload } from '../../types/appTypes';
 import supabase from '../supabase';
+import { usersDataToRecord } from '../../utils/helper';
+import { addNewUserRecord } from '../../store/slices/appDataSlice';
 
 export const fetchUserData = async (userEmail: string) => {
   const { data, error } = await supabase
@@ -19,6 +22,28 @@ export const insertUserData = async (newUserData: UserPayload) => {
     .select('id, email, name, avatar_src, channels');
 
   return { data: data ? data[0] : null, error };
+};
+
+export const setUsersDataSubscription = (dispatch: AppDispatch) => {
+  const usersDataSub: RealtimeChannel = supabase
+    .channel('users_data_channel')
+    .on(
+      'postgres_changes',
+      {
+        event: 'INSERT',
+        schema: 'public',
+        table: USERS_TABLE,
+      },
+      (payload) => {
+        const { id, name, avatar_src } = payload.new;
+        dispatch(
+          addNewUserRecord(usersDataToRecord([{ id, name, avatar_src }]))
+        );
+      }
+    )
+    .subscribe();
+
+  return usersDataSub;
 };
 
 export const fetchUsersData = async () => {
