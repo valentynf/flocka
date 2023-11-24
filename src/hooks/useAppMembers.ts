@@ -3,7 +3,9 @@ import { findUsersByName } from '../api/services/usersApi';
 
 function useAppMembers(input: string) {
   const [isLoadingMembers, setIsLoadingMembers] = useState<boolean>(false);
-  const [searchResult, setSearchResult] = useState<{ id: string }[]>([]);
+  const [searchResult, setSearchResult] = useState<{ id: string }[] | null>(
+    null
+  );
 
   useEffect(() => {
     const abortController = new AbortController();

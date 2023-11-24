@@ -55,7 +55,7 @@ export const fetchUsersData = async () => {
 };
 
 export const findUsersByName = async (input: string, ac: AbortController) => {
-  if (input.length === 0) return { data: [], error: null };
+  if (input.length === 0) return { data: null, error: null };
   const { data, error } = await supabase
     .from(USERS_TABLE)
     .select('id')
