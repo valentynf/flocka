@@ -37,7 +37,9 @@ export const formatTimestamp = (timestamp: number): string => {
   const minutes = date.getMinutes();
   const dayTime = hours >= 12 ? 'PM' : 'AM';
 
-  return `${hours % 12 || 12}:${minutes} ${dayTime}`;
+  return `${hours % 12 || 12}:${
+    minutes < 10 ? `0${minutes}` : minutes
+  } ${dayTime}`;
 };
 
 export const formatMessageDate = (timestamp: number): string => {

@@ -41,6 +41,7 @@ export const setConversationSubscription = (
         filter: `id=eq.${channelId}`,
       },
       (payload) => {
+        console.log(payload);
         dispatch(addNewMessage(payload.new['messages'][0]));
       }
     )
