@@ -53,3 +53,14 @@ export const fetchUsersData = async () => {
 
   return { data, error };
 };
+
+export const findUsersByName = async (input: string, ac: AbortController) => {
+  if (input.length === 0) return { data: [], error: null };
+  const { data, error } = await supabase
+    .from(USERS_TABLE)
+    .select('id')
+    .ilike('name', `${input}%`)
+    .abortSignal(ac.signal);
+
+  return { data, error };
+};

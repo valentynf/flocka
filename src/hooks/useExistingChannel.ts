@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { checkExistingChannel } from '../api/services/channelsApi';
 
 function useExistingChannel(name: string) {
-  const [isExistingChannel, setSsExistingChannel] = useState<boolean>(false);
+  const [isExistingChannel, setIsExistingChannel] = useState<boolean>(false);
   const [isCheckingExistingChannel, setIsCheckingExistingChannel] =
     useState<boolean>(false);
 
@@ -12,7 +12,7 @@ function useExistingChannel(name: string) {
       try {
         setIsCheckingExistingChannel(true);
         const exists = await checkExistingChannel(name, abortController);
-        setSsExistingChannel(exists);
+        setIsExistingChannel(exists);
       } catch (error) {
         console.error(`Couldn't check if channel exists: ${error}`);
       } finally {
