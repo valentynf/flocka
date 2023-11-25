@@ -2,32 +2,32 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../../types/appTypes';
 import AppPopup from '../../../../shared/AppPopup/AppPopup';
-import styles from './ConvoMenu.module.css';
+import styles from './ConversationMenu.module.css';
 import AboutTab from './AboutTab/AboutTab';
 import MembersTab from './MembersTab/MembersTab';
 import SettingsTab from './SettingsTab/SettingsTab';
 import { getChannelIcon } from '../../../../../utils/helper';
 
-type ConvoMenuTab = 'ABOUT' | 'MEMBERS' | 'SETTINGS';
+type ConversationMenuTab = 'ABOUT' | 'MEMBERS' | 'SETTINGS';
 
-type ConvoMenuProps = {
+type ConversationMenuProps = {
   hidePopup: () => void;
-  firstTab: ConvoMenuTab;
+  firstTab: ConversationMenuTab;
 };
 
-function ConvoMenu({ hidePopup, firstTab }: ConvoMenuProps) {
+function ConversationMenu({ hidePopup, firstTab }: ConversationMenuProps) {
   const { channel } = useSelector(
     (state: RootState) => state.home.current_convo
   );
   const { name, type } = channel;
   const icon = getChannelIcon(type);
-  const [currentTab, setCurrentTab] = useState<ConvoMenuTab>(firstTab);
+  const [currentTab, setCurrentTab] = useState<ConversationMenuTab>(firstTab);
 
-  const switchTab = (tabName: ConvoMenuTab) => {
+  const switchTab = (tabName: ConversationMenuTab) => {
     setCurrentTab(tabName);
   };
 
-  const renderTabButton = (tab: ConvoMenuTab) => (
+  const renderTabButton = (tab: ConversationMenuTab) => (
     <button
       onClick={() => switchTab(tab)}
       className={`${styles['menu-button']} ${
@@ -61,4 +61,4 @@ function ConvoMenu({ hidePopup, firstTab }: ConvoMenuProps) {
   );
 }
 
-export default ConvoMenu;
+export default ConversationMenu;

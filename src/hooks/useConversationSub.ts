@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { getChannelConvo } from '../store/slices/homeSlice';
 import { AppDispatch } from '../types/appTypes';
 
-function useConvoSub(channelId: number | undefined) {
+function useConversationSub(channelId: number | undefined) {
   const [isLoadingMessages, setIsLoadingMessages] = useState<boolean>(false);
   const dispatch: AppDispatch = useDispatch();
 
@@ -31,4 +31,4 @@ function useConvoSub(channelId: number | undefined) {
   return isLoadingMessages;
 }
 
-export default useConvoSub;
+export default useConversationSub;

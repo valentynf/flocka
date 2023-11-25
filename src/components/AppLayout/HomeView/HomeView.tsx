@@ -1,9 +1,9 @@
 import HomeSidebar from './HomeSidebar/HomeSidebar';
 import styles from './HomeView.module.css';
-import ConvoView from './ConvoView/ConvoView';
 import useChannels from '../../../hooks/useChannels';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../types/appTypes';
+import ConversationView from './ConversationView/ConversationView';
 
 function HomeView() {
   const currentConvoData = useSelector(
@@ -18,7 +18,7 @@ function HomeView() {
           <HomeSidebar />
         </div>
         <div className={styles['home-main']}>
-          {!Number.isNaN(currentConvoData.channel.id) && <ConvoView />}
+          {!Number.isNaN(currentConvoData.channel.id) && <ConversationView />}
         </div>
       </div>
     </div>

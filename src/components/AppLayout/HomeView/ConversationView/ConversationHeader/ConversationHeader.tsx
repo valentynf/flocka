@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import PrivateChannelIcon from '../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PrivateChannelIcon';
 import PublicChannelIcon from '../../../../../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PubilcChannelIcon';
-import styles from './ConvoHeader.module.css';
+import styles from './ConversationHeader.module.css';
 import ParticipantsButton from './ParticipantsButton/ParticipantsButton';
-import ConvoMenu from '../ConvoMenu/ConvoMenu';
+import ConversationMenu from '../ConversationMenu/ConversationMenu';
 
-type ConvoHeaderProps = {
+type ConversationHeaderProps = {
   type: 'public' | 'private';
   name: string;
 };
 
-function ConvoHeader({ name, type }: ConvoHeaderProps) {
+function ConversationHeader({ name, type }: ConversationHeaderProps) {
   const [isConvoMenuOpen, setIsConvoMenuOpened] = useState<boolean>(false);
 
   const toggleConvoMenu = () => {
@@ -23,7 +23,7 @@ function ConvoHeader({ name, type }: ConvoHeaderProps) {
   return (
     <div className={styles['header-container']}>
       {isConvoMenuOpen && (
-        <ConvoMenu firstTab={'MEMBERS'} hidePopup={toggleConvoMenu} />
+        <ConversationMenu firstTab={'MEMBERS'} hidePopup={toggleConvoMenu} />
       )}
       <div className={styles['channel-info']}>
         <div className={styles['icon']}>{icon}</div>
@@ -34,4 +34,4 @@ function ConvoHeader({ name, type }: ConvoHeaderProps) {
   );
 }
 
-export default ConvoHeader;
+export default ConversationHeader;
