@@ -94,6 +94,7 @@ input:focus {
 .button-submit:disabled {
   background-color: #34373a;
   color: #aaabad;
+  border-radius: 4px;
 }
 
 .button-submit:hover(:not(:disabled)) {
