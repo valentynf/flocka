@@ -17,7 +17,6 @@ input:focus {
   font-family: 'Lato', sans-serif;
   color: #d1d2d3;
   width: 480px;
-  height: 40px;
   background: #212529;
   border-radius: 4px;
   border: 1px solid #333639;
@@ -60,4 +59,38 @@ input:focus {
 .button-submit:hover {
   background-color: #3f1c63;
   cursor: pointer;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  gap: 8px;
+}
+
+.search-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.user-image {
+  width: 30px;
+  height: 30px;
+}
+
+.existing-member-message {
+  padding-top: 2px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #7f8182;
 }

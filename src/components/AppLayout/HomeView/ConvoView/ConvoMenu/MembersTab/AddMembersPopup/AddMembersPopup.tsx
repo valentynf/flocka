@@ -18,13 +18,16 @@ function AddMembersPopup({ hidePopup }: AddMembersPopupProps) {
   const currentConvoData = useSelector(
     (state: RootState) => state.home.current_convo
   );
+  const usersRecord = useSelector(
+    (state: RootState) => state.app_data.users_data
+  );
 
   const { isLoadingMembers, searchResult } = useAppMembers(inputValue);
 
   const hasSearchResults =
     !isLoadingMembers && searchResult !== null && inputValue.trim() !== '';
 
-  const { name, type } = currentConvoData.channel;
+  const { name, type, participants } = currentConvoData.channel;
   const icon = getChannelIcon(type);
 
   useEffect(() => {
@@ -38,6 +41,8 @@ function AddMembersPopup({ hidePopup }: AddMembersPopupProps) {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
+
+  const handleSearchResultClick = () => {};
 
   return (
     <AppPopup
@@ -58,14 +63,36 @@ function AddMembersPopup({ hidePopup }: AddMembersPopupProps) {
         </div>
         {isLoadingMembers && (
           <div className={styles['search-dropdown']}>
-            <ThreeCircles height="35" width="35" color="#33174d" />
+            <div className={styles['loader']}>
+              <ThreeCircles height="25" width="25" color="#6b31ad" />
+              <span>Loading results</span>
+            </div>
           </div>
         )}
         {hasSearchResults && searchResult.length > 0 && (
           <div className={styles['search-dropdown']}>
-            {searchResult.map((el) => (
-              <p key={el.id}>{el.id}</p>
-            ))}
+            {searchResult.map((el) => {
+              const usersData = usersRecord[el.id];
+              const { name, avatar_src } = usersData;
+              const isExistingMember = participants.includes(el.id);
+              return (
+                <div
+                  onClick={handleSearchResultClick}
+                  key={el.id}
+                  className={styles['search-result']}
+                >
+                  <div className={styles['user-info']}>
+                    <img className={styles['user-image']} src={avatar_src} />
+                    <span className={styles['username']}>{name}</span>
+                  </div>
+                  {isExistingMember && (
+                    <div className={styles['existing-member-message']}>
+                      <span>Already in this channel</span>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         )}
         {hasSearchResults && searchResult.length === 0 && (
