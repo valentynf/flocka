@@ -12,6 +12,7 @@ input:focus {
 
 .search-dropdown {
   position: absolute;
+  box-sizing: border-box;
   left: 10px;
   bottom: -30px;
   font-family: 'Lato', sans-serif;
@@ -20,6 +21,19 @@ input:focus {
   background: #212529;
   border-radius: 4px;
   border: 1px solid #333639;
+}
+
+.dropdown-loader {
+  bottom: 14px;
+  height: 50px;
+}
+
+.no-matches {
+  height: 50px;
+  bottom: 14px;
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
 }
 
 .member-to-add {
@@ -88,6 +102,7 @@ input:focus {
 }
 
 .loader {
+  height: 40px;
   display: flex;
   align-items: center;
   padding: 4px 8px;
@@ -104,7 +119,6 @@ input:focus {
 .user-info {
   display: flex;
   align-items: center;
-
   gap: 8px;
 }
 
@@ -120,4 +134,26 @@ input:focus {
   align-items: center;
   font-size: 12px;
   color: #7f8182;
+}
+
+.close-button {
+  margin-top: 2px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+}
+
+.close-button:hover {
+  cursor: pointer;
+  background-color: rgba(104, 44, 171, 0.2);
+  border-radius: 4px;
+}
+
+.close-button svg {
+  transform: rotate(45deg);
+  height: 25px;
+  width: 25px;
 }

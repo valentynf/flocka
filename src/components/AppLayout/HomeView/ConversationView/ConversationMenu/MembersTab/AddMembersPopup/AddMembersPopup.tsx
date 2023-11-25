@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import useAppMembers from '../../../../../../../hooks/useAppMembers';
 import { ThreeCircles } from 'react-loader-spinner';
 import { USER_NAME_MAX_LENGTH } from '../../../../../../../config/config';
+import PlusIcon from '../../../../../../../icons/AppLayout/AppSidebar/PlusIcon';
 
 type AddMembersPopupProps = {
   hidePopup: () => void;
@@ -51,6 +52,8 @@ function AddMembersPopup({ hidePopup }: AddMembersPopupProps) {
     // setInputValue('');
   };
 
+  const handleRemoveUser = () => {};
+
   return (
     <AppPopup
       hidePopup={hidePopup}
@@ -65,6 +68,12 @@ function AddMembersPopup({ hidePopup }: AddMembersPopupProps) {
               <div key={i} className={styles['member-to-add']}>
                 <img className={styles['user-image']} src={avatar_src} />
                 <span className={styles['username']}>{name}</span>
+                <button
+                  onClick={handleRemoveUser}
+                  className={styles['close-button']}
+                >
+                  <PlusIcon />
+                </button>
               </div>
             );
           })}
@@ -77,7 +86,9 @@ function AddMembersPopup({ hidePopup }: AddMembersPopupProps) {
             maxLength={USER_NAME_MAX_LENGTH}
           ></input>
           {isLoadingMembers && (
-            <div className={styles['search-dropdown']}>
+            <div
+              className={`${styles['search-dropdown']} ${styles['dropdown-loader']}`}
+            >
               <div className={styles['loader']}>
                 <ThreeCircles height="25" width="25" color="#6b31ad" />
                 <span>Loading results</span>
@@ -113,7 +124,11 @@ function AddMembersPopup({ hidePopup }: AddMembersPopupProps) {
             </div>
           )}
           {hasSearchResults && searchResult.length === 0 && (
-            <div className={styles['search-dropdown']}>No matches found</div>
+            <div
+              className={`${styles['search-dropdown']} ${styles['no-matches']}`}
+            >
+              <span>No matches found</span>
+            </div>
           )}
         </div>
 
