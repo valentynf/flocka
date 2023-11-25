@@ -7,6 +7,7 @@ import { createNewUser, signOut } from '../../store/slices/authSlice';
 import { uploadAvatar } from '../../api/services/storageBucketApi';
 import { ThreeCircles } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
+import { USER_NAME_MAX_LENGTH } from '../../config/config';
 
 function RegisterView() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -115,7 +116,7 @@ function RegisterView() {
                 type="text"
                 title="Name must be between 6 and 25 symbols, including one space"
                 autoComplete="off"
-                maxLength={25}
+                maxLength={USER_NAME_MAX_LENGTH}
                 required
               />
             </div>

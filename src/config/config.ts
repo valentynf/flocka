@@ -5,3 +5,4 @@ export const RPC_CREATE_PUBLIC_CHANNEL = 'create_channel_public';
 export const AVATAR_BUCKET = 'avatars';
 export const AVATAR_STORAGE_URL =
   'https://vefclcvjhqelvfvnlkyb.supabase.co/storage/v1/object/public/avatars/';
+export const USER_NAME_MAX_LENGTH = 25;

@@ -12,8 +12,8 @@ input:focus {
 
 .search-dropdown {
   position: absolute;
-  left: 9px;
-  top: 90px;
+  left: 10px;
+  bottom: -30px;
   font-family: 'Lato', sans-serif;
   color: #d1d2d3;
   width: 480px;
@@ -22,22 +22,43 @@ input:focus {
   border: 1px solid #333639;
 }
 
-.input {
-  font-family: 'Lato', sans-serif;
-  width: 450px;
-  font-size: 17px;
-  height: 40px;
+.member-to-add {
+  display: flex;
+  align-items: center;
+  background-color: rgba(104, 44, 171, 0.2);
+  gap: 4px;
+  color: #c4c4c7;
+  padding: 4px;
+}
+
+.input-field {
+  padding: 4px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 460px;
   background-color: #1a1d21;
   color: #d1d2d3;
   border: 1px solid #3d3d3e;
   border-radius: 4px;
-  padding-left: 8px;
-  padding-right: 8px;
 }
 
-.input:focus {
+.input-field:focus-within {
   border-color: #3f1c63;
   box-shadow: 0 0 10px rgba(63, 28, 99, 0.7);
+}
+
+.input {
+  font-family: 'Lato', sans-serif;
+  width: 200px;
+  font-size: 17px;
+  height: 40px;
+  background-color: #1a1d21;
+  color: #d1d2d3;
+  border: none;
+  border-radius: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .button-container {
@@ -53,10 +74,15 @@ input:focus {
   font-family: 'Lato', sans-serif;
   font-weight: 200;
   border: none;
-  color: #c4c4c4;
+  color: #c4c4c7;
 }
 
-.button-submit:hover {
+.button-submit:disabled {
+  background-color: #34373a;
+  color: #aaabad;
+}
+
+.button-submit:hover(:not(:disabled)) {
   background-color: #3f1c63;
   cursor: pointer;
 }
@@ -85,6 +111,7 @@ input:focus {
 .user-image {
   width: 30px;
   height: 30px;
+  border-radius: 6px;
 }
 
 .existing-member-message {
