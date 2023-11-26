@@ -88,3 +88,11 @@ export const isMatchingThePattern = (
 export const getChannelIcon = (type: 'public' | 'private') => {
   return type === 'public' ? <PublicChannelIcon /> : <PrivateChannelIcon />;
 };
+
+export const focusInput = (
+  inputRef: React.MutableRefObject<HTMLInputElement | null>
+) => {
+  if (inputRef.current) {
+    inputRef.current.focus();
+  }
+};

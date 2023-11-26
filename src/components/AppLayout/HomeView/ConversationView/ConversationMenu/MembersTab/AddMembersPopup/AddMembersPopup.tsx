@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import AppPopup from '../../../../../../shared/AppPopup/AppPopup';
 import styles from './AddMembersPopup.module.css';
 import { RootState, UsersData } from '../../../../../../../types/appTypes';
-import { getChannelIcon } from '../../../../../../../utils/helper';
+import { focusInput, getChannelIcon } from '../../../../../../../utils/helper';
 import { useEffect, useRef, useState } from 'react';
 import useAppMembers from '../../../../../../../hooks/useAppMembers';
 import { ThreeCircles } from 'react-loader-spinner';
@@ -36,9 +36,7 @@ function AddMembersPopup({ hidePopup }: AddMembersPopupProps) {
   const icon = getChannelIcon(type);
 
   useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
+    focusInput(inputRef);
   }, []);
 
   const handleAddMembersClick = () => {};
@@ -48,11 +46,14 @@ function AddMembersPopup({ hidePopup }: AddMembersPopupProps) {
   };
 
   const handleSearchResultClick = (userData: UsersData) => {
-    setUsersToAdd((oldValue) => [...oldValue, userData]);
-    // setInputValue('');
+    setUsersToAdd((oldState) => [...oldState, userData]);
+    setInputValue('');
   };
 
-  const handleRemoveUser = () => {};
+  const handleRemoveUserClick = (userId: string) => {
+    setUsersToAdd((oldState) => oldState.filter((item) => item.id !== userId));
+    focusInput(inputRef);
+  };
 
   return (
     <AppPopup
@@ -63,13 +64,15 @@ function AddMembersPopup({ hidePopup }: AddMembersPopupProps) {
     >
       <div className={styles['add-members-popup']}>
         <div className={styles['input-field']}>
-          {usersToAdd.map(({ name, avatar_src }, i) => {
+          {usersToAdd.map((userData, i) => {
+            const { name, avatar_src, id } = userData;
+
             return (
               <div key={i} className={styles['member-to-add']}>
                 <img className={styles['user-image']} src={avatar_src} />
                 <span className={styles['username']}>{name}</span>
                 <button
-                  onClick={handleRemoveUser}
+                  onClick={() => handleRemoveUserClick(id)}
                   className={styles['close-button']}
                 >
                   <PlusIcon />
@@ -98,16 +101,28 @@ function AddMembersPopup({ hidePopup }: AddMembersPopupProps) {
           {hasSearchResults && searchResult.length > 0 && (
             <div className={styles['search-dropdown']}>
               {searchResult.map((user) => {
-                const usersData = usersRecord[user.id];
-                const { name, avatar_src } = usersData;
+                const userRecord = usersRecord[user.id];
+                const { name, avatar_src } = userRecord;
+                const userData = { name, avatar_src, id: user.id };
                 const isExistingMember = participants.includes(user.id);
+                const isAlreadyAdded = usersToAdd.some(
+                  (addedUser) =>
+                    addedUser.id === user.id &&
+                    addedUser.name === name &&
+                    addedUser.avatar_src === avatar_src
+                );
+
                 return (
                   <div
-                    onClick={() =>
-                      handleSearchResultClick({ id: user.id, name, avatar_src })
+                    onClick={
+                      isAlreadyAdded || isExistingMember
+                        ? undefined
+                        : () => handleSearchResultClick(userData)
                     }
                     key={user.id}
-                    className={styles['search-result']}
+                    className={`${styles['search-result']} ${
+                      isAlreadyAdded ? styles['is-already-added'] : ''
+                    } ${isExistingMember ? styles['is-existing-user'] : ''}`}
                   >
                     <div className={styles['user-info']}>
                       <img className={styles['user-image']} src={avatar_src} />
