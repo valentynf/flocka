@@ -8,6 +8,7 @@ import useAppMembers from '../../../../../../../hooks/useAppMembers';
 import { ThreeCircles } from 'react-loader-spinner';
 import { USER_NAME_MAX_LENGTH } from '../../../../../../../config/config';
 import PlusIcon from '../../../../../../../icons/AppLayout/AppSidebar/PlusIcon';
+import { rpcAddParticipantsPublicChannel } from '../../../../../../../api/services/channelsApi';
 
 type AddMembersPopupProps = {
   hidePopup: () => void;
@@ -16,6 +17,7 @@ type AddMembersPopupProps = {
 function AddMembersPopup({ hidePopup }: AddMembersPopupProps) {
   const [inputValue, setInputValue] = useState<string>('');
   const [usersToAdd, setUsersToAdd] = useState<UsersData[]>([]);
+  const [isAddingMembers, setIsAddingMembers] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const currentConvoData = useSelector(
@@ -32,14 +34,30 @@ function AddMembersPopup({ hidePopup }: AddMembersPopupProps) {
   const hasSearchResults =
     !isLoadingMembers && searchResult !== null && inputValue.trim() !== '';
 
-  const { name, type, participants } = currentConvoData.channel;
+  const { name, type, participants, id } = currentConvoData.channel;
   const icon = getChannelIcon(type);
 
   useEffect(() => {
     focusInput(inputRef);
   }, []);
 
-  const handleAddMembersClick = () => {};
+  const handleAddMembersClick = async () => {
+    const newMembersIds = usersToAdd.map((user) => user.id);
+    try {
+      setIsAddingMembers(true);
+      const { error } = await rpcAddParticipantsPublicChannel(
+        id,
+        newMembersIds
+      );
+      if (error) throw new Error(error.message);
+    } catch (err) {
+      console.error(`Couldn't add participants to the channel`, err);
+    } finally {
+      setIsAddingMembers(false);
+      hidePopup();
+    }
+    console.log(usersToAdd);
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -148,13 +166,17 @@ function AddMembersPopup({ hidePopup }: AddMembersPopupProps) {
         </div>
 
         <div className={styles['button-container']}>
-          <button
-            onClick={handleAddMembersClick}
-            className={styles['button-submit']}
-            disabled={!hasUsersToAdd}
-          >
-            Add
-          </button>
+          {isAddingMembers ? (
+            <ThreeCircles height="35" width="35" color="#3f1c63" />
+          ) : (
+            <button
+              onClick={handleAddMembersClick}
+              className={styles['button-submit']}
+              disabled={!hasUsersToAdd}
+            >
+              Add
+            </button>
+          )}
         </div>
       </div>
     </AppPopup>

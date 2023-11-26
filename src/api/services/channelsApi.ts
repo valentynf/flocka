@@ -1,6 +1,7 @@
 import { RealtimeChannel } from '@supabase/supabase-js';
 import {
   CHANNELS_TABLE,
+  RPC_ADD_PARTICIPANTS_PUBLIC_CHANNEL,
   RPC_CREATE_PUBLIC_CHANNEL,
   RPC_SEND_MESSAGE,
   USERS_TABLE,
@@ -109,7 +110,7 @@ export const rpcSendMessage = async (
 };
 
 // This call does several things
-// 1. Creates a new table with creator (user_id) as the only participant
+// 1. Creates a new table row with creator(user_id) as the only participant
 // 2. Adds channel to the channels list of the creator
 // 3. Returns new channel id
 export const rpcCreatePublicChannel = async (
@@ -120,5 +121,20 @@ export const rpcCreatePublicChannel = async (
     channel_name,
     user_id,
   });
+  return { data, error };
+};
+
+// This call also does several things
+// 1. Adds new members ids to the list of the participants of the channel with channel_id
+// 2. In the app-users table, adds the channel in question to the list of the channels for the new members
+// 3. Returns great success
+export const rpcAddParticipantsPublicChannel = async (
+  channel_id: number,
+  new_members_ids: string[]
+) => {
+  const { data, error } = await supabase.rpc(
+    RPC_ADD_PARTICIPANTS_PUBLIC_CHANNEL,
+    { channel_id, new_members_ids }
+  );
   return { data, error };
 };

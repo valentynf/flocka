@@ -68,6 +68,7 @@ export const sendMessage = createAsyncThunk(
   }
 );
 
+//no need for this to be a thunk since we don't dispatch anything after
 export const createNewChannel = createAsyncThunk(
   'home/createNewChannel',
   async ({ channel_name, user_id }: NewChannelPayload, { rejectWithValue }) => {
