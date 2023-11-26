@@ -31,8 +31,8 @@
 }
 
 .logo-container svg {
-  width: 600px;
-  height: 600px;
+  width: 560px;
+  height: 560px;
 }
 
 .login-button {
@@ -60,7 +60,7 @@
 }
 
 .slogan {
-  width: 580px;
+  width: 530px;
   font-size: 40px;
   font-weight: 600;
   color: #c4c4c7;
@@ -69,7 +69,7 @@
 }
 
 .login-description {
-  width: 600px;
+  width: 530px;
   font-size: 12px;
   font-weight: 300;
   color: #d1d2d3;
