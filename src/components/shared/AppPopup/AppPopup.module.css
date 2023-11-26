@@ -1,0 +1,65 @@
+.app-popup {
+  box-sizing: inherit;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #1a1d21;
+  font-family: 'Lato', sans-serif;
+  border: 1px solid #3d3d3e;
+  border-radius: 4px;
+  padding: 8px 16px;
+}
+
+.app-popup:has(.app-popup) {
+  /* dimming the border if there's a child popup*/
+  border-color: #181819;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #c4c4c7;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  font-size: 20px;
+  margin: 0;
+}
+
+.icon {
+  box-sizing: border-box;
+  padding-top: 6px;
+}
+.close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  height: 40px;
+  width: 40px;
+  background-color: #1a1d21;
+}
+
+.close-button:hover {
+  cursor: pointer;
+  background-color: #1c2024;
+  border-radius: 4px;
+}
+
+.close-button svg {
+  transform: rotate(45deg);
+}
+
+.prefix {
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 4px;
+}

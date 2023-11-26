@@ -10,6 +10,7 @@ import SidebarHeader from './SidebarHeader/SidebarHeader';
 import QuickAccess from './QuickAccess/QuickAccess';
 import styles from './HomeSideBar.module.css';
 import { useSelector } from 'react-redux';
+import useChannelsListSub from '../../../../hooks/useChannelsListSub';
 
 // const starredData = {
 //   name: 'Starred',
@@ -71,6 +72,8 @@ function HomeSideBar() {
   // }
 
   const channelsData = useSelector((state: RootState) => state.home.channels);
+
+  useChannelsListSub();
 
   return (
     <div className={styles['home-sidebar']}>

@@ -20,8 +20,10 @@ function LoginView() {
           <h3 className={styles['app-name']}>flocka</h3>
         </div>
         <h2 className={styles['slogan']}>
-          Flocka, where whispers converge and in the depths of darkness, they
-          entwine.
+          Flocka, <br /> where whispers converge,
+          <br /> and in the depths of darkness,
+          <br />
+          they entwine.
         </h2>
         <button className={styles['login-button']} onClick={handleSignIn}>
           {' '}

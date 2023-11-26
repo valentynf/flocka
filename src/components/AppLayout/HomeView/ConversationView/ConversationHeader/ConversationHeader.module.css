@@ -1,0 +1,35 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  width: 100%;
+  border-bottom: 1px solid #313132;
+  padding: 0 18px;
+  box-sizing: border-box;
+}
+
+.channel-info {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 30px;
+  border-radius: 4px;
+}
+
+.channel-info:hover {
+  background-color: #202326;
+  cursor: pointer;
+}
+
+.name {
+  font-family: 'Lato', sans-serif;
+  color: #d1d2d3;
+  font-size: 18px;
+  margin: 0;
+  padding-right: 8px;
+}
+
+.icon {
+  padding: 6px 2px 0px 2px;
+}

@@ -1,0 +1,165 @@
+input:focus {
+  outline: none;
+}
+
+.register-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.spinner {
+  padding: 30px;
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.torch-image {
+  height: 72px;
+  width: 72px;
+}
+
+.description {
+  margin: 0 0 0 2px;
+  font-size: 12px;
+  font-weight: 200;
+  color: #959698;
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+.heading {
+  margin: 8px 4px 0px 0px;
+}
+
+.form-container {
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #1a1d21;
+  padding: 12px 24px;
+  color: #c4c4c7;
+  border-radius: 5%;
+  border: 1px solid #3d3d3e;
+  width: 480px;
+}
+
+.form-container form {
+  width: 100%;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 24px 0px;
+}
+
+.input-label {
+  font-size: 14px;
+}
+
+.input-field input {
+  background-color: #1a1d21;
+  color: #c4c4c7;
+  border-radius: 4px;
+  border: 1px solid #3d3d3e;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 200;
+  height: 36px;
+  padding-left: 8px;
+}
+
+.input-field input:focus {
+  border-color: #3f1c63;
+  box-shadow: 0 0 10px rgba(63, 28, 99, 0.7);
+}
+
+.avatar-preview {
+  width: 160px;
+  height: 160px;
+  border-radius: 4px;
+  border: 1px solid #3d3d3e;
+}
+
+.upload-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0px 24px 0px;
+}
+
+.upload-field input {
+  font-size: 14px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 200;
+}
+
+input::file-selector-button {
+  font-family: 'Lato', sans-serif;
+  background-color: #33174d;
+  color: #c4c4c4;
+  border-radius: 4px;
+  border: 0px;
+  font-size: 14px;
+  font-weight: 200;
+  padding: 4px 16px;
+}
+
+input::file-selector-button:hover {
+  background-color: #3f1c63;
+  cursor: pointer;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 40%;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  font-size: 16px;
+  font-weight: 200;
+  padding: 8px 24px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 200;
+  color: #c4c4c4;
+  border-radius: 4px;
+  border: 0px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button-submit {
+  background-color: #33174d;
+}
+
+.button-submit:hover {
+  background-color: #3f1c63;
+}
+
+.button-submit:disabled {
+  background-color: #1a1d21;
+  cursor: default;
+}
+
+.button-logout {
+  background-color: #1a1d21;
+}
+
+.button-logout:hover {
+  background-color: #260f10;
+}

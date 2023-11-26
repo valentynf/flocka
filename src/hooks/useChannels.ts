@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../types/appTypes';
 import { useEffect } from 'react';
-import { fetchChannels } from '../store/slices/homeSlice';
+import { getChannels } from '../store/slices/homeSlice';
 
 function useChannels() {
   const dispatch: AppDispatch = useDispatch();
@@ -11,7 +11,7 @@ function useChannels() {
 
   useEffect(() => {
     if (channels) {
-      dispatch(fetchChannels(channels));
+      dispatch(getChannels(channels));
     }
   }, [channels, dispatch]);
 }

@@ -5,7 +5,7 @@ import styles from './SidebarHeader.module.css';
 function SidebarHeader() {
   return (
     <div className={styles['header-container']}>
-      <p className={styles['header-text']}>Dunder Mifflin</p>
+      <p className={styles['header-text']}>Flocka</p>
       <div className={styles['header-icons']}>
         <SortIcon />
         <NewMessageIcon />

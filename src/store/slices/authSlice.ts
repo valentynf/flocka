@@ -4,8 +4,8 @@ import {
   authLogin,
   authSignOut,
 } from '../../api/services/authApi';
-import { fetchUserData } from '../../api/services/usersApi';
-import { AuthStateSlice } from '../../types/appTypes';
+import { fetchUserData, insertUserData } from '../../api/services/usersApi';
+import { AuthStateSlice, UserPayload } from '../../types/appTypes';
 
 const initialState: AuthStateSlice = {
   user_data: null,
@@ -53,6 +53,19 @@ export const getUserData = createAsyncThunk(
     return data;
   }
 );
+// There's a trigger in supabase that automatically
+// adds new user id to the list of participants in the channel
+// after insert new user data to the users-app table
+export const createNewUser = createAsyncThunk(
+  'auth/createNewUser',
+  async (userData: UserPayload, { rejectWithValue }) => {
+    const { data, error } = await insertUserData(userData);
+    if (error) {
+      return rejectWithValue(error);
+    }
+    return data;
+  }
+);
 
 const authSlice = createSlice({
   name: 'auth',
@@ -68,6 +81,9 @@ const authSlice = createSlice({
       state.session = payload;
     });
     builder.addCase(getUserData.fulfilled, (state, { payload }) => {
+      state.user_data = payload;
+    });
+    builder.addCase(createNewUser.fulfilled, (state, { payload }) => {
       state.user_data = payload;
     });
   },

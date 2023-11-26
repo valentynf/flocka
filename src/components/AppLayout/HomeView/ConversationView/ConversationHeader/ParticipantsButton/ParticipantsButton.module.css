@@ -1,0 +1,54 @@
+.participants-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  box-sizing: border-box;
+  padding: 2px;
+  height: 36px;
+  width: 76px;
+  background-color: #181c20;
+  border: 1px solid #3d3d3e;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #a4a5a6;
+  font-family: 'Lato', sans-serif;
+}
+
+.participants-button:hover {
+  background-color: #202326;
+  cursor: pointer;
+  color: #c4c4c7;
+}
+
+.three-photos {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 24px;
+  overflow: hidden;
+}
+
+.participant-photo {
+  box-sizing: border-box;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 0;
+  left: 0;
+  border: 2px solid #181c20;
+  border-radius: 4px;
+  z-index: 3;
+}
+
+.second-photo {
+  z-index: 2;
+  left: 14px;
+}
+
+.third-photo {
+  z-index: 1;
+  left: 27px;
+}

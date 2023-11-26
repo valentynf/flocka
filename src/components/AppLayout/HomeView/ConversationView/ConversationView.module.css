@@ -1,0 +1,19 @@
+.messages-view {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 44px);
+  min-width: 100%;
+}
+
+.messages {
+  flex: 1;
+  height: 10px;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
