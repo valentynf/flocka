@@ -7,8 +7,17 @@ import {
   USERS_TABLE,
 } from '../../config/config';
 import supabase from '../supabase';
-import { AppDispatch, MessageData } from '../../types/appTypes';
-import { addNewMessage, getNewChannel } from '../../store/slices/homeSlice';
+import {
+  AppDispatch,
+  ChannelsTableRecord,
+  MessageData,
+} from '../../types/appTypes';
+import {
+  addNewMessage,
+  addNewParticipants,
+  getNewChannel,
+} from '../../store/slices/homeSlice';
+import { getConversationUpdates } from '../../utils/helper';
 
 export const fetchChannelsData = async (channelIds: number[]) => {
   const { data, error } = await supabase
@@ -27,6 +36,7 @@ export const fetchChannelMessages = async (channelId: number) => {
   return { data: data ? data[0] : null, error };
 };
 
+//this
 export const setConversationSubscription = (
   channelId: number,
   dispatch: AppDispatch
@@ -42,8 +52,18 @@ export const setConversationSubscription = (
         filter: `id=eq.${channelId}`,
       },
       (payload) => {
-        console.log(payload);
-        dispatch(addNewMessage(payload.new['messages'][0]));
+        const update = getConversationUpdates(
+          payload.old as ChannelsTableRecord,
+          payload.new as ChannelsTableRecord
+        );
+        if (update) {
+          if (update.trigger === 'new-message') {
+            dispatch(addNewMessage(update.data));
+          }
+          if (update.trigger === 'new-participants') {
+            dispatch(addNewParticipants(update.data));
+          }
+        }
       }
     )
     .subscribe();

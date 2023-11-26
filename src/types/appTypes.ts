@@ -94,3 +94,22 @@ export type NewChannelPayload = {
   channel_name: string;
   user_id: string;
 };
+
+export type ConversationChangesResponsePayload = {
+  schema: string;
+  table: string;
+  commit_timestamp: string;
+  eventType: string;
+  new: ChannelsTableRecord;
+  old: ChannelsTableRecord;
+  errors: null;
+};
+
+export type ChannelsTableRecord = {
+  created_at: Date;
+  id: number;
+  messages: MessageData[];
+  name: string;
+  participants: string[];
+  type: string;
+};

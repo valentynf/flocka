@@ -56,7 +56,6 @@ function AddMembersPopup({ hidePopup }: AddMembersPopupProps) {
       setIsAddingMembers(false);
       hidePopup();
     }
-    console.log(usersToAdd);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

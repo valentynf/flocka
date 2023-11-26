@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-import { MessageData, UsersData } from '../types/appTypes';
+import { ChannelsTableRecord, MessageData, UsersData } from '../types/appTypes';
 import PublicChannelIcon from '../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PubilcChannelIcon';
 import PrivateChannelIcon from '../icons/AppLayout/HomeView/HomeSidebar/CollapsibleList/PrivateChannelIcon';
 
@@ -94,5 +94,26 @@ export const focusInput = (
 ) => {
   if (inputRef.current) {
     inputRef.current.focus();
+  }
+};
+
+type ConversationUpdate = {
+  trigger: 'new-message' | 'new-participants';
+  data: MessageData | string[];
+};
+
+export const getConversationUpdates = (
+  old: ChannelsTableRecord,
+  updated: ChannelsTableRecord
+): ConversationUpdate | undefined => {
+  if (updated.messages.length > old.messages.length) {
+    return { trigger: 'new-message', data: updated.messages[0] };
+  }
+
+  if (updated.participants.length > old.participants.length) {
+    const addedParticipants = updated.participants.filter(
+      (participant) => !old.participants.includes(participant)
+    );
+    return { trigger: 'new-participants', data: addedParticipants };
   }
 };

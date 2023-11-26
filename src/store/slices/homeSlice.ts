@@ -87,9 +87,11 @@ const homeSlice = createSlice({
     addNewMessage(state, { payload }) {
       state.current_convo.messages.unshift(payload);
     },
-    //for the future, when participants are realtime as well
-    addNewParticipant(state, { payload }) {
-      state.current_convo.channel.participants.push(payload);
+    addNewParticipants(state, { payload }) {
+      state.current_convo.channel.participants = [
+        ...state.current_convo.channel.participants,
+        ...payload,
+      ];
     },
     setCurrentChannel(state, { payload }) {
       state.current_convo.channel = payload;
@@ -112,6 +114,6 @@ const homeSlice = createSlice({
   },
 });
 
-export const { addNewMessage, setCurrentChannel, addNewParticipant } =
+export const { addNewMessage, setCurrentChannel, addNewParticipants } =
   homeSlice.actions;
 export default homeSlice.reducer;
