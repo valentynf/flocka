@@ -21,6 +21,7 @@ function ChannelItem({ data }: ChannelItemProps) {
   const currentConvo = useSelector(
     (state: RootState) => state.home.current_convo
   );
+  const isCurrentConvo = currentConvo.channel.id === id;
 
   const dispatch: AppDispatch = useDispatch();
   const handleChannelClick = () => {
@@ -30,9 +31,9 @@ function ChannelItem({ data }: ChannelItemProps) {
 
   return (
     <li
-      onClick={handleChannelClick}
+      onClick={isCurrentConvo ? undefined : handleChannelClick}
       className={
-        currentConvo.channel.id == id
+        isCurrentConvo
           ? styles['list-item-channel-active']
           : styles['list-item-channel']
       }

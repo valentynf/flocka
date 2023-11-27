@@ -61,7 +61,12 @@ export const setConversationSubscription = (
             dispatch(addNewMessage(update.data));
           }
           if (update.trigger === 'new-participants') {
-            dispatch(addNewParticipants(update.data));
+            dispatch(
+              addNewParticipants({
+                newParticipants: update.data,
+                channelId: payload.new.id,
+              })
+            );
           }
         }
       }
