@@ -1,14 +1,16 @@
 [[redirects]]
-  from = "/app/*"
-  to = "/app"
-  status = 200
+  from = "!/*.jpg"
+  to = "/"
 
 [[redirects]]
-  from = "/login/*"
-  to = "/login"
-  status = 200
+  from = "!/*.png"
+  to = "/"
 
 [[redirects]]
-  from = "/register/*"
-  to = "/register"
+  from = "!/*.gif"
+  to = "/"
+
+[[redirects]]
+  from = "/*"
+  to = "/"
   status = 200
