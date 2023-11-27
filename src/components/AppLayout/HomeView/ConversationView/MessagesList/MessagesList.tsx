@@ -22,7 +22,7 @@ function MessagesList({ data }: MessagesListProps) {
       name: participant ? participant.name : 'Deleted User',
       avatar_src: participant
         ? participant.avatar_src
-        : '/images/user-image.jpeg',
+        : '/assets/images/user-image.jpeg',
     };
   });
 

@@ -22,7 +22,7 @@ function ParticipantsButton({ onClick }: ParticipantsButtonProps) {
         {participantsToShow.map((participantId, index) => {
           const imageSource = usersData[participantId]
             ? usersData[participantId].avatar_src
-            : '/images/user-image.jpeg';
+            : '/assets/images/user-image.jpeg';
 
           return (
             <img

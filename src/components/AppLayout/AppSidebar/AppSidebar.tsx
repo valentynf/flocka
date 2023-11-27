@@ -117,7 +117,7 @@ function AppSidebar() {
         <div className={styles['user-image']}>
           <UserImageWithStatusBig
             image_source={
-              userData ? userData.avatar_src : '/images/user-image.jpeg'
+              userData ? userData.avatar_src : '/assets/images/user-image.jpeg'
             }
             status={'online'}
           />

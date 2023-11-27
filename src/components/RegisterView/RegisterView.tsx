@@ -78,9 +78,15 @@ function RegisterView() {
     <div className={styles['register-view']}>
       <div className={styles['form-container']}>
         <div className={styles['form-header']}>
-          <img className={styles['torch-image']} src="/images/torch.gif"></img>
+          <img
+            className={styles['torch-image']}
+            src="/assets/images/torch.gif"
+          ></img>
           <h2 className={styles['heading']}>Awaken a New Soul</h2>
-          <img className={styles['torch-image']} src="/images/torch.gif"></img>
+          <img
+            className={styles['torch-image']}
+            src="/assets/images/torch.gif"
+          ></img>
         </div>
         {isLoading ? (
           <div className={styles['spinner']}>

@@ -9,7 +9,10 @@ type UserImageWithStatusMediumProps = {
 function UserImageWithStatusMedium({ status }: UserImageWithStatusMediumProps) {
   return (
     <div className={styles['avatar-container']}>
-      <img src={'/images/user-image.jpeg'} className={styles['avatar-image']} />
+      <img
+        src={'/assets/images/user-image.jpeg'}
+        className={styles['avatar-image']}
+      />
       <div className={styles['status-icon']}>
         {status === 'online' && <OnlineIconMedium />}
         {status === 'offline' && <OfflineIconMedium />}
