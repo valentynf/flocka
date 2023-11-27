@@ -52,3 +52,7 @@
   z-index: 1;
   left: 27px;
 }
+
+.participants-count {
+  padding: 0 8px;
+}

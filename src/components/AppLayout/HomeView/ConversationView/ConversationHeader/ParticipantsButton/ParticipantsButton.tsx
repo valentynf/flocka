@@ -35,7 +35,9 @@ function ParticipantsButton({ onClick }: ParticipantsButtonProps) {
           );
         })}
       </div>
-      <span>{convoParticipants.length}</span>
+      <span className={styles['participants-count']}>
+        {convoParticipants.length}
+      </span>
     </button>
   );
 }
