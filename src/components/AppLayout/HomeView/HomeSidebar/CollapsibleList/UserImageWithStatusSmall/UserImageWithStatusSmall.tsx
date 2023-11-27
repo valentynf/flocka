@@ -9,10 +9,7 @@ type UserImageWithStatusSmallProps = {
 function UserImageWithStatusSmall({ status }: UserImageWithStatusSmallProps) {
   return (
     <div className={styles['avatar-container']}>
-      <img
-        src={'src/assets/images/user-image.jpeg'}
-        className={styles['avatar-image']}
-      />
+      <img src={'/images/user-image.jpeg'} className={styles['avatar-image']} />
       <div className={styles['status-icon']}>
         {status === 'online' && <OnlineIconSmall />}
         {status === 'offline' && <OfflineIconSmall />}

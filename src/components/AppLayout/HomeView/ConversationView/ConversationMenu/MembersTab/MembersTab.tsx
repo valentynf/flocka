@@ -40,7 +40,7 @@ function MembersTab() {
           const userData = usersData[userId];
           const imageSource = userData
             ? userData.avatar_src
-            : 'src/assets/images/user-image.jpeg';
+            : '/images/user-image.jpeg';
           const userName = userData ? userData.name : 'Deleted User';
 
           return (
