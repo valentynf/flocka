@@ -25,7 +25,7 @@ function App() {
     return <AppLoadingView message="Consuming the essence of users data" />;
 
   return (
-    <Router>
+    <Router basename="/">
       <Routes>
         <Route
           path="/app"
