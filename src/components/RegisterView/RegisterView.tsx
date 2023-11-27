@@ -80,12 +80,12 @@ function RegisterView() {
         <div className={styles['form-header']}>
           <img
             className={styles['torch-image']}
-            src="src/assets/images/torch.gif"
+            src="dist/src/assets/images/torch.gif"
           ></img>
           <h2 className={styles['heading']}>Awaken a New Soul</h2>
           <img
             className={styles['torch-image']}
-            src="src/assets/images/torch.gif"
+            src="dist/src/assets/images/torch.gif"
           ></img>
         </div>
         {isLoading ? (
