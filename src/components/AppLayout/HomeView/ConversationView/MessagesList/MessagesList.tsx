@@ -8,12 +8,12 @@ type MessagesListProps = {
 };
 
 function MessagesList({ data }: MessagesListProps) {
-  const pariticapsData = useSelector(
+  const usersRecord = useSelector(
     (state: RootState) => state.app_data.users_data
   );
 
   const fullData = data.map((message) => {
-    const participant = pariticapsData[message.senderId];
+    const participant = usersRecord[message.senderId];
 
     return {
       id: message.id,

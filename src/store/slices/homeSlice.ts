@@ -88,9 +88,19 @@ const homeSlice = createSlice({
       state.current_convo.messages.unshift(payload);
     },
     addNewParticipants(state, { payload }) {
+      // at the moment participants in channels list and participant in convo should be synced separately
+      const { newParticipants, channelId } = payload;
+      state.channels?.map((channel) =>
+        channel.id === channelId
+          ? (channel.participants = [
+              ...channel.participants,
+              ...newParticipants,
+            ])
+          : channel
+      );
       state.current_convo.channel.participants = [
         ...state.current_convo.channel.participants,
-        ...payload,
+        ...newParticipants,
       ];
     },
     setCurrentChannel(state, { payload }) {
