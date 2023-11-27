@@ -8,7 +8,7 @@ import ChannelItem from './CollapsibleList/ChannelItem/Channeltem';
 // import DirectMessageItem from './CollapsibleList/DirectMessageItem/DirectMessageItem';
 import SidebarHeader from './SidebarHeader/SidebarHeader';
 import QuickAccess from './QuickAccess/QuickAccess';
-import styles from './HomeSideBar.module.css';
+import styles from './HomeSidebar.module.css';
 import { useSelector } from 'react-redux';
 import useChannelsListSub from '../../../../hooks/useChannelsListSub';
 
