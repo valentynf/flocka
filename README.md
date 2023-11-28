@@ -7,6 +7,7 @@ Flocka is a Slack clone pet project built with the following technologies:
 - **Data:** PostgreSQL managed by [Supabase](https://supabase.com/)
 - **Front-end:** Vite, React and TypeScript
 - **State management:** Redux Toolkit
+- **Hosting:** Netlify
 
 ## Features
 
