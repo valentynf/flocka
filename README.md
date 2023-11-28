@@ -1,5 +1,7 @@
 ## Flocka - The Slack's Silly Sibling
 
+Check out the live demo: [Flocka](https://flocka.netlify.app/)
+
 Flocka is a Slack clone pet project built with the following technologies:
 
 - **Data:** PostgreSQL managed by [Supabase](https://supabase.com/)
@@ -12,36 +14,4 @@ Flocka is a Slack clone pet project built with the following technologies:
 
 - **Real-time Messaging**: Flocka supports real-time messaging, making communication smooth and efficient.
 
-## Dev
-
-1. Clone the repository to your local machine:
-
-```shell
-git clone https://github.com/valentynf/flocka
-```
-
-2. Navigate to the project directory:
-
-```shell
-cd flocka
-```
-
-3. Install the project dependencies:
-
-```shell
-npm i
-```
-
-4. Start development server:
-
-```shell
-npm run dev
-```
-
-This will launch the app in your default web browser.
-
-## Author
-
-- [Valentyn](https://github.com/valentynf)
-
-Feel free to reach out if you have any questions or suggestions!
+- **Public Channels**: Ability to add new channels and invite participants.
